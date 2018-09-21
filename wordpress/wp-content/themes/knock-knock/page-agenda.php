@@ -2,19 +2,40 @@
 <?php require_login(); ?>
 <?php get_header(); ?>
 <?php
-	$year = $_GET['jaar'] ?: date('Y');
-	$month = $_GET['maand'] ?: date('m');
+	$year          = $_GET['jaar'] ?:  date('Y');
+	$month         = $_GET['maand'] ?: date('m');
+	$previousDate  = date_create("$year-$month previous month");
+	$previousMonth = $previousDate->format('m');
+	$previousYear  = $previousDate->format('Y');
+	$nextDate      = date_create("$year-$month next month");
+	$nextMonth     = $nextDate->format('m');
+	$nextYear      = $nextDate->format('Y');
 ?>
 
 <section id="grid-system">
-  <div class="page-header">
-			<a href="/wp-admin/post-new.php?post_type=agenda" class="btn btn-large pull-right">Agenda item toevoegen</a>
-    <h1>Agenda - <?php echo month_name($month); ?> <?php echo $year; ?></h1>
-  </div>
+	<div class="page-header">
+		<a href="/wp-admin/post-new.php?post_type=agenda" class="btn btn-large pull-right">Agenda item toevoegen</a>
+		<h1>Agenda -
+			<?php echo month_name($month); ?>
+			<?php echo $year; ?>
+		</h1>
+	</div>
 
-  <div class="row">
-	<div class="span12">
-	<?php
+	<div class="row">
+		<div class="span12" style="margin-bottom:20px;">
+			<a href="/agenda?maand=<?php echo $previousMonth ?>&jaar=<?php echo $previousYear ?>" class="pull-left">
+				<< <?php echo month_name($previousMonth); ?>
+					<?php echo $previousYear; ?>
+			</a> <a href="/agenda?maand=<?php echo $nextMonth ?>&jaar=<?php echo $nextYear ?>" class="pull-right">
+				<?php echo month_name($nextMonth); ?>
+				<?php echo $nextYear; ?> >>
+			</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span12">
+			<?php
 	$posts = get_posts(array(
 		'post_type'  		 => 'agenda',
 		'posts_per_page' => 100,
@@ -32,17 +53,23 @@
 		'meta_type'	=> 'DATETIME'
 		)); if( $posts ): ?>
 
-		<?php foreach( $posts as $post ): setup_postdata( $post ); ?>
+			<?php foreach( $posts as $post ): setup_postdata( $post ); ?>
 
-		<div class="message span12">
+			<div class="message span12">
 
-			<div class="message-header">
-				<span class="comment-count">
-					 <?php edit_post_link( $link, $before, $after, $id, $class ); ?>
-				</span>
-			<h3><?php the_title(); ?></h3>
-			<span style="color:#888;"><?php the_field('type'); ?></span>
-			<?php
+				<div class="message-header">
+					<?php if($post->post_author == get_current_user_id() || current_user_can('administrator') ) {  ?>
+					<span class="comment-count">
+						<?php edit_post_link( $link, $before, $after, $id, $class ); ?> |
+						<a href="<?php echo get_delete_post_link( $id ); ?>">Verwijderen</a>
+					</span>
+					<?php } ?>
+
+					<h3><a href="<?php the_permalink(); ?>">
+							<?php the_title(); ?></a></h3>
+					<span style="color:#888;">
+						<?php the_field('type'); ?></span>
+					<?php
 				$datestart     = get_field('start', false, false);
 				$datestartday  = date_i18n("l j F", strtotime($datestart));
 				$datestarttime = date_i18n("H:i", strtotime($datestart));
@@ -51,41 +78,45 @@
 				$dateendtime   = date_i18n("H:i", strtotime($dateend));
 			?>
 
-			<p><strong><?php echo ucfirst($datestartday); ?> van <?php echo $datestarttime; ?> tot
-			<?php echo ($datestartday != $dateendday) ? $dateendday : ''; ?>
-			<?php echo $dateendtime; ?></strong> <span style="color: #ddd;">.</span></p>
-			</div>
+					<p><strong>
+							<?php echo ucfirst($datestartday); ?> van
+							<?php echo $datestarttime; ?> tot
+							<?php echo ($datestartday != $dateendday) ? $dateendday : ''; ?>
+							<?php echo $dateendtime; ?></strong> <span style="color: #ddd;">.</span></p>
+				</div>
 
-			<div class="message-footer">
-			<img src="<?php the_field( 'resident_profile_image', 'user_'. $post->post_author ); ?>" width="40" height="40" alt="" />
-			Organisator: <?php echo the_author_firstname( $post->post_author ); ?> <?php echo the_author_lastname( $post->post_author ); ?> -
-			<?php if ( get_the_modified_date('c') == get_the_date('c') ) {  /* Als het bericht nieuw is */  ?>
-				 Aangemaakt op <?php the_modified_date(''); ?> om <?php the_modified_date('H:i'); ?>
-			<?php } else {  /* Als het bericht is aangepast */  ?>
-				Aangepast op <?php the_modified_date(''); ?> om <?php the_modified_date('H:i'); ?>
-			<?php } ?>
-			</div>
+				<div class="message-footer">
+					<img src="<?php the_field( 'resident_profile_image', 'user_'. $post->post_author ); ?>" width="40" height="40" alt="" />
+					Organisator:
+					<?php echo the_author_firstname( $post->post_author ); ?>
+					<?php echo the_author_lastname( $post->post_author ); ?> -
+					<?php if ( get_the_modified_date('c') == get_the_date('c') ) { ?>
+					Aangemaakt op
+					<?php the_modified_date(''); ?> om
+					<?php the_modified_date('H:i'); ?>
+					<?php } else { ?>
+					Aangepast op
+					<?php the_modified_date(''); ?> om
+					<?php the_modified_date('H:i'); ?>
+					<?php } ?>
+				</div>
 
-		</div>
+			</div>
 			<?php endforeach; ?>
 			<?php wp_reset_postdata(); ?>
 
-		<?php endif;    /* Einde Agenda */  ?>
+			<?php endif; ?>
 
-    </div>
-  </div>
+		</div>
+	</div>
 
-	<?php
-		$previousDate  = date_create("$year-$month previous month");
-		$previousMonth = $previousDate->format('m');
-		$previousYear  = $previousDate->format('Y');
-		$nextDate      = date_create("$year-$month next month");
-		$nextMonth     = $nextDate->format('m');
-		$nextYear      = $nextDate->format('Y');
-	?>
-
-	<a href="/agenda?maand=<?php echo $previousMonth ?>&jaar=<?php echo $previousYear ?>" class="btn btn-large pull-left">Vorige maand</a>
-	<a href="/agenda?maand=<?php echo $nextMonth ?>&jaar=<?php echo $nextYear ?>" class="btn btn-large pull-right">Volgende maand</a>
+	<a href="/agenda?maand=<?php echo $previousMonth ?>&jaar=<?php echo $previousYear ?>" class="pull-left">
+		<< <?php echo month_name($previousMonth); ?>
+			<?php echo $previousYear; ?>
+	</a> <a href="/agenda?maand=<?php echo $nextMonth ?>&jaar=<?php echo $nextYear ?>" class="pull-right">
+		<?php echo month_name($nextMonth); ?>
+		<?php echo $nextYear; ?> >>
+	</a>
 
 </section>
 
