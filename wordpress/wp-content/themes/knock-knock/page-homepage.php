@@ -163,7 +163,7 @@ $posts = get_posts(array(
 							<li>
 								<i class="icon-calendar"></i>
 								<b><?php the_title() ?>
-									<?php if ( get_field('type') == 'Reservering projectruimte - Openbaar'): ?>
+									<?php if ( get_field('type') == "Reservering 't Klophuis - Openbaar"): ?>
 										-  <?php the_author_firstname( $post->post_author ); ?>
 									<?php endif ?>
 								</b><br/>
