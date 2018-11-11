@@ -54,7 +54,7 @@
 
 			          <tr>
 			            <td><img src="<?php the_field( 'resident_profile_image', $author_info ); ?>" width="40" height="40" alt="" /></td>
-			            <td><a href="<?php echo $author_info->first_name; ?></td>
+			            <td><?php echo $author_info->first_name; ?></td>
 			            <td><?php echo $author_info->last_name; ?></td>
 			            <td><?php the_field('resident_adres', $author_info); ?></td>
 			            <td><?php the_field('resident_phone', $author_info); ?></td>
