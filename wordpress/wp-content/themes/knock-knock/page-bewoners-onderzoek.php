@@ -26,7 +26,7 @@
 						'relation' => 'AND',
 							array(
 								'key'     => 'status_in_expressionengine',
-								'value'   => 'Ingeschreven',
+								'value'   => 'Uitgeschreven',
 					 			'compare' => '='
 							)
 					)
@@ -45,7 +45,7 @@
 			            <th class="blue"></th>
 			            <th class="blue">Voornaam</th>
 			            <th class="green">Achternaam</th>
-			            <th class="yellow">resident_date_since</th>
+			            <th class="yellow">status_in_expressionengine</th>
 			            <th class="blue">bewoner_sinds</th>
 			            <th class="green">E-mail</th>
 			          </tr>
@@ -62,7 +62,7 @@
 			            <td><img src="<?php the_field( 'resident_profile_image', $author_info ); ?>" width="40" height="40" alt="" /></td>
 			            <td><?php echo $author_info->first_name; ?></td>
 			            <td><?php echo $author_info->last_name; ?></td>
-			            <td><?php the_field('resident_date_since', $author_info); ?></td>
+			            <td><?php the_field('status_in_expressionengine', $author_info); ?></td>
 			            <td><?php the_field('bewoner_sinds', $author_info); ?></td>
 			            <td><a href="mailto:<?php the_field('resident_email', $author_info); ?>"><?php the_field('resident_email', $author_info); ?></a></td>
 			          </tr>
