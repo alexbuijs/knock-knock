@@ -37,7 +37,7 @@
 					        // get all the user's data
 					        $author_info = get_userdata( $author->ID );
 							$phone = get_field('resident_phone', $author_info); ?>
-							<a href="<!--<?php echo $author_info->user_nicename; ?>-->">
+							<a href="">
 							<img src="<?php the_field( 'resident_profile_image', $author_info ); ?>" width="94" height="94" alt="" />
 						<?php } ?>
 
