@@ -76,6 +76,7 @@
 		                'menu'     	=> 'Hoofd',
 		                'menu_class'        => 'nav',
 						'container' => false,
+      				  	'depth' => 2,
 		                'show_home'         => '1'
 		                ));
 		            ?>

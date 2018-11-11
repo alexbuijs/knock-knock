@@ -721,3 +721,21 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 	float: right;
 	color: #fff;
 }
+
+/* subemenu */
+
+.sub-menu {
+list-style:none !important;
+position:absolute;
+display:none;
+}
+.nav li:hover > ul.sub-menu {
+display: block;
+margin: 0;
+}
+.sub-menu li {
+width:200px;
+background-color: #f8f8f8;
+border-color: #e7e7e7;
+padding: 8px;
+}
