@@ -5,90 +5,93 @@
 <?php while ( have_posts() ) : the_post(); ?>
 
 <section id="grid-system">
-	<div class="page-header">
-	    <h1><a href="/documentatie">Documentatie</a></h1>
-	</div>
+  <div class="page-header">
+    <h1><a href="/documentatie">Documentatie</a></h1>
+  </div>
 
-	<div class="row">
-		<div class="span8">
+  <div class="row">
+    <div class="span8">
 
-			<div class="message span8">
-				<div class="message-header">
-					<span class="comment-count">
-						 <?php edit_post_link( $link, $before, $after, $id, $class ); ?>
-					</span>
-					<h3><?php the_title(); ?>
-					</h3>
-				</div>
-				<div class="message-body">
-						<?php the_content(); ?>
-				</div>
+      <div class="message span8">
+        <div class="message-header">
+          <span class="comment-count">
+            <?php edit_post_link( $link, $before, $after, $id, $class ); ?>
+          </span>
+          <h3><?php the_title(); ?>
+          </h3>
+        </div>
+        <div class="message-body">
+          <?php the_content(); ?>
+        </div>
 
-				<div class="message-footer">
-				<img src="<?php the_field( 'resident_profile_image', 'user_'. $post->post_author ); ?>" width="40" height="40" alt="" />
-				<?php echo the_author_firstname( $post->post_author ); ?> is beheerder van dit document. -
+        <div class="message-footer">
+          <img
+            src="<?php echo get_field( 'resident_profile_image', 'user_'. $post->post_author )['sizes']['thumbnail']; ?>"
+            width="40" height="40" alt="" />
+          <?php echo the_author_firstname( $post->post_author ); ?> is beheerder van dit document. -
 
-				<?php if ( get_the_modified_date() == get_the_date() ) {  /* Als het bericht nieuw is */  ?>
-					 Aangemaakt op <?php the_modified_date(''); ?> om <?php the_modified_date('H:i'); ?>
-				<?php } else {  /* Als het bericht is aangepast */  ?>
-					Aangepast op <?php the_modified_date(''); ?> om <?php the_modified_date('H:i'); ?>
-				<?php } ?>
-				</div>
+          <?php if ( get_the_modified_date() == get_the_date() ) {  /* Als het bericht nieuw is */  ?>
+          Aangemaakt op <?php the_modified_date(''); ?> om <?php the_modified_date('H:i'); ?>
+          <?php } else {  /* Als het bericht is aangepast */  ?>
+          Aangepast op <?php the_modified_date(''); ?> om <?php the_modified_date('H:i'); ?>
+          <?php } ?>
+        </div>
 
-			</div>
+      </div>
 
-		</div>
+    </div>
 
-		<div class="span4">
-			<?php // Document relations
+    <div class="span4">
+      <?php // Document relations
 				$post = get_field( 'relatie' );
 				if ( $post ):
 					setup_postdata( $post ); ?>
 
-					<div class="message span4">
-						<div class="message-header">
-							<h3>Dit document hoort bij</h3>
-						</div>
-						<div class="message-body">
-							<ul class="overview">
-								<li><i class="icon-file"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-							</ul>
-						</div>
-					</div>
-				<?php wp_reset_postdata(); ?>
-			<?php endif; // End document relations ?>
+      <div class="message span4">
+        <div class="message-header">
+          <h3>Dit document hoort bij</h3>
+        </div>
+        <div class="message-body">
+          <ul class="overview">
+            <li><i class="icon-file"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+          </ul>
+        </div>
+      </div>
+      <?php wp_reset_postdata(); ?>
+      <?php endif; // End document relations ?>
 
-			<?php // Download overzicht
+      <?php // Download overzicht
 			if ( have_rows( 'downloads' ) ) : ?>
 
-				<div class="message span4">
+      <div class="message span4">
 
-					<div class="message-header">
-					<h3>Downloads</h3>
-					</div>
+        <div class="message-header">
+          <h3>Downloads</h3>
+        </div>
 
-					<div class="message-body">
-						<ul class="overview">
+        <div class="message-body">
+          <ul class="overview">
 
-						<?php while ( have_rows( 'downloads' ) ) : the_row(); ?>
-						<?php $bestand = get_sub_field( 'bestand' ); ?>
-						<?php if ( $bestand ) { ?>
-							<li><i class="icon-file"></i><a href="<?php echo $bestand['url']; ?>"><?php the_sub_field( 'omschrijving' ); ?></a></li>
-						<?php } ?>
-						<?php endwhile; ?>
+            <?php while ( have_rows( 'downloads' ) ) : the_row(); ?>
+            <?php $bestand = get_sub_field( 'bestand' ); ?>
+            <?php if ( $bestand ) { ?>
+            <li><i class="icon-file"></i><a
+                href="<?php echo $bestand['url']; ?>"><?php the_sub_field( 'omschrijving' ); ?></a></li>
+            <?php } ?>
+            <?php endwhile; ?>
 
-						</ul>
-					</div>
+          </ul>
+        </div>
 
-				</div>
+      </div>
 
-			<?php else : ?>
-			<?php // no rows found ?>
-			<?php endif; // Einde Download overzicht ?>
+      <?php else : ?>
+      <?php // no rows found ?>
+      <?php endif; // Einde Download overzicht ?>
 
-<?php if( current_user_can('administrator') ) {  ?>
+      <?php if( current_user_can('administrator') ) {  ?>
 
-			<?php /* Related items */
+      <?php /* Related items */
 
 				$relatedpostid = get_the_ID();
 				// query events
@@ -101,39 +104,37 @@
 
 				if( $posts ): ?>
 
-				<div class="message span4">
-					<div class="message-header">
-					<h3>Gerelateerde Documenten</h3>
-					</div>
-					<div class="message-body">
-						<ul class="overview">
+      <div class="message span4">
+        <div class="message-header">
+          <h3>Gerelateerde Documenten</h3>
+        </div>
+        <div class="message-body">
+          <ul class="overview">
 
-						<?php foreach( $posts as $post ): setup_postdata( $post ); ?>
+            <?php foreach( $posts as $post ): setup_postdata( $post ); ?>
 
-							<?php if ( get_field( 'relatie' ) == $relatedpostid ) { ?>
+            <?php if ( get_field( 'relatie' ) == $relatedpostid ) { ?>
 
-						        <li>
-									<i class="icon-file"></i>
-									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br/>
-								</li>
+            <li>
+              <i class="icon-file"></i>
+              <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br />
+            </li>
 
-							<?php } ?>
+            <?php } ?>
 
-						<?php endforeach; ?>
+            <?php endforeach; ?>
 
-						</ul>
-					</div>
-				</div>
+          </ul>
+        </div>
+      </div>
 
-				<?php wp_reset_postdata(); ?>
+      <?php wp_reset_postdata(); ?>
 
-			<?php endif; /* End Related */  ?>
+      <?php endif; /* End Related */  ?>
 
+      <?php } ?>
 
-<?php } ?>
-
-
-			<?php /* Items from the same category */
+      <?php /* Items from the same category */
 
 				$category = get_field( 'categorie' );
 				// query events
@@ -146,37 +147,37 @@
 
 				if( $posts ): ?>
 
-				<div class="message span4">
-					<div class="message-header">
-					<h3>Andere documenten in de categorie: <?php the_field( 'categorie' ); ?></h3>
-					</div>
-					<div class="message-body">
-						<ul class="overview">
+      <div class="message span4">
+        <div class="message-header">
+          <h3>Andere documenten in de categorie: <?php the_field( 'categorie' ); ?></h3>
+        </div>
+        <div class="message-body">
+          <ul class="overview">
 
-						<?php foreach( $posts as $post ): setup_postdata( $post ); ?>
+            <?php foreach( $posts as $post ): setup_postdata( $post ); ?>
 
-							<?php if ( get_field( 'categorie' ) == $category ) { ?>
+            <?php if ( get_field( 'categorie' ) == $category ) { ?>
 
-						        <li>
-									<i class="icon-file"></i>
-									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br/>
-								</li>
+            <li>
+              <i class="icon-file"></i>
+              <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br />
+            </li>
 
-							<?php } ?>
+            <?php } ?>
 
-						<?php endforeach; ?>
+            <?php endforeach; ?>
 
-						</ul>
-					</div>
-				</div>
+          </ul>
+        </div>
+      </div>
 
-				<?php wp_reset_postdata(); ?>
+      <?php wp_reset_postdata(); ?>
 
-			<?php endif; /* Einde Categorie */  ?>
+      <?php endif; /* Einde Categorie */  ?>
 
-		</div>
+    </div>
 
-	</div>
+  </div>
 
 </section>
 

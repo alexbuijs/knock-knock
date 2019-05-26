@@ -3,14 +3,14 @@
 <?php get_header(); ?>
 
 <section id="grid-system">
-<div class="page-header">
-<h1>Bewoners <small></small></h1>
-</div>
+  <div class="page-header">
+    <h1>Bewoners <small></small></h1>
+  </div>
 
-<div class="row">
-<div class="span12 fotocollage">
+  <div class="row">
+    <div class="span12 fotocollage">
 
-				<?php
+      <?php
 					$args = array(
 			        'order'     => 'ASC',
 			        'meta_key' => 'first_name',
@@ -32,30 +32,24 @@
 					// Check for results
 					if ( ! empty( $authors ) ) { ?>
 
-					    <?php // loop through each author
+      <?php // loop through each author
 					    foreach ( $authors as $author ) {
 					        // get all the user's data
 					        $author_info = get_userdata( $author->ID );
-							$phone = get_field('resident_phone', $author_info); ?>
-							<a href="">
-							<img src="<?php the_field( 'resident_profile_image', $author_info ); ?>" width="94" height="94" alt="" />
-						<?php } ?>
+							$phone = get_field('resident_phone', $author_info);
+							$image = get_field('resident_profile_image', $author_info)['sizes']['thumbnail']; ?>
+      <a href="">
+        <img src="<?php echo $image ?>" width="94" height="94" alt="" />
+        <?php } ?>
 
-					<?php } else {
+        <?php } else {
 					    echo 'Geen bewoners gevonden';
 					}
 				?>
 
-</div>
-</div><!-- /row -->
+    </div>
+  </div><!-- /row -->
 
 </section>
-
-
-
-
-
-
-
 
 <?php get_footer(); ?>

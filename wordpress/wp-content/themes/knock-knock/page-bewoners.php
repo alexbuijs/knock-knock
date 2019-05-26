@@ -49,12 +49,11 @@
           <?php // loop through each author
 				    foreach ( $authors as $author ) {
 				        // get all the user's data
-				        $author_info = get_userdata( $author->ID );
-						$phone = get_field('resident_phone', $author_info); ?>
+				        $author_info = get_userdata( $author->ID ); ?>
 
           <tr>
-            <td><img src="<?php the_field( 'resident_profile_image', $author_info ); ?>" width="40" height="40"
-                alt="" /></td>
+            <td><img src="<?php echo get_field('resident_profile_image', $author_info)['sizes']['thumbnail']; ?>"
+                width="40" height="40" alt="" /></td>
             <td> <?php echo $author_info->first_name; ?></td>
             <td><?php echo $author_info->last_name; ?></td>
             <td><?php the_field('resident_adres', $author_info); ?></td>
