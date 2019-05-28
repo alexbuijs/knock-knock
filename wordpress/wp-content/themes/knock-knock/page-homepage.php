@@ -197,7 +197,7 @@ $posts = get_posts(array(
 
     <?php /* Start Nieuwe bewoners */
 		$args = array(
-		'number' => 5,
+		'number' => 10,
 				'order'     => 'DESC',
 				'meta_key' => 'bewoner_sinds',
 				'orderby'   => 'meta_value', //or 'meta_value_num'
