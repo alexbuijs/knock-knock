@@ -5,7 +5,7 @@ This repository contains the development environment and the WordPress theme for
 ## Setup
 
 - Download and install [Docker](https://www.docker.com/community-edition#/download)
-- Clone this repo `git clone git@github.com:mikeverbruggen/knock-knock.git && cd knock-knock`
+- Clone this repo `git clone git@github.com:alexbuijs/knock-knock.git && cd knock-knock`
 - Run `docker-compose up`
 - Visit [http://localhost:8080](http://localhost:8080) for WordPress
 - Visit [http://localhost:8081](http://localhost:8081) for phpMyAdmin
