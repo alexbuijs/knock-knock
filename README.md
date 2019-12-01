@@ -11,9 +11,6 @@ This repository contains the development environment and the WordPress theme for
 - Visit [http://localhost:8081](http://localhost:8081) for phpMyAdmin
 - Install plugins:
   + Advanced Custom Fields PRO
-- Import fields: Extra velden -> Tools -> Selecteer bestand: [acf-import.json](acf-import.json)
 - Create new pages: 'Home', 'Agenda', 'Bewoners', 'Documentatie' and select the accompanying templates
 - Set landing page: Instellingen -> Lezen -> Statische pagina -> Voorpagina: 'Home'
 - (Klopvaart only) Setup menu structure: Weergave -> Menu's: 'Home', 'Agenda', 'Bewoners', 'Documentatie'
-- (Klopvaart only) Import All Import templates: [all-import-templates.txt](all-import-templates.txt)
-- (Klopvaart only) Import All Import templates: [all-import-templates.txt](all-import-templates.txt)

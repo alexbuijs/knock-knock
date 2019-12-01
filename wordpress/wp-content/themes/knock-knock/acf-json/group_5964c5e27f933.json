@@ -1,0 +1,165 @@
+{
+    "key": "group_5964c5e27f933",
+    "title": "Extra opties voor dit document (admin)",
+    "fields": [
+        {
+            "key": "field_5964c5ef98988",
+            "label": "Relatie",
+            "name": "relatie",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "documentatie"
+            ],
+            "taxonomy": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5964c63198989",
+            "label": "Categorie",
+            "name": "categorie",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "algemeen": "Algemeen",
+                "bestuur": "Bestuur",
+                "commissies": "Commissies",
+                "faciliteiten": "Faciliteiten",
+                "huur-en-nieuwe-huurders": "Huur en nieuwe huurders",
+                "in-op-en-om-het-huis": "In, op en om het huis",
+                "overige - Overige": "overige - Overige"
+            },
+            "default_value": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5964c6e49898a",
+            "label": "Downloads",
+            "name": "downloads",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5964c70f9898c",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Bestand toevoegen",
+            "sub_fields": [
+                {
+                    "key": "field_5964c7079898b",
+                    "label": "Bestand",
+                    "name": "bestand",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_5964c70f9898c",
+                    "label": "Omschrijving",
+                    "name": "omschrijving",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "documentatie"
+            },
+            {
+                "param": "current_user_role",
+                "operator": "==",
+                "value": "administrator"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "documentatie"
+            },
+            {
+                "param": "current_user_role",
+                "operator": "==",
+                "value": "editor"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "excerpt",
+        "discussion",
+        "comments",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1575218585
+}

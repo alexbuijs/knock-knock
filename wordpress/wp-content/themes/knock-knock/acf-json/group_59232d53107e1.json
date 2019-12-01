@@ -1,0 +1,109 @@
+{
+    "key": "group_59232d53107e1",
+    "title": "Agenda",
+    "fields": [
+        {
+            "key": "field_5ba4a495bc713",
+            "label": "Let op!",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Als jouw activiteit niet doorgaat, verwijder deze dan uit de agenda!",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_59232d5de71f1",
+            "label": "Start",
+            "name": "start",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "datetimepicker",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59232dade71f2",
+            "label": "Einde",
+            "name": "einde",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "datetimepicker",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59649eaa6cdf2",
+            "label": "Type activiteit\/reservering",
+            "name": "type",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "pr-verenigingsactiviteit": "Reservering 't Klophuis - Verenigingsactiviteit",
+                "pr-openbaar": "Reservering 't Klophuis - Openbaar",
+                "pr-prive": "Reservering 't Klophuis - Privé",
+                "verenigingsactiviteit": "Verenigingsactiviteit"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "label",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "agenda"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "slug",
+        "featured_image"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1575218444
+}
