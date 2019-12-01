@@ -19,7 +19,7 @@
 
     <div class="message span8">
       <div class="message-header">
-        <h3>Recente gebeurtenisen</h3>
+        <h3>Recente gebeurtenissen</h3>
       </div>
       <div class="stream-body">
 
