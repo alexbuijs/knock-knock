@@ -169,6 +169,7 @@ add_action( 'init', 'cptui_register_my_cpts' );
  * Add user old-member
  */
 
+remove_role('old-member');
 add_role( 'old-member', __('Uitgeschreven'), array(
 	'read' => true, // true allows this capability
 	'edit_posts' => false, // Allows user to edit their own posts
