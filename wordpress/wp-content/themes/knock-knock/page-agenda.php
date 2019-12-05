@@ -1,5 +1,4 @@
 <?php /* Template Name: Agenda */ ?>
-<?php App\require_login(); ?>
 <?php get_header(); ?>
 <?php
     $year          = $_GET['jaar'] ?:  date('Y');

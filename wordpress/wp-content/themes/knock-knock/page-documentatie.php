@@ -1,5 +1,4 @@
 <?php /* Template Name: Documentatie */ ?>
-<?php App\require_login(); ?>
 <?php get_header(); ?>
 
 <section id="documentation">

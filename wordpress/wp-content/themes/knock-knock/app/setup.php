@@ -6,6 +6,15 @@
 namespace App;
 
 /**
+ * Redirect non-logged in users to login
+ */
+add_action('template_redirect', function() {
+    if (!is_user_logged_in()) {
+        auth_redirect();
+    }
+});
+
+/**
  * Register Knock Knock assets
  */
 add_action('wp_enqueue_scripts', function() {

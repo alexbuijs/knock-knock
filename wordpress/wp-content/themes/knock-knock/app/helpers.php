@@ -6,16 +6,6 @@
 namespace App;
 
 /**
- * Checks if user is logged in, if not it redirects to login page
- */
-function require_login()
-{
-    if (!is_user_logged_in()) {
-        auth_redirect();
-    }
-}
-
-/**
  * Returns first and last date of a certain month
  */
 function month_period($month, $year)
