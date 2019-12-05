@@ -47,12 +47,17 @@
                     <tbody>
                         <?php foreach ($authors as $author) {
                             // get all the user's data
-                            $author_info = get_userdata($author->ID); ?>
+                            $author_info = get_userdata($author->ID); 
+                        
+
+                            // profile picture
+                            $image = get_field('resident_profile_image', $author_info);
+                            $image = $image ? $image['sizes']['thumbnail'] : get_template_directory_uri() . '/asset/images/fallback.jpg';
+                            ?>
 
                             <tr>
-                                <td><img src="<?php echo get_field('resident_profile_image', $author_info)['sizes']['thumbnail']; ?>"
-                                    width="40" height="40" alt="" /></td>
-                                <td> <?php echo $author_info->first_name; ?></td>
+                                <td><img src="<?php echo $image ?>" width="40" height="40" alt="" /></td>
+                                <td><?php echo $author_info->first_name; ?></td>
                                 <td><?php echo $author_info->last_name; ?></td>
                                 <td><?php the_field('resident_adres', $author_info); ?></td>
                                 <td><?php the_field('resident_phone', $author_info); ?></td>
