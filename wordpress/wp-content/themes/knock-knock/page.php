@@ -3,21 +3,24 @@
 
 <section id="grid-system">
 
-	<div class="page-header">
-		<h1><?php the_title(); ?></h1>
-	</div>
+    <div class="page-header">
+        <h1><?php the_title(); ?></h1>
+    </div>
 
-	<div class="row">
-		<!-- Content -->
-		<div class="span12">
+    <div class="row">
 
-		<?php while ( have_posts() ) : the_post(); the_content(); endwhile;  ?>
+        <!-- Content -->
+        <div class="span12">
 
-		</div>
-		<!-- /Content -->
+            <?php while (have_posts()) :
+                the_post();
+                the_content();
+            endwhile;  ?>
+        </div>
+        <!-- /Content -->
 
-	</div>
-
+    </div>
+    
 </section>
 
 <?php get_footer(); ?>
