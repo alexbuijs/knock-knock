@@ -28,7 +28,7 @@
                     <img
                         src="<?php echo get_field('resident_profile_image', 'user_'. $post->post_author)['sizes']['thumbnail']; ?>"
                         width="40" height="40" alt="" />
-                    <?php echo the_author_firstname($post->post_author); ?> is beheerder van dit document. -
+                    <?php echo the_author_meta('first_name'); ?> is beheerder van dit document. -
 
                     <?php if (get_the_modified_date() == get_the_date()) {  /* Als het bericht nieuw is */  ?>
                     Aangemaakt op <?php the_modified_date(''); ?> om <?php the_modified_date('H:i'); ?>

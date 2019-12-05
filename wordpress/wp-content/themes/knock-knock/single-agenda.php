@@ -59,8 +59,8 @@
                         src="<?php echo get_field('resident_profile_image', 'user_'. $post->post_author)['sizes']['thumbnail']; ?>"
                         width="40" height="40" alt="" />
                     Organisator:
-                    <?php echo the_author_firstname($post->post_author); ?>
-                    <?php echo the_author_lastname($post->post_author); ?> -
+                    <?php echo the_author_meta('first_name'); ?>
+                    <?php echo the_author_meta('last_name'); ?> -
                     <?php if (get_the_modified_date('c') == get_the_date('c')) { ?>
                     Aangemaakt op
                             <?php the_modified_date(''); ?> om

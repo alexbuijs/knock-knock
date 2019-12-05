@@ -153,13 +153,13 @@
                     <ul class="overview">
 
                     <?php foreach ($posts as $post) :
-                            setup_postdata($post); ?>
+                        setup_postdata($post); ?>
 
                     <li>
                         <i class="icon-calendar"></i>
                         <b><?php the_title() ?>
                             <?php if (get_field('type') == "Reservering 't Klophuis - Openbaar") : ?>
-                        - <?php the_author_firstname($post->post_author); ?>
+                                - <?php the_author_meta('first_name') ?>
                             <?php endif ?>
                         </b><br />
 
