@@ -1,5 +1,5 @@
 <?php /* Template Name: Bewoners */ ?>
-<?php require_login(); ?>
+<?php App\require_login(); ?>
 <?php get_header(); ?>
 
 <section id="tables">
@@ -48,7 +48,6 @@
                         <?php foreach ($authors as $author) {
                             // get all the user's data
                             $author_info = get_userdata($author->ID); 
-                        
 
                             // profile picture
                             $image = get_field('resident_profile_image', $author_info);

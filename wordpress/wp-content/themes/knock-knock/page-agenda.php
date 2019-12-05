@@ -1,5 +1,5 @@
 <?php /* Template Name: Agenda */ ?>
-<?php require_login(); ?>
+<?php App\require_login(); ?>
 <?php get_header(); ?>
 <?php
     $year          = $_GET['jaar'] ?:  date('Y');
@@ -16,7 +16,7 @@
     <div class="page-header">
         <a href="/wp-admin/post-new.php?post_type=agenda" class="btn btn-large pull-right">Agenda item toevoegen</a>
         <h1>Agenda -
-            <?php echo month_name($month); ?>
+            <?php echo App\month_name($month); ?>
             <?php echo $year; ?>
         </h1>
     </div>
@@ -24,9 +24,9 @@
     <div class="row">
         <div class="span12" style="margin-bottom:20px;">
             <a href="/agenda?maand=<?php echo $previousMonth ?>&jaar=<?php echo $previousYear ?>" class="pull-left">
-                << <?php echo month_name($previousMonth); ?> <?php echo $previousYear; ?> </a> <a
+                << <?php echo App\month_name($previousMonth); ?> <?php echo $previousYear; ?> </a> <a
                 href="/agenda?maand=<?php echo $nextMonth ?>&jaar=<?php echo $nextYear ?>" class="pull-right">
-                <?php echo month_name($nextMonth); ?>
+                <?php echo App\month_name($nextMonth); ?>
                 <?php echo $nextYear; ?> >>
             </a>
         </div>
@@ -42,7 +42,7 @@
                 array(
                     'key'           => 'start',
                     'compare'   => 'BETWEEN',
-                    'value'     => month_period($month, $year),
+                    'value'     => App\month_period($month, $year),
                     'type'      => 'DATETIME'
                 )
             ),
@@ -120,9 +120,9 @@
     </div>
 
     <a href="/agenda?maand=<?php echo $previousMonth ?>&jaar=<?php echo $previousYear ?>" class="pull-left">
-        << <?php echo month_name($previousMonth); ?> <?php echo $previousYear; ?> </a> <a
+        << <?php echo App\month_name($previousMonth); ?> <?php echo $previousYear; ?> </a> <a
         href="/agenda?maand=<?php echo $nextMonth ?>&jaar=<?php echo $nextYear ?>" class="pull-right">
-        <?php echo month_name($nextMonth); ?>
+        <?php echo App\month_name($nextMonth); ?>
         <?php echo $nextYear; ?> >>
     </a>
 </section>

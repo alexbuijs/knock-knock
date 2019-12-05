@@ -1,5 +1,8 @@
-<?php /* Template Name: Homepage */ ?>
-<?php require_login(); ?>
+<?php /* 
+    Template Name: Homepage 
+*/ ?>
+
+<?php App\require_login(); ?>
 <?php get_header(); ?>
 
 <?php if (have_posts()) :  ?>

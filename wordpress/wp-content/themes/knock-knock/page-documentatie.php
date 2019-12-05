@@ -1,5 +1,5 @@
 <?php /* Template Name: Documentatie */ ?>
-<?php require_login(); ?>
+<?php App\require_login(); ?>
 <?php get_header(); ?>
 
 <section id="documentation">
@@ -37,7 +37,6 @@
                         <?php endif;    /* Einde Agenda */  ?>
 
                     </ul>
-
                 </div>
             </div>
 

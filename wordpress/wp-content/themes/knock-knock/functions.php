@@ -1,59 +1,15 @@
 <?php
 
-// Add scripts and stylesheets
-function knock_knock_scripts()
-{
-    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/asset/bootstrap.css');
-    wp_enqueue_style('docs', get_template_directory_uri() . '/asset/docs.css');
-    wp_enqueue_style('custom', get_template_directory_uri() . '/asset/custom.css');
-    wp_enqueue_style('prettify', get_template_directory_uri() . '/asset/prettify.css');
-    wp_enqueue_style('jquery-ui', get_template_directory_uri() . '/js/css/jquery-ui-1.8.21.custom.css');
-}
-
-add_action('wp_enqueue_scripts', 'knock_knock_scripts');
-
-function require_login()
-{
-    if (!is_user_logged_in()) {
-        auth_redirect();
+/**
+ * Loads Knock Knock template files located in the app/ folder
+ */
+array_map(function($file) {
+    $file = "app/{$file}.php";
+    if (!locate_template($file, true, true)) {
+        wp_die(sprintf(__('Error locating <code>%s</code>.', 'knock-knock'), $file));
     }
-}
+}, ['setup', 'helpers', 'filters', 'shortcodes']);
 
-// Create shortcode for first name
-function userName()
-{
-    global $current_user;
-    return $current_user->first_name;
-}
-
-add_shortcode('user_firstname', 'userName');
-
-// WordPress Titles
-add_theme_support('title-tag');
-
-// Support Featured Images
-add_theme_support('post-thumbnails');
-
-// Create Menu for the Theme
-function register_my_menus()
-{
-    register_nav_menus(
-        array(
-        'menu' => __('Menu'),
-        )
-    );
-}
-add_action('init', 'register_my_menus');
-
-// Create Advanced Custom Fields Option Page
-if (function_exists('acf_add_options_page')) {
-    acf_add_options_page();
-}
-
-// Wordpress balk verbergen voor ingelogde gebruikers
-if (!current_user_can('edit_posts')) {
-    show_admin_bar(false);
-}
 
 // Create Post Types for Knock Knock
 function cptui_register_my_cpts()
@@ -241,19 +197,3 @@ function change_role_name()
     $wp_roles->role_names['author'] = 'Bewoner';
 }
 add_action('init', 'change_role_name');
-
-/**
- * Agenda edits
- */
-
-function month_period($month, $year)
-{
-    $beginning_of_month = mktime(0, 0, 0, $month, 1, $year);
-    $end_of_month = mktime(23, 59, 59, $month, date('t', $beginning_of_month), $year);
-    return array(date('Y-m-d H:i:s', $beginning_of_month), date('Y-m-d H:i:s', $end_of_month));
-}
-
-function month_name($month)
-{
-    return ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'][$month - 1];
-}
