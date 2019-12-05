@@ -4,5 +4,6 @@
 /wordpress/wp-content/*
 !/wordpress/wp-content/themes/
 /wordpress/wp-content/themes/*
+!/wordpress/wp-content/mu-plugins/
 !/wordpress/wp-content/themes/knock-knock/
 .DS_Store
