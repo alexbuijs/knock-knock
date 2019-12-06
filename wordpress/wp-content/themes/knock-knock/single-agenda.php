@@ -16,8 +16,8 @@
                 <div class="message-header">
                     <?php if ($post->post_author == get_current_user_id() || current_user_can('administrator')) {  ?>
                         <span class="comment-count">
-                            <?php edit_post_link($link, $before, $after, $id, $class); ?> |
-                            <a href="<?php echo get_delete_post_link($id); ?>">Verwijderen</a>
+                            <?php edit_post_link(__('Bewerken', 'knock-knock')); ?> |
+                            <a href="<?php echo get_delete_post_link(); ?>">Verwijderen</a>
                         </span>
                     <?php } ?>
 
@@ -30,7 +30,7 @@
                     </span>
 
                     <?php
-                        $datestart     =  get_field('start', false, false);
+                        $datestart     = get_field('start', false, false);
                         $datestartday  = date_i18n("l j F", strtotime($datestart));
                         $datestarttime = date_i18n("H:i", strtotime($datestart));
                         $dateend       = get_field('einde', false, false);

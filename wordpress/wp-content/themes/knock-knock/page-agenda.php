@@ -59,8 +59,8 @@
                             <?php if ($post->post_author == get_current_user_id()
                                 || current_user_can('administrator')) {  ?>
                                 <span class="comment-count">
-                                            <?php edit_post_link($link, $before, $after, $id, $class); ?> |
-                                    <a href="<?php echo get_delete_post_link($id); ?>">Verwijderen</a>
+                                    <?php edit_post_link(__('Bewerken', 'knock-knock')); ?> |
+                                    <a href="<?php echo get_delete_post_link(); ?>">Verwijderen</a>
                                 </span>
                             <?php } ?>
 

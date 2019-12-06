@@ -13,7 +13,7 @@
             <div class="message span8">
                 <div class="message-header">
                     <span class="comment-count">
-                        <?php edit_post_link($link, $before, $after, $id, $class); ?>
+                        <?php edit_post_link(__('Bewerken', 'knock-knock')); ?> |
                     </span>
 
                     <h3><?php the_title(); ?></h3>
