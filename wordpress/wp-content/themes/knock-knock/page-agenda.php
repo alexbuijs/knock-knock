@@ -1,8 +1,8 @@
 <?php /* Template Name: Agenda */ ?>
 <?php get_header(); ?>
 <?php
-    $year          = $_GET['jaar'] ?:  date('Y');
-    $month         = $_GET['maand'] ?: date('m');
+    $year          = isset($_GET['jaar']) ? $_GET['jaar'] : date('Y');
+    $month         = isset($_GET['maand']) ? $_GET['maand'] : date('m');
     $previousDate  = date_create("$year-$month previous month");
     $previousMonth = $previousDate->format('m');
     $previousYear  = $previousDate->format('Y');
