@@ -1,0 +1,20 @@
+{
+    "name": "klopvaart/knock-knock",
+    "type": "package",
+    "authors": [
+        {
+            "name": "Klopvaart Intranet Team",
+            "email": "internet@klopvaart.nl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "illuminate/filesystem": "^6.6"
+    },
+    "prefer-stable": true
+}

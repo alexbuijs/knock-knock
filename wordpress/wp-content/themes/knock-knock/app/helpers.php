@@ -5,6 +5,8 @@
 
 namespace App;
 
+use App\Classes\Manifest;
+
 /**
  * Returns first and last date of a certain month
  */
@@ -38,4 +40,13 @@ function month_name($month)
         'November', 
         'December'
     ][$month - 1];
+}
+
+function boot() {
+    // TODO
+}
+
+function asset($assetName) 
+{
+    return Manifest::getAsset($assetName);
 }
