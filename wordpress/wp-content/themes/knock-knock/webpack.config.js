@@ -1,6 +1,7 @@
 const isDev = process.env.NODE_ENV === 'development'
 
 const path = require('path');
+const autoprefixer = require("autoprefixer");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
@@ -38,6 +39,13 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             sourceMap: true,
+                        },
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                            plugins: () => [autoprefixer]
                         },
                     },
                     {
