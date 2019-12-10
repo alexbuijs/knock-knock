@@ -3,6 +3,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports = {
     mode: isDev ? 'development' : 'production',
@@ -17,6 +18,7 @@ module.exports = {
     watch: isDev,
     module: {
         rules: [
+            // Javascript 
             {
                 test: /\.m?js$/,
                 exclude: /(node_modules)/,
@@ -27,6 +29,7 @@ module.exports = {
                     }
                 }
             },
+            // Sass
             {
                 test: /\.scss$/,
                 use: [
@@ -51,6 +54,19 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: isDev ? '[name].js' : '[name].[contenthash].css',
         }),
-        new ManifestPlugin()
+        new ManifestPlugin(),
+        new BrowserSyncPlugin({
+            open: false,
+            proxy: 'localhost:8080',
+            notify: {
+                styles: {
+                    // Place notification on the bottom to not interfere with WP admin bar
+                    top: 'auto',
+                    bottom: '0',
+                    borderRadius: '0',
+                    borderTopLeftRadius: '5px'
+                }
+            }
+        })
     ],
 }

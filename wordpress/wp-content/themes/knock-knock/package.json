@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Knock Knock, a Cohousing Intranet Wordpress Theme",
   "scripts": {
-    "dev": "NODE_ENV=development webpack",
-    "production": "NODE_ENV=production npm run clean && webpack",
+    "dev": "NODE_ENV=development webpack --hide-modules",
+    "production": "NODE_ENV=production npm run clean && webpack --hide-modules",
     "clean": "rimraf dist"
   },
   "repository": {
@@ -26,6 +26,8 @@
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
     "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "css-loader": "^3.3.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
