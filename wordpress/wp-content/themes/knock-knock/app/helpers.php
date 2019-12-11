@@ -5,7 +5,7 @@
 
 namespace App;
 
-use App\Classes\Manifest;
+use Illuminate\Container\Container;
 
 /**
  * Returns first and last date of a certain month
@@ -42,12 +42,23 @@ function month_name($month)
     ][$month - 1];
 }
 
-function boot()
+/**
+ * Get available manifest instance
+ * 
+ * @return mixed
+ */
+function manifest()
 {
-    // TODO
+    return Container::getInstance()->make('manifest');
 }
 
+/**
+ * Get publicly accessible asset uri
+ * 
+ * @param string $assetName Asset filename
+ */
 function asset($assetName)
 {
-    return Manifest::getAsset($assetName);
+    $uriBase = get_template_directory_uri() . '/dist/';
+    return $uriBase . manifest()->get($assetName);
 }
