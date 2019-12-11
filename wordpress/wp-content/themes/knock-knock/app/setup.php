@@ -1,14 +1,14 @@
 <?php
 /**
  * Theme setup
- */ 
+ */
 
 namespace App;
 
 /**
  * Redirect non-logged in users to login
  */
-add_action('template_redirect', function() {
+add_action('template_redirect', function () {
     if (!is_user_logged_in()) {
         auth_redirect();
     }
@@ -17,7 +17,7 @@ add_action('template_redirect', function() {
 /**
  * Register Knock Knock assets
  */
-add_action('wp_enqueue_scripts', function() {
+add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/bootstrap.css');
     wp_enqueue_style('docs', get_template_directory_uri() . '/assets/docs.css');
     wp_enqueue_style('custom', get_template_directory_uri() . '/assets/custom.css');
@@ -31,7 +31,7 @@ add_action('wp_enqueue_scripts', function() {
 /**
  * Theme setup
  */
-add_action('after_setup_theme', function() {
+add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
 
