@@ -8,13 +8,16 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports = {
     mode: isDev ? 'development' : 'production',
-    entry: [
-        './assets/js/main.js'
-    ],
+    entry: {
+        main: [
+            './assets/js/main.js',
+            './assets/scss/main.scss'
+        ]
+    },
     devtool: 'source-map',
     output: {
-        filename: isDev ? '[name].js' : '[name].[contenthash].js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: isDev ? '[name].js' : '[name].[contenthash:8].js',
+        path: path.resolve(__dirname, 'dist')
     },
     watch: isDev,
     module: {
@@ -34,7 +37,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            
+                            hmr: isDev
+                        },
+                    },
                     {
                         loader: 'css-loader',
                         options: {
@@ -60,7 +69,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: isDev ? '[name].js' : '[name].[contenthash].css',
+            filename: isDev ? '[name].css' : '[name].[contenthash:8].css'
         }),
         new ManifestPlugin(),
         new BrowserSyncPlugin({
