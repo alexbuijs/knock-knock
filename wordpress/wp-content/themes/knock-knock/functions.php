@@ -15,4 +15,12 @@ array_map(
 );
 
 
-add_theme_support('knock-knock');
+/**
+ * Global functions
+ */
+if (! function_exists('asset')) {
+    function asset(...$args)
+    {
+        return App\asset(...$args);
+    }
+}
