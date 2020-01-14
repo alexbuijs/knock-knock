@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "Knock Knock, a Cohousing Intranet Wordpress Theme",
   "scripts": {
+    "start": "npm run dev",
     "dev": "NODE_ENV=development webpack --hide-modules",
+    "build": "npm run production",
+    "prod": "npm run production",
     "production": "NODE_ENV=production npm run clean && webpack --hide-modules",
     "clean": "rimraf dist"
   },
