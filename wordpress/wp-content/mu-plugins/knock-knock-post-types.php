@@ -52,39 +52,6 @@ add_action('init', function() {
 });
 
 /**
- * Post type: Berichten
- */
-add_action('init', function() {
-    $labels = array(
-        'name' => __('Berichten', 'knock-knock'),
-        'singular_name' => __('Bericht', 'knock-knock'),
-    );
-
-    $args = array(
-        'label' => __('Berichten', 'knock-knock'),
-        'labels' => $labels,
-        'description' => 'Messages for Knock Knock cohousing theme',
-        'public' => true,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'show_in_rest' => false,
-        'rest_base' => '',
-        'has_archive' => false,
-        'show_in_menu' => true,
-        'exclude_from_search' => false,
-        'capability_type' => 'post',
-        'map_meta_cap' => true,
-        'hierarchical' => false,
-        'rewrite' => array( 'slug' => 'berichten', 'with_front' => true ),
-        'query_var' => true,
-        'supports' => array( 'title', 'editor', 'thumbnail' ),
-        'menu_icon' => 'dashicons-format-chat'
-    );
-
-    register_post_type('berichten', $args);
-});
-
-/**
  * Post type: Agenda
  */
 add_action('init', function() {
