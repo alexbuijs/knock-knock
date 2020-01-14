@@ -21,7 +21,7 @@ add_action('init', function() {
         'add_new_item' => __('Document toevoegen', 'knock-knock'),
         'edit_item' => __('Bewerk document', 'knock-knock'),
         'new_item' => __('Nieuw document', 'knock-knock'),
-        'view_item' => __('Bekijk docuement', 'knock-knock'),
+        'view_item' => __('Bekijk document', 'knock-knock'),
         'view_items' => __('Toon documenten', 'knock-knock'),
         'search_items' => __('Zoek document', 'knock-knock'),
         'not_found' => __('Geen documenten gevonden', 'knock-knock'),
