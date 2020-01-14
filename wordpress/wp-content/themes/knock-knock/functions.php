@@ -1,6 +1,12 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+/**
+ * Make sure composer dependencies are installed and load them
+ */
+if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+    wp_die(__('Autoloader not found. Run <code>composer install</code> from theme directory.', 'knock-knock'));
+}
+require_once $composer;
 
 /**
  * Loads Knock Knock template files located in the app/ folder
@@ -13,7 +19,6 @@ array_map(
         }
     }, ['setup', 'helpers', 'filters', 'shortcodes']
 );
-
 
 /**
  * Global functions
