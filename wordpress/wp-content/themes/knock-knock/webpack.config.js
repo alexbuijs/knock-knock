@@ -11,7 +11,11 @@ module.exports = {
     entry: {
         main: [
             './assets/js/main.js',
-            './assets/scss/main.scss'
+            './assets/scss/main.scss',
+        ],
+        // Separate datepicker for admin
+        datepicker: [
+            './assets/scss/_datepicker.scss'
         ]
     },
     devtool: 'source-map',

@@ -32,6 +32,21 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 /**
+ * Register Admin assets
+ */
+add_action('admin_enqueue_scripts', function ($hook) {
+    global $post;
+
+    // Make datepicker available in agenda post edit screen
+    if ($hook == 'post-new.php' || $hook == 'post.php') {
+        if ('agenda' === $post->post_type) {     
+            wp_enqueue_script('main', asset('main.js'), [], null, true);
+            wp_enqueue_style('datepicker', asset('datepicker.css'), [], null);
+        }
+    }
+});
+
+/**
  * Theme setup
  */
 add_action('after_setup_theme', function () {

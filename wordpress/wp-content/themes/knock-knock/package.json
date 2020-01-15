@@ -52,5 +52,8 @@
     "webpack-cli": "^3.3.10",
     "webpack-manifest-plugin": "^2.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@wordpress/dom-ready": "^2.6.0",
+    "flatpickr": "^4.6.3"
+  }
 }
