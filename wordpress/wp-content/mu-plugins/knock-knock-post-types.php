@@ -12,7 +12,7 @@ License:      GPL-3.0-or-later
  * Post type: Documentatie
  */
 add_action('init', function() {
-    $labels = array(
+    $labels = [
         'name' => __('Documenten', 'knock-knock'),
         'singular_name' => __('Document', 'knock-knock'),
         'menu_name' => __('Documentatie', 'knock-knock'),
@@ -25,9 +25,9 @@ add_action('init', function() {
         'view_items' => __('Toon documenten', 'knock-knock'),
         'search_items' => __('Zoek document', 'knock-knock'),
         'not_found' => __('Geen documenten gevonden', 'knock-knock'),
-    );
+    ];
 
-    $args = array(
+    $args = [
         'label' => __('Documenten', 'knock-knock'),
         'labels' => $labels,
         'description' => 'Documents for Knock Knock cohousing theme',
@@ -42,11 +42,11 @@ add_action('init', function() {
         'capability_type' => 'post',
         'map_meta_cap' => true,
         'hierarchical' => false,
-        'rewrite' => array( 'slug' => 'documentatie', 'with_front' => true ),
+        'rewrite' => [ 'slug' => 'documentatie', 'with_front' => true],
         'query_var' => true,
-        'supports' => array( 'title', 'editor', 'thumbnail','author' ),
+        'supports' => [ 'title', 'editor', 'thumbnail','author'],
         'menu_icon' => 'dashicons-text-page'
-    );
+    ];
 
     register_post_type('documentatie', $args);
 });
@@ -55,16 +55,16 @@ add_action('init', function() {
  * Post type: Agenda
  */
 add_action('init', function() {
-    $labels = array(
+    $labels = [
         'name' => __('Agenda items', 'knock-knock'),
         'singular_name' => __('Agenda item', 'knock-knock'),
         'menu_name' => __('Agenda', 'knock-knock'),
         'all_items' => __('Alle agenda items', 'knock-knock'),
         'add_new' => __('Agenda item toevoegen', 'knock-knock'),
         'add_new_item' => __('Voeg een agenda item toe', 'knock-knock'),
-    );
+    ];
 
-    $args = array(
+    $args = [
         'label' => __('Agenda items', 'knock-knock'),
         'labels' => $labels,
         'description' => 'Agenda items for Knock Knock cohousing theme',
@@ -79,12 +79,50 @@ add_action('init', function() {
         'capability_type' => 'post',
         'map_meta_cap' => true,
         'hierarchical' => false,
-        'rewrite' => array( 'slug' => 'agenda', 'with_front' => true ),
+        'rewrite' => ['slug' => 'agenda', 'with_front' => true],
         'query_var' => true,
-        'supports' => array( 'title', 'editor', 'thumbnail', 'author' ),
+        'supports' => ['title', 'editor', 'thumbnail', 'author'],
         'menu_icon' => 'dashicons-calendar-alt'
-    );
+    ];
 
     register_post_type('agenda', $args);
 });
+
+/**
+ * Post type: House
+ */
+add_action('init', function() {
+    $labels = [
+        'name' => __('Huizen', 'knock-knock'),
+        'singular_name' => __('Huis', 'knock-knock'),
+        'menu_name' => __('Huizen', 'knock-knock'),
+        'all_items' => __('Alle Huizen', 'knock-knock'),
+        'add_new' => __('Huis toevoegen', 'knock-knock'),
+        'add_new_item' => __('Voeg een huis toe', 'knock-knock'),
+    ];
+
+    $args = [
+        'label' => __('Huizen', 'knock-knock'),
+        'labels' => $labels,
+        'description' => 'Resident units for Knock Knock cohousing theme',
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_rest' => false,
+        'rest_base' => '',
+        'has_archive' => true,
+        'show_in_menu' => true,
+        'exclude_from_search' => false,
+        'capability_type' => 'page',
+        'map_meta_cap' => true,
+        'hierarchical' => false,
+        'rewrite' => ['slug' => 'huizen', 'with_front' => true],
+        'query_var' => true,
+        'supports' => ['title', 'thumbnail'],
+        'menu_icon' => 'dashicons-admin-home'
+    ];
+
+    register_post_type('house', $args);
+});
+
 

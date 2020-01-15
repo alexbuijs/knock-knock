@@ -51,13 +51,21 @@
                             // profile picture
                             $image = get_field('resident_profile_image', $author_info);
                             $image = $image ? $image['sizes']['thumbnail'] : get_template_directory_uri() . '/asset/images/fallback.jpg';
+                            
+                            $address = get_field('resident_adres', $author_info);
                             ?>
 
                             <tr>
                                 <td><img src="<?php echo $image ?>" width="40" height="40" alt="" /></td>
                                 <td><?php echo $author_info->first_name; ?></td>
                                 <td><?php echo $author_info->last_name; ?></td>
-                                <td><?php the_field('resident_adres', $author_info); ?></td>
+                                <td>
+                                    <?php if ($id = get_field('resident_house', $author_info)) : ?>
+                                        <a href="<?= get_post_permalink($id); ?>"><?= $address; ?></a>
+                                    <?php else : ?>
+                                        <?= $address; ?>
+                                    <?php endif; ?>
+                                </td>
                                 <td><?php the_field('resident_phone', $author_info); ?></td>
                                 <td><a
                                     href="mailto:<?php the_field('resident_email', $author_info); ?>"><?php the_field('resident_email', $author_info); ?></a>

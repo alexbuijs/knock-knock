@@ -63,6 +63,28 @@
             "placeholder": ""
         },
         {
+            "key": "field_5e1f8642776e7",
+            "label": "Huis",
+            "name": "resident_house",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "house"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_5923e06b4a19b",
             "label": "Telefoonnummer",
             "name": "resident_phone",
@@ -438,16 +460,11 @@
                 "param": "user_form",
                 "operator": "==",
                 "value": "edit"
-            },
-            {
-                "param": "current_user_role",
-                "operator": "==",
-                "value": "administrator"
             }
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
@@ -468,5 +485,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1575218431
+    "modified": 1579124371
 }
