@@ -50,7 +50,7 @@
 
                             // profile picture
                             $image = get_field('resident_profile_image', $author_info);
-                            $image = $image ? $image['sizes']['thumbnail'] : get_template_directory_uri() . '/asset/images/fallback.jpg';
+                            $image = $image ? $image['sizes']['thumbnail'] : get_template_directory_uri() . '/assets/images/fallback.jpg';
                             
                             $address = get_field('resident_adres', $author_info);
                             ?>
