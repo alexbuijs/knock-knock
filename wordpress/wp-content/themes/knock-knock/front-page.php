@@ -220,12 +220,16 @@
                     <div class="message-body">
                         <?php foreach ($authors as $author) {
                             // get all the user's data
-                            $author_info = get_userdata($author->ID); ?>
+                            $author_info = get_userdata($author->ID); 
+
+                            $image = get_field('resident_profile_image', $author_info);
+                            $image = $image ? $image['sizes']['thumbnail'] : get_template_directory_uri() . '/assets/images/fallback.jpg';
+                        ?>
 
                         <div class="float-member-home first">
 
                             <div class="member-image">
-                                <img src="<?php echo get_field('resident_profile_image', $author_info)['sizes']['thumbnail']; ?>" width="40"
+                                <img src="<?= $image ?>" width="40"
                                 height="40" alt="" />
                             </div>
 
