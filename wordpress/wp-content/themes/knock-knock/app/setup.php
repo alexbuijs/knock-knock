@@ -12,7 +12,7 @@ use App\Classes\Manifest;
  * Redirect non-logged in users to login
  */
 add_action('template_redirect', function () {
-    if (!is_user_logged_in()) {
+    if (!is_user_logged_in() || !current_user_can('edit_posts')) {
         auth_redirect();
     }
 });
