@@ -3,6 +3,7 @@
 
 <section id="tables">
     <div class="page-header">
+        <a href="<?= get_bloginfo('url'); ?>/huizen" class="btn btn-large pull-right">Bekijk huizen</a>
         <h1>Contactgegevens</h1>
     </div>
 
