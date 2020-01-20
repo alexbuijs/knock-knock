@@ -30,6 +30,5 @@ jobs:
         CI: true
     - name: composer install
       uses: MilesChou/composer-action@master
-      working-directory: ./wordpress/wp-content/themes/knock-knock
       with:
-        args: install
+        args: -V && cd wordpress/wp-content/themes/knock-knock && composer install
