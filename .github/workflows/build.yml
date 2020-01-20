@@ -28,7 +28,11 @@ jobs:
         npm test
       env:
         CI: true
-    - name: composer install
-      uses: MilesChou/composer-action@master
-      with:
-        args: -V && cd wordpress/wp-content/themes/knock-knock && composer install
+    - name: Validate composer.json and composer.lock
+      run: |
+        cd ./wordpress/wp-content/themes/knock-knock
+        composer validate
+    - name: Install composer dependencies
+      run: |
+        cd ./wordpress/wp-content/themes/knock-knock
+        composer install --prefer-dist --no-suggest
