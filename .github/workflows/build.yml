@@ -28,10 +28,6 @@ jobs:
         npm test
       env:
         CI: true
-    - name: Validate composer.json and composer.lock
-      run: |
-        cd ./wordpress/wp-content/themes/knock-knock
-        composer validate
     - name: Install composer dependencies
       run: |
         cd ./wordpress/wp-content/themes/knock-knock
