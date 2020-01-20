@@ -22,7 +22,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
       run: |
-        cd wordpress/wp-content/themes/knock-knock
+        cd ./wordpress/wp-content/themes/knock-knock
         npm ci
         npm run production
         npm test
@@ -30,5 +30,6 @@ jobs:
         CI: true
     - name: composer install
       uses: MilesChou/composer-action@master
+      working-directory: ./wordpress/wp-content/themes/knock-knock
       with:
         args: install
