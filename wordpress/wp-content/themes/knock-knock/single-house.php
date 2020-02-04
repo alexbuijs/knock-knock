@@ -35,7 +35,7 @@
     <?php foreach($users as $user) : 
         $userData = get_userdata($user->ID); 
         $image = get_field('resident_profile_image', $userData);
-        $image = $image ? $image['sizes']['thumbnail'] : get_template_directory_uri() . '/asset/images/fallback.jpg';
+        $image = $image ? $image['sizes']['thumbnail'] : get_template_directory_uri() . '/assets/images/fallback.jpg';
     ?>
 
         <img src="<?php echo $image ?>" alt="" />
