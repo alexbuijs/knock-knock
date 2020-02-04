@@ -32,3 +32,11 @@ jobs:
       run: |
         cd ./wordpress/wp-content/themes/knock-knock
         composer install --prefer-dist --no-progress --no-suggest
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: ${{ secrets.FTP_HOST }}
+        FTP_USERNAME: ${{ secrets.FTP_TEST_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_TEST_PASSWORD }}
+        LOCAL_DIR: wordpress/wp-content/themes/knock-knock
+        ARGS: --dry-run
