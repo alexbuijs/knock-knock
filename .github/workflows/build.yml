@@ -32,7 +32,7 @@ jobs:
       run: |
         cd ./wordpress/wp-content/themes/knock-knock
         composer install --prefer-dist --no-progress --no-suggest
-    - name: FTP-Deploy-Action
+    - name: FTP-Deploy-Action theme
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:
         FTP_SERVER: ${{ secrets.FTP_HOST }}
@@ -40,3 +40,11 @@ jobs:
         FTP_PASSWORD: ${{ secrets.FTP_TEST_PASSWORD }}
         LOCAL_DIR: wordpress/wp-content/themes/knock-knock
         ARGS: --exclude=node_modules/ --exclude=.cache/ -L --verbose
+    - name: FTP-Deploy-Action mu-plugins
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: ${{ secrets.FTP_HOST }}
+        FTP_USERNAME: ${{ secrets.FTP_TEST_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_TEST_PASSWORD }}
+        LOCAL_DIR: wordpress/wp-content/mu-plugins
+        ARGS: -L --verbose
