@@ -39,4 +39,4 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_TEST_USER }}
         FTP_PASSWORD: ${{ secrets.FTP_TEST_PASSWORD }}
         LOCAL_DIR: wordpress/wp-content/themes/knock-knock
-        ARGS: --exclude=node_modules/ --exclude=.cache/ -L
+        ARGS: --exclude=node_modules/ --exclude=.cache/ -L --verbose
