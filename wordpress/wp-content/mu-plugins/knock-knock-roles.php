@@ -76,3 +76,30 @@ add_action('init', function() {
     $roles->roles['author']['name'] = 'Bewoner';
     $roles->role_names['author'] = 'Bewoner';
 });
+
+/**
+ * Edit dashboard menu links for non-admins
+ */
+add_action('admin_menu', function() {
+    if (! current_user_can('manage_options')) {
+        remove_menu_page('edit.php');
+        remove_menu_page('upload.php');
+        remove_menu_page('edit-comments.php');
+        remove_menu_page('tools.php');
+    }
+});
+
+/**
+ * Disallow access for normal users to some admin pages
+ */
+add_action('current_screen', function() {
+    if (current_user_can('manage_options')) {
+        return;
+    }
+
+    $screen = get_current_screen();
+
+    if (in_array($screen->id, ['edit-post', 'upload', 'edit-comments', 'tools'])) {
+        wp_die(__('Sorry, je hebt niet het juiste toegangsniveau om deze pagina te bekijken', 'knock-knock'), 403);
+    }
+});

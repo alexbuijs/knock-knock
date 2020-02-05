@@ -63,14 +63,14 @@ add_action('after_setup_theme', function () {
     /**
      * Create ACF options page
      */
-    if (function_exists('acf_add_options_page')) {
+    if (function_exists('acf_add_options_page') && current_user_can('manage_options')) {
         acf_add_options_page();
     }
 
     /**
      * Hide WP Admin bar for normal users
      */
-    if (!current_user_can('edit_posts')) {
+    if (!current_user_can('edit_pages')) {
         show_admin_bar(false);
     }
 

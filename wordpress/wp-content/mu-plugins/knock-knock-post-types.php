@@ -113,7 +113,17 @@ add_action('init', function() {
         'has_archive' => true,
         'show_in_menu' => true,
         'exclude_from_search' => false,
-        'capability_type' => 'page',
+        // Make available only for administrators
+        'capabilities' => [
+            'edit_post' => 'update_core',
+            'read_post' => 'update_core',
+            'delete_post' => 'update_core',
+            'edit_posts' => 'update_core',
+            'edit_others_posts' => 'update_core',
+            'delete_posts' => 'update_core',
+            'publish_posts' => 'update_core',
+            'read_private_posts' => 'update_core'
+        ],        
         'map_meta_cap' => true,
         'hierarchical' => false,
         'rewrite' => ['slug' => 'huizen', 'with_front' => true],

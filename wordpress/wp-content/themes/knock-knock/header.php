@@ -50,6 +50,7 @@
                                 <li><a href="/">Wachtwoord aanpassen</a></li>
                                 <li class="divider"></li>
                                 */ ?>
+                                <li><a href="<?php echo admin_url('profile.php'); ?>">Profiel</a></li>
                                 <li><a href="<?php echo wp_logout_url(home_url()); ?>">Uitloggen</a></li>
                             </ul>
                         </li>
