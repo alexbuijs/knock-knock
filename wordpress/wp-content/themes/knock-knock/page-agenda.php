@@ -94,8 +94,8 @@
                         </div>
 
                         <div class="message-footer">
-                            <img src="<?php echo get_field(
-                                'resident_profile_image')['sizes']['thumbnail']; ?>" width="40" height="40" alt="" />
+                            <?php $author_info = get_userdata($post->post_author); ?>
+                            <img src="<?php echo get_field('resident_profile_image', $author_info)['sizes']['thumbnail']; ?>" width="40" height="40" alt="" />
                             Organisator:
                                     <?php echo the_author_meta('first_name'); ?>
                                     <?php echo the_author_meta('last_name'); ?> -
