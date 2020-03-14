@@ -24,3 +24,10 @@
         margin-left: .25rem;
     }
 }
+
+.navbar-brand {
+    svg {
+        height: 2rem;
+        width: 2rem * $kv-logo-ratio;
+    }
+}

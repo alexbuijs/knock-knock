@@ -1,6 +1,10 @@
 <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="#">Klopvaart Intranet</a>
+        <a class="navbar-brand" href="<?=get_bloginfo('url')?>">
+            <svg role="img" class="normal" title="<?=get_bloginfo('name')?>">
+                <use xlink:href="<?=get_template_directory_uri() . '/assets/images/logo.svg#logo'?>"/>
+            </svg>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-toggle" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
