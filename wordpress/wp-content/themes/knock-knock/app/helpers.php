@@ -22,27 +22,6 @@ function month_period($month, $year)
 }
 
 /**
- * Returns month name
- */
-function month_name($month)
-{
-    return [
-        'Januari',
-        'Februari',
-        'Maart',
-        'April',
-        'Mei',
-        'Juni',
-        'Juli',
-        'Augustus',
-        'September',
-        'Oktober',
-        'November',
-        'December',
-    ][$month - 1];
-}
-
-/**
  * Get user profile picture
  */
 function getUserImage($size = 'thumbnail', $userID = null)
@@ -66,7 +45,7 @@ function getUserImage($size = 'thumbnail', $userID = null)
 function getPosts()
 {
     return get_posts(array(
-        'posts_per_page' => 25,
+        'posts_per_page' => 20,
         'orderby' => 'modified',
         'order' => 'DESC',
         'post_type' => 'any',

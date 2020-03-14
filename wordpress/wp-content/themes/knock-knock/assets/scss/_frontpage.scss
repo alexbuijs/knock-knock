@@ -1,0 +1,28 @@
+.icon {
+  $size: 2.5rem;
+
+  border-radius: 50%;
+  color: $white;
+  height: $size;
+  width: $size;
+
+  &.calendar {
+    background-color: $yellow;
+  }
+
+  &.document {
+    background-color: $purple;
+  }
+
+  &.user {
+    background-color: $blue;
+  }
+}
+
+ul {
+  margin-bottom: 0;
+
+  li:last-child {
+    border-bottom: 0 !important;
+  }
+}

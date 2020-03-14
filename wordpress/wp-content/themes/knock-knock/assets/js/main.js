@@ -10,12 +10,12 @@ import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import {
   faBell,
   faCalendarAlt,
-  faFile
+  faFile,
+  faUser
 } from "@fortawesome/free-regular-svg-icons";
-import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 
 // Font awesome
-library.add(faCalendarAlt, faBell, faFile, faUserEdit);
+library.add(faCalendarAlt, faBell, faFile, faUser);
 dom.watch();
 
 const flatpickrConfig = {

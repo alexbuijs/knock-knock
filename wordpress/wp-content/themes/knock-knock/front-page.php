@@ -4,64 +4,81 @@
     <div class="col-12 col-lg-8">
         <div class="card">
             <div class="card-header bg-transparent">
-                <h5><i class="far fa-fw fa-bell text-muted"></i> Recente gebeurtenissen</h5>
+                <h4>
+                    <i class="far fa-fw fa-bell text-muted"></i>
+                    Recente gebeurtenissen
+                </h4>
                 <small class="text-muted">Watskeburt</small>
             </div>
             <div class="card-body">
                 <?php $posts = App\getPosts(); if ($posts): ?>
-                    <ul>
+                    <ul class='list-unstyled'>
                         <?php foreach ($posts as $post): setup_postdata($post);?>
                             <?php if (get_post_type(get_the_ID()) == 'bewoners') {?>
-                                <li class="stream-item-body small">
-                                    <i class="fas fa-fw fa-user-edit"></i>
-                                    Het profiel van <a href="<?php the_permalink();?>"><?php the_title();?></a> is aangepast op <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
+                                <li class="d-flex justify-content-between py-3 border-bottom">
+                                    <div class='d-flex align-items-center'>
+                                        <div class='d-flex align-items-center justify-content-center icon mr-2 user'>
+                                            <i class="far fa-fw fa-user"></i>
+                                        </div>
+                                        <div>
+                                            Het profiel van <a href="<?php the_permalink();?>"><?php the_title();?></a> is aangepast
+                                        </div>
+                                    </div>
+                                    <div class='d-flex align-items-center font-weight-light text-nowrap small'>
+                                        <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
+                                    </div>
                                 </li>
                             <?php }?>
 
                             <?php if (get_post_type(get_the_ID()) == 'documentatie') {?>
-                                <li class="stream-item-body small">
-                                    <i class="far fa-fw fa-file"></i>
-                                    Het document<a href="<?php the_permalink();?>"><?php $title = get_the_title(); echo mb_strimwidth($title, 0, 40, '...'); ?></a> is aangepast op <?php the_modified_date('j F');?> om <?php the_modified_date('H:i');?>
+                                <li class="d-flex justify-content-between py-3 border-bottom">
+                                    <div class='d-flex align-items-center'>
+                                        <div class='d-flex align-items-center justify-content-center icon mr-2 document'>
+                                            <i class="far fa-fw fa-file"></i>
+                                        </div>
+                                        <div>
+                                            Het document <a href="<?php the_permalink();?>"><?php $title = get_the_title(); echo mb_strimwidth($title, 0, 40, '...'); ?></a> is aangepast
+                                        </div>
+                                    </div>
+                                    <div class='d-flex align-items-center font-weight-light text-nowrap small'>
+                                        <?php the_modified_date('j F');?> om <?php the_modified_date('H:i');?>
+                                    </div>
                                 </li>
-                            <?php }?>
-
-                            <?php if (get_post_type(get_the_ID()) == 'berichten') {?>
-                                <?php if (get_the_modified_date() == get_the_date()) { /* Als het bericht nieuw is */?>
-                                    <div class="stream-item">
-                                        <div class="stream-item-body small">
-                                            <i class="icon-bullhorn"></i> Het bericht <a href="<?php the_permalink();?>"><?php the_title();?></a> is
-                                            geplaatst op <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
-                                        </div>
-                                    </div>
-                                <?php } else { /* Als het bericht is aangepast */?>
-                                    <div class="stream-item">
-                                        <div class="stream-item-body small">
-                                            <i class="icon-bullhorn"></i> Het bericht <a href="<?php the_permalink();?>"><?php the_title();?></a> is
-                                            aangepast op <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
-                                        </div>
-                                    </div>
-                                <?php }?>
                             <?php }?>
 
                             <?php if (get_post_type(get_the_ID()) == 'agenda') {?>
                                 <?php if (get_the_modified_date('c') == get_the_date('c')) { /* Als het bericht nieuw is */?>
-                                    <div class="stream-item">
-                                        <div class="stream-item-body small">
-                                            <i class="icon-calendar"></i> De activiteit <a href="<?php the_permalink();?>"><?php the_title();?></a> is
-                                            aangemaakt op <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <div class='d-flex align-items-center'>
+                                            <div class='d-flex align-items-center justify-content-center icon mr-2 calendar'>
+                                                <i class="far fa-fw fa-calendar-alt"></i>
+                                            </div>
+                                            <div>
+                                                De activiteit <a href="<?php the_permalink();?>"><?php the_title();?></a> is aangemaakt
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class='d-flex align-items-center font-weight-light text-nowrap small'>
+                                            <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
+                                        </div>
+                                    </li>
                                 <?php } else { /* Als het bericht is aangepast */?>
-                                    <div class="stream-item">
-                                        <div class="stream-item-body small">
-                                            <i class="icon-calendar"></i> De activiteit <a href="<?php the_permalink();?>"><?php the_title();?></a> is
-                                            aangepast op <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <div class='d-flex align-items-center'>
+                                            <div class='d-flex align-items-center justify-content-center icon mr-2 calendar'>
+                                                <i class="far fa-fw fa-calendar-alt"></i>
+                                            </div>
+                                            <div>
+                                                De activiteit <a href="<?php the_permalink();?>"><?php the_title();?></a> is aangepast
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class='d-flex align-items-center font-weight-light text-nowrap small'>
+                                            <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
+                                        </div>
+                                    </li>
                                 <?php }?>
                             <?php }?>
-                        <?php wp_reset_postdata();?>
                         <?php endforeach;?>
+                        <?php wp_reset_postdata();?>
                     </ul>
                 <?php endif;?>
             </div>
@@ -70,7 +87,10 @@
     <div class="col-12 col-lg-4">
         <div class="card">
             <div class="card-header bg-transparent">
-                <h5><i class="far fa-fw fa-calendar-alt text-muted"></i> Agenda</h5>
+                <h4>
+                    <i class="far fa-fw fa-calendar-alt text-muted"></i>
+                    Agenda
+                </h4>
                 <small class="text-muted">Binnenkort op de Klopvaart</small>
             </div>
             <div class="card-body">
