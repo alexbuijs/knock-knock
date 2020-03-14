@@ -2,9 +2,16 @@ import domReady from '@wordpress/dom-ready';
 import flatpickr from "flatpickr";
 import { Dutch } from "flatpickr/dist/l10n/nl"
 
-import './someOtherFile';
+import 'bootstrap/js/dist/dropdown';
+import 'bootstrap/js/dist/collapse';
+// import '@fortawesome/fontawesome-free/js/all';
 
-console.log('General Kenobi');
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+
+// Font awesome
+library.add(faCalendarAlt);
+dom.watch();
 
 const flatpickrConfig = {
     enableTime: true,

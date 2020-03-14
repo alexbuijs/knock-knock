@@ -1,0 +1,26 @@
+.navbar-dark ul.navbar-nav {
+    li.menu-item {
+        @extend .nav-item;
+
+        a {
+            @extend .nav-link;
+
+            padding: 1rem;
+        }
+
+        &.current-menu-item {
+            background: darken($primary, 5%);
+        }
+    }
+
+    img.user {
+        $size: 2.5rem;
+
+        border-radius: 50%;
+        width: $size;
+        height: $size;
+
+        border: 2px #fff solid;
+        margin-left: .25rem;
+    }
+}

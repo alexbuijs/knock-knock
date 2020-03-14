@@ -3,7 +3,7 @@
 /**
  * Make sure composer dependencies are installed and load them
  */
-if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+if (!file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
     wp_die(__('Autoloader not found. Run <code>composer install</code> from theme directory.', 'knock-knock'));
 }
 require_once $composer;
@@ -23,7 +23,7 @@ array_map(
 /**
  * Global functions
  */
-if (! function_exists('asset')) {
+if (!function_exists('asset')) {
     function asset(...$args)
     {
         return App\asset(...$args);

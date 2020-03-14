@@ -17,7 +17,7 @@ function month_period($month, $year)
 
     return [
         date('Y-m-d H:i:s', $monthStart),
-        date('Y-m-d H:i:s', $monthEnd)
+        date('Y-m-d H:i:s', $monthEnd),
     ];
 }
 
@@ -38,13 +38,31 @@ function month_name($month)
         'September',
         'Oktober',
         'November',
-        'December'
+        'December',
     ][$month - 1];
 }
 
 /**
+ * Get user profile picture
+ */
+function getUserImage($size = 'thumbnail', $userID = null)
+{
+    if (!$userID) {
+        $userID = get_current_user_id();
+    }
+
+    $image = get_field('resident_profile_image', 'user_' . $userID);
+
+    if (!$image) {
+        return get_template_directory_uri() . '/assets/images/fallback.jpg';
+    }
+
+    return $image['sizes'][$size];
+}
+
+/**
  * Get available manifest instance
- * 
+ *
  * @return mixed
  */
 function manifest()
@@ -54,7 +72,7 @@ function manifest()
 
 /**
  * Get publicly accessible asset uri
- * 
+ *
  * @param string $assetName Asset filename
  */
 function asset($assetName)

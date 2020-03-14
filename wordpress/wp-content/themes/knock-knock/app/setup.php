@@ -5,8 +5,8 @@
 
 namespace App;
 
-use Illuminate\Container\Container;
 use App\Classes\Manifest;
+use Illuminate\Container\Container;
 
 /**
  * Redirect non-logged in users to login
@@ -21,12 +21,6 @@ add_action('template_redirect', function () {
  * Register Knock Knock assets
  */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/bootstrap.css');
-    wp_enqueue_style('docs', get_template_directory_uri() . '/assets/docs.css');
-    wp_enqueue_style('custom', get_template_directory_uri() . '/assets/custom.css');
-    wp_enqueue_style('prettify', get_template_directory_uri() . '/assets/prettify.css');
-    wp_enqueue_style('jquery-ui', get_template_directory_uri() . '/js/css/jquery-ui-1.8.21.custom.css');
-
     wp_enqueue_script('main', asset('main.js'), [], null, true);
     wp_enqueue_style('main', asset('main.css'), [], null);
 });
@@ -39,7 +33,7 @@ add_action('admin_enqueue_scripts', function ($hook) {
 
     // Make datepicker available in agenda post edit screen
     if ($hook == 'post-new.php' || $hook == 'post.php') {
-        if ('agenda' === $post->post_type) {     
+        if ('agenda' === $post->post_type) {
             wp_enqueue_script('main', asset('main.js'), [], null, true);
             wp_enqueue_style('datepicker', asset('datepicker.css'), [], null);
         }
@@ -91,7 +85,7 @@ add_action('after_setup_theme', function () {
 add_action('pre_get_posts', function ($query) {
     if (!is_admin() && $query->is_main_query() && $query->is_archive()) {
         $query->set('orderby', 'title');
-        $query->set('order', 'ASC' );
+        $query->set('order', 'ASC');
         $query->set('posts_per_page', -1);
     }
 });
