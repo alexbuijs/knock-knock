@@ -1,28 +1,33 @@
-import domReady from '@wordpress/dom-ready';
+import domReady from "@wordpress/dom-ready";
 import flatpickr from "flatpickr";
-import { Dutch } from "flatpickr/dist/l10n/nl"
+import { Dutch } from "flatpickr/dist/l10n/nl";
 
-import 'bootstrap/js/dist/dropdown';
-import 'bootstrap/js/dist/collapse';
+import "bootstrap/js/dist/dropdown";
+import "bootstrap/js/dist/collapse";
 // import '@fortawesome/fontawesome-free/js/all';
 
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import {
+  faBell,
+  faCalendarAlt,
+  faFile
+} from "@fortawesome/free-regular-svg-icons";
+import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 
 // Font awesome
-library.add(faCalendarAlt);
+library.add(faCalendarAlt, faBell, faFile, faUserEdit);
 dom.watch();
 
 const flatpickrConfig = {
-    enableTime: true,
-    allowInput: true,
-    dateFormat: "Y-m-d H:i",
-    locale: Dutch
-}
+  enableTime: true,
+  allowInput: true,
+  dateFormat: "Y-m-d H:i",
+  locale: Dutch
+};
 
 domReady(function() {
-    // Activate datepicker
-    document.querySelectorAll('div.datetimepicker input').forEach(el => {
-        flatpickr(el, flatpickrConfig);
-    });
+  // Activate datepicker
+  document.querySelectorAll("div.datetimepicker input").forEach(el => {
+    flatpickr(el, flatpickrConfig);
+  });
 });

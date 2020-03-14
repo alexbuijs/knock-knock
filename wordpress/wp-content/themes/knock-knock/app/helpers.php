@@ -61,6 +61,19 @@ function getUserImage($size = 'thumbnail', $userID = null)
 }
 
 /**
+ * Get recent posts
+ */
+function getPosts()
+{
+    return get_posts(array(
+        'posts_per_page' => 25,
+        'orderby' => 'modified',
+        'order' => 'DESC',
+        'post_type' => 'any',
+    ));
+}
+
+/**
  * Get available manifest instance
  *
  * @return mixed
