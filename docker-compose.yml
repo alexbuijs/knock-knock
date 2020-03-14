@@ -17,6 +17,8 @@ services:
     image: wordpress:latest
     volumes:
       - ./wordpress/wp-content:/var/www/html/wp-content
+      - ./wordpress/favicons:/var/www/html/favicons
+      - ./wordpress/favicons/favicon.ico:/var/www/html/favicon.ico
     ports:
       - 8080:80
     restart: always
