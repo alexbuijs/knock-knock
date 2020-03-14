@@ -45,10 +45,10 @@ function getUserImage($size = 'thumbnail', $userID = null)
 function getPosts()
 {
     return get_posts(array(
-        'posts_per_page' => 20,
+        'posts_per_page' => 10,
         'orderby' => 'modified',
         'order' => 'DESC',
-        'post_type' => 'any',
+        'post_type' => ['agenda', 'documentatie'],
     ));
 }
 
