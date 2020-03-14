@@ -31,9 +31,12 @@
   }
 }
 
-@include media-breakpoint-down(lg) {
-  .navbar-expand-lg > .container {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
+.navbar-expand-lg > .container {
+    padding-left: 0;
+    padding-right: 0;
+
+    @include media-breakpoint-up(sm) {
+        padding-left: $grid-gutter-width / 2;
+        padding-right: $grid-gutter-width / 2;
+    }
 }
