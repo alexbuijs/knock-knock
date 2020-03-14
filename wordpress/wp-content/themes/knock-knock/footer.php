@@ -1,5 +1,6 @@
         <footer class="footer">
-            <p><?php the_field('footer_text', 'option');?></p>
+            <hr>
+            <p class="text-muted"><?php the_field('footer_text', 'option');?></p>
         </footer>
     </div>
 
