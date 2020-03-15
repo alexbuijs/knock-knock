@@ -1,21 +1,25 @@
-<?php 
+<?php
 
 namespace App\Classes;
 
-class Fetch 
+class Fetch
 {
     /**
      * Manifest constructor
-     * 
+     *
      * @return void
      */
-    public function __construct() 
+    public function __construct()
     {
 
     }
 
-    public function upcomingEvents() 
+    public function upcomingEvents($start = null)
     {
+        if (!$start) {
+            $start = mktime();
+        }
+
         $query = new \WP_Query([
             'post_type' => 'agenda',
             'posts_per_page' => -1,
@@ -26,15 +30,15 @@ class Fetch
                 'relation' => 'AND', [
                     'key' => 'start',
                     'compare' => 'BETWEEN',
-                    'value' => array(date('Y-m-d H:i:s'), date('Y-m-d H:i:s', strtotime('+1 month'))),
+                    'value' => array(date('Y-m-d H:i:s', $start), date('Y-m-d H:i:s', strtotime('+1 month -1 second', $start))),
                 ]
             ]
-        ]); 
+        ]);
 
         return $query->posts;
     }
 
-    public function recentUsers() 
+    public function recentUsers()
     {
         $query = new \WP_User_Query([
             'number' => 5,
