@@ -3,42 +3,6 @@
     "title": "Bewoners - Admin",
     "fields": [
         {
-            "key": "field_5921ab89b7a1d",
-            "label": "Huis",
-            "name": "resident_unit",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "Geen": "Geen",
-                "Cubadreef 2": "Cubadreef 2",
-                "Cubadreef 4": "Cubadreef 4",
-                "Cubadreef 6": "Cubadreef 6",
-                "Haitidreef 1": "Haitidreef 1",
-                "Haitidreef 3": "Haitidreef 3",
-                "Haitidreef 5": "Haitidreef 5",
-                "Haitidreef 7": "Haitidreef 7",
-                "Haitidreef 9": "Haitidreef 9",
-                "Haitidreef 11": "Haitidreef 11",
-                "Granadadreef 1": "Granadadreef 1",
-                "Granadadreef 3": "Granadadreef 3",
-                "Granadadreef 5": "Granadadreef 5"
-            },
-            "default_value": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "return_format": "value",
-            "placeholder": ""
-        },
-        {
             "key": "field_5e1f8642776e7",
             "label": "Huis",
             "name": "resident_house",
@@ -61,9 +25,9 @@
             "ui": 1
         },
         {
-            "key": "field_5923e06b4a19b",
-            "label": "Telefoonnummer",
-            "name": "resident_phone",
+            "key": "field_5963d6e27cd31",
+            "label": "Adres",
+            "name": "resident_adres",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -78,24 +42,6 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
-        },
-        {
-            "key": "field_5923e0bd4a19c",
-            "label": "E-mailadres",
-            "name": "resident_email",
-            "type": "email",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         },
         {
             "key": "field_5960e220a3c73",
@@ -121,131 +67,6 @@
             "ajax": 0,
             "return_format": "value",
             "placeholder": ""
-        },
-        {
-            "key": "field_5960e98f2940e",
-            "label": "Links",
-            "name": "resident_links",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_5960e9b82940f",
-                    "label": "Type",
-                    "name": "type",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "twitter": "Twitter",
-                        "facebook": "Facebook",
-                        "linkedin": "LinkedIn",
-                        "flickr": "Flickr",
-                        "website": "Website"
-                    },
-                    "default_value": [],
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "return_format": "value",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5960ea3329410",
-                    "label": "URL",
-                    "name": "url",
-                    "type": "text",
-                    "instructions": "Zonder http:\/\/",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                }
-            ]
-        },
-        {
-            "key": "field_5963ca00697bc",
-            "label": "Test Waarden",
-            "name": "test_waarden",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
-        },
-        {
-            "key": "field_5963cce1a636e",
-            "label": "ID oude intranet",
-            "name": "id_oude_intranet",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5963d6e27cd31",
-            "label": "Adres",
-            "name": "resident_adres",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
         },
         {
             "key": "field_5963dc8f23c93",
@@ -282,23 +103,6 @@
             "first_day": 1
         },
         {
-            "key": "field_5963dba29c022",
-            "label": "Uitschrijfdatum",
-            "name": "uitschrijfdatum",
-            "type": "date_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "display_format": "d\/m\/Y",
-            "return_format": "d\/m\/Y",
-            "first_day": 1
-        },
-        {
             "key": "field_5963dd4023c95",
             "label": "Geboortedatum",
             "name": "geboortedatum",
@@ -314,120 +118,6 @@
             "display_format": "d\/m\/Y",
             "return_format": "d\/m\/Y",
             "first_day": 1
-        },
-        {
-            "key": "field_5963dd6f23c96",
-            "label": "Bewoner Sinds Hint",
-            "name": "bewoner_sinds_hint",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5963dd9623c97",
-            "label": "Status in ExpressionEngine",
-            "name": "status_in_expressionengine",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5963f064a1f2d",
-            "label": "Motto",
-            "name": "resident_motto",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5963f091a1f2e",
-            "label": "Introductie",
-            "name": "resident_introduction",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
-        },
-        {
-            "key": "field_5963f044a1f2c",
-            "label": "Wordt graag uitgenodigd voor",
-            "name": "resident_invite",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
-        },
-        {
-            "key": "field_5963f144a1f2f",
-            "label": "Wordt blij van",
-            "name": "wordt_blij_van",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
         }
     ],
     "location": [
@@ -466,5 +156,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1584299840
+    "modified": 1584305991
 }
