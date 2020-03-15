@@ -20,7 +20,7 @@
                                     Het document <a href="<?php the_permalink();?>"><?php $title = get_the_title(); echo mb_strimwidth($title, 0, 40, '...'); ?></a> is aangepast
                                 </div>
                             </div>
-                            <div class='d-flex align-items-center text-nowrap small ml-1'>
+                            <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
                                 <?php the_modified_date('j F');?> om <?php the_modified_date('H:i');?>
                             </div>
                         </li>
@@ -37,7 +37,7 @@
                                         De activiteit <a href="<?php the_permalink();?>"><?php the_title();?></a> is aangemaakt
                                     </div>
                                 </div>
-                                <div class='d-flex align-items-center text-nowrap small ml-1'>
+                                <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
                                     <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
                                 </div>
                             </li>
@@ -51,7 +51,7 @@
                                         De activiteit <a href="<?php the_permalink();?>"><?php the_title();?></a> is aangepast
                                     </div>
                                 </div>
-                                <div class='d-flex align-items-center text-nowrap small ml-1'>
+                                <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
                                     <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
                                 </div>
                             </li>
