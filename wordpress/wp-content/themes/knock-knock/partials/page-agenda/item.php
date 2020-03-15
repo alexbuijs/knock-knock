@@ -38,10 +38,10 @@
         ?>
         <p>
           <strong>
-            <?php echo ucfirst($datestartday); ?> van
-            <?php echo $datestarttime; ?> tot
-            <?php echo ($datestartday != $dateendday) ? $dateendday : ''; ?>
-            <?php echo $dateendtime; ?>
+            <?= ucfirst($datestartday); ?> van
+            <?= $datestarttime; ?> tot
+            <?= ($datestartday != $dateendday) ? $dateendday : ''; ?>
+            <?= $dateendtime; ?>
           </strong>
         </p>
         <?php if (isset($singleItem) && $singleItem == true): ?>
@@ -53,17 +53,15 @@
 
       <div class="card-footer py-3">
         <?php $author_info = get_userdata($post->post_author); ?>
-          <img src="<?= App\getUserImage('thumbnail', $author_info->ID) ?>" class="thumbnail" />
-          <span class="small ml-2">
-            Organisator:
-              <?php echo the_author_meta('first_name'); ?> -
-              <?php if (get_the_modified_date('c') == get_the_date('c')) { ?>
-            Aangemaakt op
-              <?php the_modified_date('j F'); ?> om <?php the_modified_date('H:i'); ?><?php } else { ?>
-            Aangepast op
-              <?php the_modified_date('j F'); ?> om <?php the_modified_date('H:i'); ?>
-          </span>
-        <?php } ?>
+        <img src="<?= App\getUserImage('thumbnail', $author_info->ID) ?>" class="thumbnail" />
+        <span class="small ml-2">
+          Organisator: <?= the_author_meta('first_name'); ?> -
+          <?php if (get_the_modified_date('c') == get_the_date('c')): ?>
+            Aangemaakt op <?php the_modified_date('j F'); ?> om <?php the_modified_date('H:i'); ?>
+          <?php else: ?>
+            Aangepast op <?php the_modified_date('j F'); ?> om <?php the_modified_date('H:i'); ?>
+          <?php endif; ?>
+        </span>
       </div>
     </div>
   </div>

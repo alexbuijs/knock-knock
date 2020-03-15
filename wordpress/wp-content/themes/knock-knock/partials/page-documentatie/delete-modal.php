@@ -2,13 +2,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Agenda item verwijderen</h5>
+        <h5 class="modal-title">Document verwijderen</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Weet je zeker dat je dit agenda item wilt verwijderen?</p>
+        <p>Weet je zeker dat je dit document wilt verwijderen?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
