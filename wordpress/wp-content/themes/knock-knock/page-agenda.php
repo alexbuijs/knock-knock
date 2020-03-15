@@ -23,7 +23,7 @@
         <?php echo $year; ?>
       </h3>
       <div class="d-flex align-items-center">
-        <a href="/wp-admin/post-new.php?post_type=agenda" class="btn btn-primary">Agenda item toevoegen</a>
+        <a href="/wp-admin/post-new.php?post_type=agenda" class="btn btn-primary"><i class="fas fa-plus fa-fw"></i> Agenda item toevoegen</a>
       </div>
     </div>
   </div>

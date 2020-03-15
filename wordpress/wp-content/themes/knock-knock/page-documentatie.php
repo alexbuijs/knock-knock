@@ -7,7 +7,7 @@
                 <i class="far fa-fw fa-file text-muted"></i>
                     Documentatie
             </h3>
-            <a href="<?= get_bloginfo('url'); ?>/huizen" class="btn btn-primary">Document toevoegen</a>
+            <a href="<?= get_bloginfo('url'); ?>/wp-admin/post-new.php?post_type=documentatie" class="btn btn-primary"><i class="fas fa-plus fa-fw"></i> Document toevoegen</a>
         </div>
     </div>
 </div>
