@@ -24,19 +24,39 @@ function month_period($month, $year)
 /**
  * Get user profile picture
  */
-function getUserImage($size = 'thumbnail', $userID = null)
+function getUserImage($size = 'thumbnail', $userId = null)
 {
-    if (!$userID) {
-        $userID = get_current_user_id();
+    if (!$userId) {
+        $userId = get_current_user_id();
     }
 
-    $image = get_field('resident_profile_image', 'user_' . $userID);
+    $image = get_field('resident_profile_image', 'user_' . $userId);
 
     if (!$image) {
         return get_template_directory_uri() . '/assets/images/fallback.jpg';
     }
 
     return $image['sizes'][$size];
+}
+
+/**
+ * Get user address, make it a link if attached to a house
+ */
+function getUserAddress($userId = null)
+{
+    if (!$userId) {
+        $userId = get_current_user_id();
+    }
+
+    $address = get_field('resident_adres', 'user_' . $userId);
+    
+    if ($houseId = get_field('resident_house', 'user_' . $userId)) {
+        $permalink = get_post_permalink($houseId);
+
+        return "<a href='$permalink'>$address</a>";
+    }
+
+    return $address;
 }
 
 /**

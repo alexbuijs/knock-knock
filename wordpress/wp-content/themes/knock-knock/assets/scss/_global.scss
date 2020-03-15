@@ -10,3 +10,9 @@ body > .container {
         margin-top: 1.5rem;
     }
 }
+
+img.thumbnail {
+    width: 3rem;
+    height: 3rem;
+    border-radius: $border-radius;
+}

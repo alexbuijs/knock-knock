@@ -48,6 +48,29 @@ class Fetch
     }
 
     /**
+     * Get all current residents sorted by first name
+     */
+    public function users() 
+    {
+        $query = new \WP_User_Query([
+            'order' => 'ASC',
+            'posts_per_page', -1,
+            'meta_key' => 'first_name',
+            'orderby' => 'meta_value',
+            'role__in' => ['administrator', 'editor', 'author'],
+            'meta_query' => array(
+                array(
+                    'key'     => 'resident_adres',
+                    'value'   => '',
+                    'compare' => '!=',
+                ),
+            ),
+        ]);
+
+        return $query->get_results();
+    }
+
+    /**
      * Get recent posts
      */
     function recentPosts()

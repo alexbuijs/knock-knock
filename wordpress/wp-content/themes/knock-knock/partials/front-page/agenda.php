@@ -1,6 +1,6 @@
 <div class="card">
-    <div class="card-header bg-transparent">
-        <h5 class="font-weight-bold"><i class="far fa-fw fa-calendar-alt text-muted"></i> Agenda<br>
+<div class="card-header bg-transparent">
+    <h5 class="font-weight-bold"><i class="far fa-fw fa-calendar-alt text-muted"></i> Agenda<br>
         <small class="text-muted">Binnenkort op de Klopvaart</small></h5>
     </div>
     <div class="card-body"> 

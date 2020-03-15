@@ -13,7 +13,7 @@
 
             <li class="list-group-item d-flex">
                 <div class="mr-3">
-                    <img src="<?= App\getUserImage('thumbnail', $user->data->ID) ?>" alt="" />
+                    <img class="thumbnail" src="<?= App\getUserImage('thumbnail', $user->data->ID) ?>" alt="" />
                 </div>
                 <div>
                     <p class="mb-0"><?= $user->display_name; ?></p>
