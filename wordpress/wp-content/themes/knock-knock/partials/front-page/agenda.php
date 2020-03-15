@@ -15,7 +15,7 @@
                     'relation' => 'AND', [
                         'key' => 'start',
                         'compare' => 'BETWEEN',
-                        'value' => array(date('Y-m-d H:i:s'), date('Y-m-d H:i:s', strtotime(' +1 month'))),
+                        'value' => array(date('Y-m-d H:i:s'), date('Y-m-d H:i:s', strtotime('+1 month'))),
                     ]
                 ]
             ]); 

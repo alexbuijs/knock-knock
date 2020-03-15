@@ -4,5 +4,9 @@ body, html {
 }
 
 body > .container {
-    margin-top: 1.5rem;
+    margin-top: $grid-gutter-width / 2;
+
+    @include media-breakpoint-up(sm) {
+        margin-top: 1.5rem;
+    }
 }

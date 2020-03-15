@@ -13,14 +13,14 @@
                     <?php if (get_post_type(get_the_ID()) == 'documentatie') {?>
                         <li class="d-flex justify-content-between py-3 border-bottom">
                             <div class='d-flex align-items-center'>
-                                <div class='d-flex align-items-center justify-content-center mr-2 icon document'>
+                                <div class='d-flex align-items-center justify-content-center mr-3 icon document'>
                                     <i class="far fa-fw fa-file"></i>
                                 </div>
                                 <div>
                                     Het document <a href="<?php the_permalink();?>"><?php $title = get_the_title(); echo mb_strimwidth($title, 0, 40, '...'); ?></a> is aangepast
                                 </div>
                             </div>
-                            <div class='d-flex align-items-center font-weight-light text-nowrap small ml-1'>
+                            <div class='d-flex align-items-center text-nowrap small ml-1'>
                                 <?php the_modified_date('j F');?> om <?php the_modified_date('H:i');?>
                             </div>
                         </li>
@@ -30,28 +30,28 @@
                         <?php if (get_the_modified_date('c') == get_the_date('c')) { /* Als het bericht nieuw is */?>
                             <li class="d-flex justify-content-between py-3 border-bottom">
                                 <div class='d-flex align-items-center'>
-                                    <div class='d-flex align-items-center justify-content-center mr-2 icon calendar'>
+                                    <div class='d-flex align-items-center justify-content-center mr-3 icon calendar'>
                                         <i class="far fa-fw fa-calendar-alt"></i>
                                     </div>
                                     <div>
                                         De activiteit <a href="<?php the_permalink();?>"><?php the_title();?></a> is aangemaakt
                                     </div>
                                 </div>
-                                <div class='d-flex align-items-center font-weight-light text-nowrap small ml-1'>
+                                <div class='d-flex align-items-center text-nowrap small ml-1'>
                                     <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
                                 </div>
                             </li>
                         <?php } else { /* Als het bericht is aangepast */?>
                             <li class="d-flex justify-content-between py-3 border-bottom">
                                 <div class='d-flex align-items-center'>
-                                    <div class='d-flex align-items-center justify-content-center mr-2 icon calendar'>
+                                    <div class='d-flex align-items-center justify-content-center mr-3 icon calendar'>
                                         <i class="far fa-fw fa-calendar-alt"></i>
                                     </div>
                                     <div>
                                         De activiteit <a href="<?php the_permalink();?>"><?php the_title();?></a> is aangepast
                                     </div>
                                 </div>
-                                <div class='d-flex align-items-center font-weight-light text-nowrap small ml-1'>
+                                <div class='d-flex align-items-center text-nowrap small ml-1'>
                                     <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
                                 </div>
                             </li>
