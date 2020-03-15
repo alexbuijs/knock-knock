@@ -17,11 +17,11 @@
                 <li class="list-group-item d-flex">
                     <div class="mr-3">
                         <h4 class="text-center font-weight-black mb-0"><?= date_i18n("j", $start); ?></h4>
-                        <p class="text-uppercase font-weight-bold text-muted mb-0"><small><?= date_i18n("D", $start); ?></small></p>
+                        <p class="text-uppercase font-weight-bold text-muted mb-0"><small><?= date_i18n("M", $start); ?></small></p>
                     </div>
                     <div>
                         <p class="mb-0"><?= the_title(); ?></p>
-                        <p><small><?= date_i18n("H:i", $start) . ' - ' . date_i18n("H:i", $end); ?></small></p>
+                        <p class="text-muted"><small><?= date_i18n("l", $start); ?> <?= date_i18n("H:i", $start) . ' - ' . date_i18n("H:i", $end); ?></small></p>
                     </div>
                 </li>
 
