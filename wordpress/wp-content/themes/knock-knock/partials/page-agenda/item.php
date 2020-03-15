@@ -7,7 +7,7 @@
       <div class="card-header bg-transparent">
         <div class="d-flex justify-content-between align-items-center">
           <h4>
-            <?php if ($singleItem == true): ?>
+            <?php if (isset($singleItem) && $singleItem == true): ?>
               <?php the_title(); ?>
             <?php else: ?>
               <a href="<?php the_permalink(); ?>">
@@ -44,7 +44,7 @@
             <?php echo $dateendtime; ?>
           </strong>
         </p>
-        <?php if ($singleItem == true): ?>
+        <?php if (isset($singleItem) && $singleItem == true): ?>
           <p>
             <?php the_content(); ?>
           </p>
