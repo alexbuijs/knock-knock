@@ -16,3 +16,11 @@ img.thumbnail {
     height: 3rem;
     border-radius: $border-radius;
 }
+
+.profile-picture {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 100%;
+    border-radius: $border-radius;
+}

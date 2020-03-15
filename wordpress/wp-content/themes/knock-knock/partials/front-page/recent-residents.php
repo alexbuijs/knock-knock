@@ -19,11 +19,7 @@
                     <p class="mb-0"><?= $user->display_name; ?></p>
                     <p><small>
                         <?= get_field('bewoner_sinds', 'user_' . $user->data->ID); ?>,
-                        <?php if ($id = get_field('resident_house', 'user_' . $user->data->ID)) : ?>
-                            <a href="<?= get_post_permalink($id); ?>"><?= $address; ?></a>
-                        <?php else : ?>
-                            <?= $address; ?>
-                        <?php endif; ?>
+                        <?= App\getUserAddress($user->data->ID); ?>
                     </small></p>
                 </div>
             </li>

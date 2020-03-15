@@ -62,13 +62,40 @@ class Fetch
             'meta_key' => 'first_name',
             'orderby' => 'meta_value',
             'role__in' => ['administrator', 'editor', 'author'],
-            'meta_query' => array(
-                array(
+            'meta_query' => [
+                [
                     'key'     => 'resident_adres',
                     'value'   => '',
                     'compare' => '!=',
-                ),
-            ),
+                ],
+            ],
+        ]);
+
+        return $query->get_results();
+    }
+
+    /**
+     * Get current residents from a certain house
+     */
+    public function usersByHouse($houseId) 
+    {
+        $query = new \WP_User_Query([
+            'order' => 'ASC',
+            'posts_per_page', -1,
+            'meta_key' => 'first_name',
+            'orderby' => 'meta_value',
+            'role__in' => ['administrator', 'editor', 'author'],
+            'meta_query' => [
+                'relation' => 'AND', [
+                    'key'     => 'resident_adres',
+                    'value'   => '',
+                    'compare' => '!=',
+                ], [
+                    'key'     => 'resident_house',
+                    'value'   => $houseId,
+                    'compare' => '='
+                ]
+            ],
         ]);
 
         return $query->get_results();
@@ -85,6 +112,24 @@ class Fetch
             'order' => 'DESC',
             'post_type' => ['agenda', 'documentatie'],
         ]);
+
+        return $query->posts;
+    }
+
+    /**
+     * Get houses
+     */
+    function houses($excludeIds = []) 
+    {
+        $query = new \WP_Query([
+            'post_type' => 'house',
+            'posts_per_page' => -1,
+            'post__not_in' => $excludeIds
+        ]);
+
+        usort($query->posts, function($a, $b) {
+            return strnatcmp($a->post_title, $b->post_title);
+        });
 
         return $query->posts;
     }

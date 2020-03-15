@@ -1,13 +1,24 @@
 <?php get_header();?>
 
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="d-flex justify-content-between">
+            <h3 class="font-weight-bold">
+                <i class="far fa-fw fa-user text-muted"></i>
+                    Bewoners
+            </h3>
+            <a href="<?= get_bloginfo('url'); ?>/huizen" class="btn btn-primary">Bekijk per huis</a>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-transparent">
-                <h3  class="font-weight-bold"><i class="far fa-fw fa-user text-muted"></i> Bewoners</h3>
             </div>
             <div class="card-body">
-                <table class="table table-sm table-responsive-md mt-3">
+                <table class="table table-responsive-md">
                     <thead>
                         <tr>
                             <th scope="col"></th>
