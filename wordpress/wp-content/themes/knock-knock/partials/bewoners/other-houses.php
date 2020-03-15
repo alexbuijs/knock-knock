@@ -7,7 +7,7 @@
             <a class="btn btn-primary" href="<?= get_bloginfo('url'); ?>/huizen"><i class="fas fa-fw fa-home"></i> Overzicht</a>
         </div>
     </div>
-    <div class="card-body">
+    <div class="card-body mb-2">
         <ul class="list-group">
             <?php foreach(fetch()->houses([get_the_ID()]) as $house) : setup_postdata($house); ?>
 
@@ -18,7 +18,6 @@
                 </li>
 
             <?php endforeach; ?>
-
         </ul>
     </div>
 </div>
