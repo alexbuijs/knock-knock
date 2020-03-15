@@ -4,7 +4,6 @@
             <h5 class="font-weight-bold">
                 Andere huizen
             </h5>
-            <a class="btn btn-primary" href="<?= get_bloginfo('url'); ?>/huizen"><i class="fas fa-fw fa-home"></i> Overzicht</a>
         </div>
     </div>
     <div class="card-body mb-2">

@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-between">
             <h3 class="font-weight-bold">
                 <i class="fas fa-fw fa-home text-muted"></i>
-                    Huizen
+                Huizen
             </h3>
             <a class="btn btn-primary" href="<?= get_bloginfo('url'); ?>/bewoners"><i class="fas fa-list"></i> Lijst bewoners</a>
         </div>
@@ -15,9 +15,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header bg-transparent">
-            </div>
-            <div class="card-body"> 
+            <div class="card-body">
                 <ul class="list-group">
                     <?php foreach(fetch()->houses() as $house) : setup_postdata($house); ?>
 
@@ -28,14 +26,14 @@
                                     <div>
                                         <?php foreach(fetch()->usersByHouse($house->ID) as $user) : ?>
 
-                                            <?php $userData = get_userdata($user->ID); ?> 
+                                            <?php $userData = get_userdata($user->ID); ?>
 
                                             <img class="thumbnail" src="<?= App\getUserImage('thumbnail', $user->ID) ?>" alt="" />
 
                                         <?php endforeach; ?>
                                     </div>
-                                </div>  
-                                <div class="d-flex flex-column justify-content-center">  
+                                </div>
+                                <div class="d-flex flex-column justify-content-center">
                                     <a href="<?= get_the_permalink($house->ID) ?>" class="btn btn-primary">Bekijk huis</a>
                                 </div>
                             </div>
