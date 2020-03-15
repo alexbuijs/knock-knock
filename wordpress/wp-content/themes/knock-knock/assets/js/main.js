@@ -18,11 +18,13 @@ import {
   faQuestion,
   faPlus,
   faList,
-  faPowerOff
+  faPowerOff,
+  faArrowLeft,
+  faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 
 // Font awesome
-library.add(faCalendarAlt, faBell, faFile, faUser, faHome, faQuestion, faPlus, faList, faPowerOff);
+library.add(faCalendarAlt, faBell, faFile, faUser, faHome, faQuestion, faPlus, faList, faPowerOff, faArrowLeft, faArrowRight);
 dom.watch();
 
 const flatpickrConfig = {
