@@ -2,7 +2,7 @@
     <div class="card-header bg-transparent">
         <h5 class="font-weight-bold">
             <i class="far fa-fw fa-bell text-muted"></i>
-            Recente gebeurtenissen
+            Recente wijzigingen
         </h5>
     </div>
     <div class="card-body">

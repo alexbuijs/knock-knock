@@ -22,7 +22,7 @@
                         <div class="text-uppercase font-weight-bold text-muted mb-0 small"><?= date_i18n("M", $start); ?></div>
                     </div>
                     <div class="text-truncate">
-                        <a href="<?php the_permalink(); ?>">
+                        <a class="text-body" href="<?php the_permalink(); ?>">
                             <?= the_title(); ?>
                         </a>
                         <div class="text-muted small"><?= date_i18n("l", $start); ?> <?= date_i18n("H:i", $start) . ' - ' . date_i18n("H:i", $end); ?></div>
