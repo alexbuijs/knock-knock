@@ -26,9 +26,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // Font awesome
-<<<<<<< Updated upstream
-library.add(faCalendarAlt, faBell, faFile, faUser, faHome, faQuestion, faPlus, faList, faPowerOff, faArrowLeft, faArrowRight);
-=======
 library.add(
   faCalendarAlt,
   faBell,
@@ -38,9 +35,10 @@ library.add(
   faQuestion,
   faPlus,
   faList,
-  faPowerOff
+  faPowerOff,
+  faArrowLeft,
+  faArrowRight
 );
->>>>>>> Stashed changes
 dom.watch();
 
 const flatpickrConfig = {
