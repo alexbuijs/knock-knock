@@ -14,4 +14,4 @@
 
     <?php get_template_part('partials/navbar'); ?>
 
-    <div class="container">
+    <div class="container-lg">

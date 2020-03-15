@@ -3,7 +3,7 @@ body, html {
     background-color: #F3F4F8
 }
 
-body > .container {
+body > .container-lg {
     margin-top: $grid-gutter-width / 2;
 
     @include media-breakpoint-up(sm) {
