@@ -54,7 +54,7 @@ class Fetch
     /**
      * Get all current residents sorted by first name
      */
-    public function users() 
+    public function users()
     {
         $query = new \WP_User_Query([
             'order' => 'ASC',
@@ -77,7 +77,7 @@ class Fetch
     /**
      * Get current residents from a certain house
      */
-    public function usersByHouse($houseId) 
+    public function usersByHouse($houseId)
     {
         $query = new \WP_User_Query([
             'order' => 'ASC',
@@ -107,7 +107,7 @@ class Fetch
     function recentPosts()
     {
         $query = new \WP_Query([
-            'posts_per_page' => 10,
+            'posts_per_page' => 15,
             'orderby' => 'modified',
             'order' => 'DESC',
             'post_type' => ['agenda', 'documentatie'],
@@ -119,7 +119,7 @@ class Fetch
     /**
      * Get houses
      */
-    function houses($excludeIds = []) 
+    function houses($excludeIds = [])
     {
         $query = new \WP_Query([
             'post_type' => 'house',
@@ -137,7 +137,7 @@ class Fetch
     /**
      * Get documentation, split per given categories
      */
-    function docs($categories = null) 
+    function docs($categories = null)
     {
         $categories = $categories ?: [
             'Algemeen' => 'algemeen',
@@ -149,9 +149,9 @@ class Fetch
             'Overige' => 'overige'
         ];
 
-        $result = []; 
+        $result = [];
 
-        foreach($categories as $key => $category) 
+        foreach($categories as $key => $category)
         {
             $query = new \WP_Query([
                 'post_type' => 'documentatie',
@@ -166,7 +166,7 @@ class Fetch
                     ]
                 ]
             ]);
-    
+
             $result[$key] = $query->posts;
         }
 
