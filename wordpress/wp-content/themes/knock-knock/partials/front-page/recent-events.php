@@ -6,7 +6,7 @@
         </h5>
     </div>
     <div class="card-body">
-        <?php $posts = App\getPosts(); if ($posts): ?>
+        <?php $posts = fetch()->recentPosts(); if ($posts): ?>
             <ul class='list-unstyled'>
                 <?php foreach ($posts as $post): setup_postdata($post);?>
 

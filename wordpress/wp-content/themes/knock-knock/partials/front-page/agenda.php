@@ -3,27 +3,11 @@
         <h5 class="font-weight-bold"><i class="far fa-fw fa-calendar-alt text-muted"></i> Agenda<br>
         <small class="text-muted">Binnenkort op de Klopvaart</small></h5>
     </div>
-    <div class="card-body">
-        <?php
-            $query = new WP_Query([
-                'post_type' => 'agenda',
-                'posts_per_page' => -1,
-                'order' => 'ASC',
-                'orderby' => 'meta_value',
-                'meta_key' => 'start',
-                'meta_query' => [
-                    'relation' => 'AND', [
-                        'key' => 'start',
-                        'compare' => 'BETWEEN',
-                        'value' => array(date('Y-m-d H:i:s'), date('Y-m-d H:i:s', strtotime('+1 month'))),
-                    ]
-                ]
-            ]); 
-        ?>
+    <div class="card-body"> 
 
         <ul class="list-group">
 
-            <?php foreach($query->posts as $post) : setup_postdata($post); ?>
+            <?php foreach(fetch()->upcomingEvents() as $post) : setup_postdata($post); ?>
 
                 <?php 
                     $start = strtotime(get_field('start')); 

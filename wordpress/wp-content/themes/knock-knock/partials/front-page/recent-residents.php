@@ -4,17 +4,8 @@
         <small class="text-muted">Welkom!</small></h5>
     </div>
     <div class="card-body">
-        <?php
-            $query = new WP_User_Query([
-                'number' => 5,
-                'order' => 'DESC',
-                'meta_key' => 'bewoner_sinds',
-                'orderby' => 'meta_value',
-                'role__in' => ['administrator', 'editor', 'author']
-            ]);
-        ?>
 
-        <?php foreach($query->get_results() as $user) : ?>
+        <?php foreach(fetch()->recentUsers() as $user) : ?>
 
             <?php
                 $address = get_field('resident_adres', 'user_' . $user->data->ID);

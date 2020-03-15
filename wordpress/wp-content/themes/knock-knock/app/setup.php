@@ -5,6 +5,7 @@
 
 namespace App;
 
+use App\Classes\Fetch;
 use App\Classes\Manifest;
 use Illuminate\Container\Container;
 
@@ -73,6 +74,7 @@ add_action('after_setup_theme', function () {
      */
     $container = Container::getInstance();
     $container->singleton('manifest', Manifest::class);
+    $container->bind('fetch', Fetch::class);
 
     $container->make('manifest')->registerManifest(
         get_template_directory() . '/dist/manifest.json'

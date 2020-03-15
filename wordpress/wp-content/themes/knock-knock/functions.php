@@ -29,3 +29,10 @@ if (!function_exists('asset')) {
         return App\asset(...$args);
     }
 }
+
+if (!function_exists('fetch')) {
+    function fetch(...$args) 
+    {
+        return App\fetch(...$args);
+    }
+}

@@ -40,19 +40,6 @@ function getUserImage($size = 'thumbnail', $userID = null)
 }
 
 /**
- * Get recent posts
- */
-function getPosts()
-{
-    return get_posts(array(
-        'posts_per_page' => 10,
-        'orderby' => 'modified',
-        'order' => 'DESC',
-        'post_type' => ['agenda', 'documentatie'],
-    ));
-}
-
-/**
  * Get available manifest instance
  *
  * @return mixed
@@ -60,6 +47,14 @@ function getPosts()
 function manifest()
 {
     return Container::getInstance()->make('manifest');
+}
+
+/**
+ * Get instance of the fetch class
+ */
+function fetch() 
+{
+    return Container::getInstance()->make('fetch');
 }
 
 /**
