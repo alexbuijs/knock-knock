@@ -6,7 +6,7 @@ body, html {
 body > .container-lg {
     margin-top: $grid-gutter-width / 2;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(lg) {
         margin-top: 1.5rem;
     }
 }

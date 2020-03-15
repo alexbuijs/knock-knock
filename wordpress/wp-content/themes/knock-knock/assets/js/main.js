@@ -16,11 +16,12 @@ import {
 import {
   faHome,
   faQuestion,
-  faPlus
+  faPlus,
+  faList
 } from "@fortawesome/free-solid-svg-icons";
 
 // Font awesome
-library.add(faCalendarAlt, faBell, faFile, faUser, faHome, faQuestion, faPlus);
+library.add(faCalendarAlt, faBell, faFile, faUser, faHome, faQuestion, faPlus, faList);
 dom.watch();
 
 const flatpickrConfig = {

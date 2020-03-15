@@ -18,13 +18,9 @@
     <div class="d-flex justify-content-between">
       <h3 class="font-weight-bold">
         <i class="far fa-fw fa-calendar-alt text-muted"></i>
-        Agenda -
-        <?php echo date_i18n('F', strtotime("$year-$month")); ?>
-        <?php echo $year; ?>
+        Agenda <small class="text-muted"><?php echo date_i18n('F', strtotime("$year-$month")); ?> <?php echo $year; ?></small>
       </h3>
-      <div class="d-flex align-items-center">
-        <a href="/wp-admin/post-new.php?post_type=agenda" class="btn btn-primary"><i class="fas fa-plus fa-fw"></i> Agenda item toevoegen</a>
-      </div>
+      <a href="/wp-admin/post-new.php?post_type=agenda" class="btn btn-primary"><i class="fas fa-plus fa-fw"></i> Agenda item toevoegen</a>
     </div>
   </div>
 </div>

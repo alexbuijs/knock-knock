@@ -7,6 +7,7 @@
                 <i class="fas fa-fw fa-home text-muted"></i>
                     Huizen
             </h3>
+            <a class="btn btn-primary" href="<?= get_bloginfo('url'); ?>/bewoners"><i class="fas fa-list"></i> Lijst bewoners</a>
         </div>
     </div>
 </div>

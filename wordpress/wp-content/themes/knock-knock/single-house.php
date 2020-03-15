@@ -5,8 +5,7 @@
         <div class="card">
             <div class="card-header bg-transparent">
                 <div class="d-flex justify-content-between">
-                    <h3  class="font-weight-bold"><i class="fas fa-fw fa-home text-muted"></i> <?php the_title(); ?></h3>
-                    <a class="btn btn-primary" href="<?= get_bloginfo('url'); ?>/huizen">Alle huizen</a>
+                    <h3 class="font-weight-bold"><i class="fas fa-fw fa-home text-muted"></i> <?php the_title(); ?></h3>
                 </div>
             </div>
             <div class="card-body mt-3">
