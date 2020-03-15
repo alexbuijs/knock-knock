@@ -17,7 +17,7 @@ class Fetch
     public function upcomingEvents($start = null)
     {
         if (!$start) {
-            $start = mktime();
+            $start = time();
         }
 
         $query = new \WP_Query([
