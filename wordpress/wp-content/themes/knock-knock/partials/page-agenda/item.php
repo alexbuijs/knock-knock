@@ -6,7 +6,7 @@
 
       <div class="card-header bg-transparent">
         <div class="d-flex justify-content-between align-items-center">
-          <h4>
+          <h5>
             <?php if (isset($singleItem) && $singleItem == true): ?>
               <?php the_title(); ?>
             <?php else: ?>
@@ -14,7 +14,7 @@
                 <?php the_title(); ?>
               </a>
             <?php endif; ?>
-          </h4>
+          </h5>
           <?php if ($post->post_author == get_current_user_id() || current_user_can('administrator')): ?>
             <div class="small">
               <?php edit_post_link(__('Bewerken', 'knock-knock')); ?> |

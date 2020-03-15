@@ -1,4 +1,3 @@
-<?php /* Template Name: Agenda */ ?>
 <?php get_header();?>
 
 <?php
@@ -15,10 +14,10 @@
 
 <div class="row mb-3">
   <div class="col-12">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between align-items-center">
       <h3 class="font-weight-bold">
         <i class="far fa-fw fa-calendar-alt text-muted"></i>
-        Agenda <small class="text-muted"><?php echo date_i18n('F', strtotime("$year-$month")); ?> <?php echo $year; ?></small>
+        Agenda
       </h3>
       <a href="/wp-admin/post-new.php?post_type=agenda" class="btn btn-primary"><i class="fas fa-plus fa-fw"></i> Agenda item toevoegen</a>
     </div>
