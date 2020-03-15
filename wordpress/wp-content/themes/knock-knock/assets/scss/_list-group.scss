@@ -1,7 +1,16 @@
-.list-group-item {
-    padding: .75em 0 0 0;
-    
-    &:not(:last-child) {
-        border-bottom: $list-group-border-color 1px solid;
+
+.list-group {
+    .list-group-item {
+        padding: .75em 0 0 0;
+        
+        &:not(:last-child) {
+            border-bottom: $list-group-border-color 1px solid;
+        }
+    }
+}
+
+.list-sm {
+    .list-group-item {
+        padding: .25rem 0;
     }
 }

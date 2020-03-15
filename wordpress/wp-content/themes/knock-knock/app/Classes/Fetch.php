@@ -133,4 +133,43 @@ class Fetch
 
         return $query->posts;
     }
+
+    /**
+     * Get documentation, split per given categories
+     */
+    function docs($categories = null) 
+    {
+        $categories = $categories ?: [
+            'Algemeen' => 'algemeen',
+            'Bestuur' => 'bestuur',
+            'Commissies' => 'commissies',
+            'Faciliteiten' => 'faciliteiten',
+            'Huur en nieuwe huurders' => 'huur-en-nieuwe-huurders',
+            'In, op en om het huis' => 'in-op-en-om-het-huis',
+            'Overige' => 'overige'
+        ];
+
+        $result = []; 
+
+        foreach($categories as $key => $category) 
+        {
+            $query = new \WP_Query([
+                'post_type' => 'documentatie',
+                'posts_per_page' => -1,
+                'orderby' => 'title',
+                'order' => 'ASC',
+                'meta_query' => [
+                    [
+                        'key' => 'categorie',
+                        'value' => $category,
+                        'compare' => '=',
+                    ]
+                ]
+            ]);
+    
+            $result[$key] = $query->posts;
+        }
+
+        return $result;
+    }
 }
