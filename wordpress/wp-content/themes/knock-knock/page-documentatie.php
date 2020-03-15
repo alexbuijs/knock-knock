@@ -17,19 +17,21 @@
 
         <?php foreach(fetch()->docs() as $key => $category) : ?>
 
-            <div class="card">    
+            <div class="card">
                 <div class="card-header bg-transparent">
                     <h5 class="font-weight-bold"><?= $key ?></h5>
                 </div>
                 <div class="card-body">
                     <div class="col-12">
-                        <ul class="list-unstyled list-sm row mb-3"> 
-                            
+                        <ul class="list-unstyled list-sm row mb-3">
+
                             <?php if (!empty($category)) : ?>
 
                                 <?php foreach($category as $doc) : ?>
-                                    <li class="list-group-item col-6">
-                                        <i class="far fa-fw fa-file text-muted"></i>
+                                    <li class="list-group-item col-6 d-flex">
+                                        <div class="mr-1">
+                                            <i class="far fa-fw fa-file text-muted"></i>
+                                        </div>
                                         <a href="<?= get_the_permalink($doc->ID); ?>"><?= $doc->post_title ?></a>
                                     </li>
                                 <?php endforeach; ?>
@@ -37,7 +39,7 @@
                             <?php else : ?>
 
                                 <p class="text-muted">Geen documenten in deze categorie</p>
-                            
+
                             <?php endif; ?>
 
                         </ul>
