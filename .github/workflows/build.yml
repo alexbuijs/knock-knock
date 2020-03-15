@@ -39,7 +39,7 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_THEME_USER }}
         FTP_PASSWORD: ${{ secrets.FTP_THEME_PASSWORD }}
         LOCAL_DIR: wordpress/wp-content/themes/knock-knock
-        ARGS: --exclude=node_modules/ --exclude=.cache/ -L --verbose
+        ARGS: --exclude=node_modules/ --exclude=.cache/ --exclude=assets/scss/ --exclude=assets/js/ -L --verbose
     - name: FTP-Deploy-Action mu-plugins
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:
