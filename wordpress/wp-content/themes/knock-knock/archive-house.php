@@ -21,20 +21,22 @@
                     <?php foreach(fetch()->houses() as $house) : setup_postdata($house); ?>
 
                         <li class="list-group-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="font-weight-bold"><a class="text-body" href="<?= get_the_permalink($house->ID) ?>"><?= $house->post_title ?></a></h5>
-                                <a href="<?= get_the_permalink($house->ID) ?>" class="btn btn-primary">Bekijk huis</a>
-                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div>
+                                    <h5 class="font-weight-bold"><a class="text-body" href="<?= get_the_permalink($house->ID) ?>"><?= $house->post_title ?></a></h5>
+                                    <div>
+                                        <?php foreach(fetch()->usersByHouse($house->ID) as $user) : ?>
 
-                            <div class="mb-3">
-                                <?php foreach(fetch()->usersByHouse($house->ID) as $user) : ?>
+                                            <?php $userData = get_userdata($user->ID); ?> 
 
-                                    <?php $userData = get_userdata($user->ID); ?> 
+                                            <img class="thumbnail" src="<?= App\getUserImage('thumbnail', $user->ID) ?>" alt="" />
 
-                                    <img class="thumbnail" src="<?= App\getUserImage('thumbnail', $user->ID) ?>" alt="" />
-
-                                <?php endforeach; ?>
-
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>  
+                                <div class="d-flex flex-column justify-content-center">  
+                                    <a href="<?= get_the_permalink($house->ID) ?>" class="btn btn-primary">Bekijk huis</a>
+                                </div>
                             </div>
                         </li>
 
