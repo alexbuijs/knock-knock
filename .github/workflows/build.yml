@@ -33,18 +33,18 @@ jobs:
         cd ./wordpress/wp-content/themes/knock-knock
         composer install --prefer-dist --no-progress --no-suggest
     - name: FTP-Deploy-Action theme
-      uses: SamKirkland/FTP-Deploy-Action@3.0.0
-      with:
-        ftp-server: ${{ secrets.FTP_HOST }}
-        ftp-username: ${{ secrets.FTP_THEME_USER }}
-        ftp-password: ${{ secrets.FTP_THEME_PASSWORD }}
-        local-dir: wordpress/wp-content/themes/knock-knock
-        git-ftp-args: --exclude=node_modules/ --exclude=.cache/ -L --verbose --dry-run
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: ${{ secrets.FTP_HOST }}
+        FTP_USERNAME: ${{ secrets.FTP_THEME_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_THEME_PASSWORD }}
+        LOCAL_DIR: wordpress/wp-content/themes/knock-knock
+        ARGS: --exclude=node_modules/ --exclude=.cache/ -L --verbose
     - name: FTP-Deploy-Action mu-plugins
-      uses: SamKirkland/FTP-Deploy-Action@3.0.0
-      with:
-        ftp-server: ${{ secrets.FTP_HOST }}
-        ftp-username: ${{ secrets.FTP_MU_USER }}
-        ftp-password: ${{ secrets.FTP_MU_PASSWORD }}
-        local-dir: wordpress/wp-content/mu-plugins
-        git-ftp-args: -L --verbose --dry-run
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: ${{ secrets.FTP_HOST }}
+        FTP_USERNAME: ${{ secrets.FTP_MU_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_MU_PASSWORD }}
+        LOCAL_DIR: wordpress/wp-content/mu-plugins
+        ARGS: -L --verbose
