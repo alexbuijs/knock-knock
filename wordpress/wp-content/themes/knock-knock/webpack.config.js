@@ -18,7 +18,7 @@ module.exports = {
             './assets/scss/_datepicker.scss'
         ]
     },
-    devtool: 'source-map',
+    devtool: isDev ? 'source-map' : false,
     output: {
         filename: isDev ? '[name].js' : '[name].[contenthash:8].js',
         path: path.resolve(__dirname, 'dist')
@@ -51,20 +51,20 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: isDev,
                         },
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: isDev,
                             plugins: () => [autoprefixer]
                         },
                     },
                     {
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: isDev,
                         },
                     },
                 ]
