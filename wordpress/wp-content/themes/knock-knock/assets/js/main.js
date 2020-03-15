@@ -4,7 +4,7 @@ import { Dutch } from "flatpickr/dist/l10n/nl";
 
 import "bootstrap/js/dist/dropdown";
 import "bootstrap/js/dist/collapse";
-// import '@fortawesome/fontawesome-free/js/all';
+import "bootstrap/js/dist/modal";
 
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import {
