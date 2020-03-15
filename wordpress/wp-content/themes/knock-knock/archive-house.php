@@ -25,11 +25,8 @@
                                     <h5 class="font-weight-bold"><a class="text-body" href="<?= get_the_permalink($house->ID) ?>"><?= $house->post_title ?></a></h5>
                                     <div>
                                         <?php foreach(fetch()->usersByHouse($house->ID) as $user) : ?>
-
                                             <?php $userData = get_userdata($user->ID); ?>
-
-                                            <img class="thumbnail" src="<?= App\getUserImage('thumbnail', $user->ID) ?>" alt="" />
-
+                                            <img class="thumbnail" src="<?= App\getUserImage('thumbnail', $user->ID) ?>" alt="" data-toggle="tooltip" data-placement="top" title="<?= $user->first_name ?>" />
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
@@ -44,15 +41,8 @@
                     <?php wp_reset_postdata(); ?>
 
                 </ul>
-
-            </div>
-            <div class="card-footer bg-transparent">
-
             </div>
         </div>
-
-        <?php wp_reset_postdata(); ?>
-
     </div>
 </div>
 

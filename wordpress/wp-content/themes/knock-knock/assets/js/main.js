@@ -1,10 +1,12 @@
 import domReady from "@wordpress/dom-ready";
 import flatpickr from "flatpickr";
 import { Dutch } from "flatpickr/dist/l10n/nl";
+import $ from "jquery";
 
 import "bootstrap/js/dist/dropdown";
 import "bootstrap/js/dist/collapse";
 import "bootstrap/js/dist/modal";
+import "bootstrap/js/dist/tooltip";
 
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -24,7 +26,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // Font awesome
+<<<<<<< Updated upstream
 library.add(faCalendarAlt, faBell, faFile, faUser, faHome, faQuestion, faPlus, faList, faPowerOff, faArrowLeft, faArrowRight);
+=======
+library.add(
+  faCalendarAlt,
+  faBell,
+  faFile,
+  faUser,
+  faHome,
+  faQuestion,
+  faPlus,
+  faList,
+  faPowerOff
+);
+>>>>>>> Stashed changes
 dom.watch();
 
 const flatpickrConfig = {
@@ -39,4 +55,8 @@ domReady(function() {
   document.querySelectorAll("div.datetimepicker input").forEach(el => {
     flatpickr(el, flatpickrConfig);
   });
+});
+
+$(function() {
+  $('[data-toggle="tooltip"]').tooltip();
 });
