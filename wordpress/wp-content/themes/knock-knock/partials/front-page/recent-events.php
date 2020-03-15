@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
-                                    <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
+                                    <?php the_modified_date('j F');?> om <?php the_modified_date('H:i');?>
                                 </div>
                             </li>
                         <?php } else { /* Als het bericht is aangepast */?>
@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                                 <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
-                                    <?php the_modified_date('');?> om <?php the_modified_date('H:i');?>
+                                    <?php the_modified_date('j F');?> om <?php the_modified_date('H:i');?>
                                 </div>
                             </li>
                         <?php }?>
