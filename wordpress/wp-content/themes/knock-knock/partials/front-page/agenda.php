@@ -3,25 +3,25 @@
     <h5 class="font-weight-bold"><i class="far fa-fw fa-calendar-alt text-muted"></i> Agenda<br>
         <small class="text-muted">Binnenkort op de Klopvaart</small></h5>
     </div>
-    <div class="card-body"> 
+    <div class="card-body">
 
-        <ul class="list-group">
+        <ul class="list-group list-md">
 
             <?php foreach(fetch()->upcomingEvents() as $post) : setup_postdata($post); ?>
 
-                <?php 
-                    $start = strtotime(get_field('start')); 
-                    $end = strtotime(get_field('einde')); 
+                <?php
+                    $start = strtotime(get_field('start'));
+                    $end = strtotime(get_field('einde'));
                 ?>
 
                 <li class="list-group-item d-flex">
-                    <div class="mr-3">
-                        <h4 class="text-center font-weight-black mb-0"><?= date_i18n("j", $start); ?></h4>
-                        <p class="text-uppercase font-weight-bold text-muted mb-0"><small><?= date_i18n("M", $start); ?></small></p>
+                    <div class="mr-2 text-center date">
+                        <h4 class="font-weight-black mb-0"><?= date_i18n("j", $start); ?></h4>
+                        <div class="text-uppercase font-weight-bold text-muted mb-0 small"><?= date_i18n("M", $start); ?></div>
                     </div>
                     <div>
                         <p class="mb-0"><?= the_title(); ?></p>
-                        <p class="text-muted"><small><?= date_i18n("l", $start); ?> <?= date_i18n("H:i", $start) . ' - ' . date_i18n("H:i", $end); ?></small></p>
+                        <div class="text-muted small"><?= date_i18n("l", $start); ?> <?= date_i18n("H:i", $start) . ' - ' . date_i18n("H:i", $end); ?></div>
                     </div>
                 </li>
 
