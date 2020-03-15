@@ -18,7 +18,7 @@
             <div class="card-header bg-transparent">
             </div>
             <div class="card-body">
-                <table class="table table-responsive-md">
+                <table class="table table-responsive-lg">
                     <thead>
                         <tr>
                             <th scope="col"></th>
