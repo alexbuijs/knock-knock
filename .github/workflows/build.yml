@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -31,13 +32,6 @@ jobs:
       run: |
         cd ./wordpress/wp-content/themes/knock-knock
         composer install --prefer-dist --no-progress --no-suggest
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
     - name: FTP-Deploy-Action theme
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:
@@ -45,7 +39,7 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_THEME_USER }}
         FTP_PASSWORD: ${{ secrets.FTP_THEME_PASSWORD }}
         LOCAL_DIR: wordpress/wp-content/themes/knock-knock
-        ARGS: --exclude=node_modules/ --exclude=.cache/ -L --verbose --dry-run
+        ARGS: --exclude=node_modules/ --exclude=.cache/ -L --verbose
     - name: FTP-Deploy-Action mu-plugins
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:
@@ -53,4 +47,4 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_MU_USER }}
         FTP_PASSWORD: ${{ secrets.FTP_MU_PASSWORD }}
         LOCAL_DIR: wordpress/wp-content/mu-plugins
-        ARGS: -L --verbose --dry-run
+        ARGS: -L --verbose
