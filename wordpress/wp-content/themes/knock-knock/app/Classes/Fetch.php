@@ -82,7 +82,7 @@ class Fetch
         $query = new \WP_User_Query([
             'order' => 'ASC',
             'posts_per_page', -1,
-            'meta_key' => 'first_name',
+            'meta_key' => 'resident_adres',
             'orderby' => 'meta_value',
             'role__in' => ['administrator', 'editor', 'author'],
             'meta_query' => [

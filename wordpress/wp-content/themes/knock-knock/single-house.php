@@ -24,7 +24,7 @@
                         <div class="col-6 col-lg-4">
                             <div class="profile-picture" style="background-image:url('<?= App\getUserImage('medium', $user->ID) ?>')"></div>
 
-                            <div class="mt-1 mb-2">
+                            <div class="mt-1 mb-3">
                                 <?= $userData->first_name ?>
                                 <div class="small">
                                     <?= get_field('resident_adres', $userData); ?>
