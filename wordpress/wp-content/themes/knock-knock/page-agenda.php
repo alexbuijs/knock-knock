@@ -39,23 +39,25 @@
       <div class="card">
 
         <div class="card-header bg-transparent">
-          <?php if ($post->post_author == get_current_user_id() || current_user_can('administrator')) {  ?>
-            <span class="comment-count">
-              <?php edit_post_link(__('Bewerken', 'knock-knock')); ?> |
-              <a href="<?php echo get_delete_post_link(); ?>">Verwijderen</a>
-            </span>
-          <?php } ?>
-          <h3>
-            <a href="<?php the_permalink(); ?>">
-              <?php the_title(); ?>
-            </a>
-          </h3>
+          <div class="d-flex justify-content-between align-items-center">
+            <h4>
+              <a href="<?php the_permalink(); ?>">
+                <?php the_title(); ?>
+              </a>
+            </h4>
+            <?php if ($post->post_author == get_current_user_id() || current_user_can('administrator')) {  ?>
+              <div class="small">
+                <?php edit_post_link(__('Bewerken', 'knock-knock')); ?> |
+                <a href="<?php echo get_delete_post_link(); ?>">Verwijderen</a>
+            </div>
+            <?php } ?>
+          </div>
         </div>
 
         <div class="card-body">
-          <span style="color:#888;">
+          <div class="text-muted">
             <?php the_field('type'); ?>
-          </span>
+          </div>
           <?php
             $datestart     = get_field('start', false, false);
             $datestartday  = date_i18n("l j F", strtotime($datestart));
@@ -71,21 +73,21 @@
               <?php echo ($datestartday != $dateendday) ? $dateendday : ''; ?>
               <?php echo $dateendtime; ?>
             </strong>
-            <span style="color: #ddd;">.</span>
           </p>
         </div>
 
-        <div class="card-footer">
+        <div class="card-footer py-3">
           <?php $author_info = get_userdata($post->post_author); ?>
-            <img src="<?php echo get_field('resident_profile_image', $author_info)['sizes']['thumbnail']; ?>" width="40" height="40" alt="" />
+            <img src="<?= App\getUserImage('thumbnail', $author_info->ID) ?>" class="thumbnail" />
+            <span class="small ml-2">
               Organisator:
-                <?php echo the_author_meta('first_name'); ?>
-                <?php echo the_author_meta('last_name'); ?> -
+                <?php echo the_author_meta('first_name'); ?> -
                 <?php if (get_the_modified_date('c') == get_the_date('c')) { ?>
               Aangemaakt op
-                <?php the_modified_date(''); ?> om <?php the_modified_date('H:i'); ?><?php } else { ?>
+                <?php the_modified_date('j F'); ?> om <?php the_modified_date('H:i'); ?><?php } else { ?>
               Aangepast op
-                <?php the_modified_date(''); ?> om <?php the_modified_date('H:i'); ?>
+                <?php the_modified_date('j F'); ?> om <?php the_modified_date('H:i'); ?>
+            </span>
           <?php } ?>
         </div>
       </div>
