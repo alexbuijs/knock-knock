@@ -5,7 +5,7 @@ namespace App\Classes;
 class Fetch
 {
     /**
-     * Manifest constructor
+     * Fetch constructor
      *
      * @return void
      */
