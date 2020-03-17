@@ -29,6 +29,7 @@
       @extend .nav-link;
 
       padding: .5rem $spacer;
+      font-size: $font-size-base;
 
       @include media-breakpoint-up(lg) { 
         padding: 1rem;

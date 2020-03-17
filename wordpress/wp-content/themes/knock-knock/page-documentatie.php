@@ -2,7 +2,7 @@
 
 <div class="row mb-3">
     <div class="col-12">
-        <div class="d-flex justify-content-between">
+        <div class="d-sm-flex justify-content-between align-items-center">
             <h3 class="font-weight-bold">
                 <i class="far fa-fw fa-file text-muted"></i>
                     Documentatie
@@ -28,7 +28,7 @@
                             <?php if (!empty($category)) : ?>
 
                                 <?php foreach($category as $doc) : ?>
-                                    <li class="list-group-item col-6 d-flex">
+                                    <li class="list-group-item col-12 col-sm-6 d-flex">
                                         <div class="mr-1">
                                             <i class="far fa-fw fa-file text-muted"></i>
                                         </div>

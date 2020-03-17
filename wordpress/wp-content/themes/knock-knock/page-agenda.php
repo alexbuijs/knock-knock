@@ -14,7 +14,7 @@
 
 <div class="row mb-3">
   <div class="col-12">
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-sm-flex justify-content-between align-items-center">
       <h3 class="font-weight-bold">
         <i class="far fa-fw fa-calendar-alt text-muted"></i>
         Agenda

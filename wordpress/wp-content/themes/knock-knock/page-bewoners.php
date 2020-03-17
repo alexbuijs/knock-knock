@@ -2,7 +2,7 @@
 
 <div class="row mb-3">
     <div class="col-12">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <h3 class="font-weight-bold">
                 <i class="far fa-fw fa-user text-muted"></i>
                     Bewoners

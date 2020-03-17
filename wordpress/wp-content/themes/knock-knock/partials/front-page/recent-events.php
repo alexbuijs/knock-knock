@@ -21,7 +21,8 @@
                                 </div>
                             </div>
                             <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
-                                <?php the_modified_date('j F');?> om <?php the_modified_date('H:i');?>
+                                <span class="d-none d-sm-inline"><?php the_modified_date("j F \o\m H:i"); ?></span>
+                                <span class="d-sm-none"><?php the_modified_date("j M. H:i");?></span>                            
                             </div>
                         </li>
                     <?php }?>
@@ -38,7 +39,8 @@
                                     </div>
                                 </div>
                                 <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
-                                    <?php the_modified_date('j F');?> om <?php the_modified_date('H:i');?>
+                                    <span class="d-none d-sm-inline"><?php the_modified_date("j F \o\m H:i"); ?></span>
+                                    <span class="d-sm-none"><?php the_modified_date("j M. H:i");?></span>                            
                                 </div>
                             </li>
                         <?php } else { /* Als het bericht is aangepast */?>
@@ -52,7 +54,8 @@
                                     </div>
                                 </div>
                                 <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
-                                    <?php the_modified_date('j F');?> om <?php the_modified_date('H:i');?>
+                                    <span class="d-none d-sm-inline"><?php the_modified_date("j F \o\m H:i"); ?></span>
+                                    <span class="d-sm-none"><?php the_modified_date("j M. H:i");?></span>                            
                                 </div>
                             </li>
                         <?php }?>
