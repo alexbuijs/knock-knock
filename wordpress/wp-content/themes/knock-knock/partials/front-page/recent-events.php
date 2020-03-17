@@ -10,6 +10,8 @@
             <ul class='list-unstyled'>
                 <?php foreach ($posts as $post): setup_postdata($post);?>
 
+                    <?php $modifiedDate = get_the_modified_date('c'); ?>
+
                     <?php if (get_post_type(get_the_ID()) == 'documentatie') {?>
                         <li class="d-flex justify-content-between py-3 border-bottom">
                             <div class='d-flex align-items-center'>
@@ -21,8 +23,8 @@
                                 </div>
                             </div>
                             <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
-                                <span class="d-none d-sm-inline"><?php the_modified_date("j F \o\m H:i"); ?></span>
-                                <span class="d-sm-none"><?php the_modified_date("j M. H:i");?></span>                            
+                                <span class="d-none d-sm-inline"><?= App\timeDiff($modifiedDate) ?></span>
+                                <span class="d-sm-none"><?= App\timeDiff($modifiedDate, true) ?></span>
                             </div>
                         </li>
                     <?php }?>
@@ -39,8 +41,8 @@
                                     </div>
                                 </div>
                                 <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
-                                    <span class="d-none d-sm-inline"><?php the_modified_date("j F \o\m H:i"); ?></span>
-                                    <span class="d-sm-none"><?php the_modified_date("j M. H:i");?></span>                            
+                                    <span class="d-none d-sm-inline"><?= App\timeDiff($modifiedDate) ?></span>
+                                    <span class="d-sm-none"><?= App\timeDiff($modifiedDate, true) ?></span>
                                 </div>
                             </li>
                         <?php } else { /* Als het bericht is aangepast */?>
@@ -54,8 +56,8 @@
                                     </div>
                                 </div>
                                 <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
-                                    <span class="d-none d-sm-inline"><?php the_modified_date("j F \o\m H:i"); ?></span>
-                                    <span class="d-sm-none"><?php the_modified_date("j M. H:i");?></span>                            
+                                    <span class="d-none d-sm-inline"><?= App\timeDiff($modifiedDate) ?></span>
+                                    <span class="d-sm-none"><?= App\timeDiff($modifiedDate, true) ?></span>
                                 </div>
                             </li>
                         <?php }?>

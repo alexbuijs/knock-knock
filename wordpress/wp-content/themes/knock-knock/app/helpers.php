@@ -5,6 +5,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Container\Container;
 
 /**
@@ -43,6 +44,15 @@ function getUserAddress($userId = null)
     }
 
     return $address;
+}
+
+/**
+ * Change time into diff format (e.g. n minutes ago)
+ */
+function timeDiff($date, $short = false) {
+    return Carbon::parse($date)->locale('nl_NL')->diffForHumans([
+        'short' => $short
+    ]);
 }
 
 /**
