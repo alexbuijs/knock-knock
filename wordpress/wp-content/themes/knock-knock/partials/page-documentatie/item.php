@@ -2,17 +2,14 @@
 
 <div class="card">
   <div class="card-header bg-transparent">
-    <div class="d-flex justify-content-between align-items-center">
-      <h4>
-        <?php the_title(); ?>
-      </h4>
-      <?php if ($post->post_author == get_current_user_id() || current_user_can('administrator')): ?>
+    <?php if ($post->post_author == get_current_user_id() || current_user_can('administrator')): ?>
+      <div class="d-flex flex-column align-items-end">
         <div class="small">
           <?php edit_post_link(__('Bewerken', 'knock-knock')); ?> |
           <a href="#delete-modal-<?= the_ID() ?>" data-toggle="modal">Verwijderen</a>
         </div>
-      <?php endif; ?>
-    </div>
+      </div>
+    <?php endif; ?>
   </div>
 
   <div class="card-body">

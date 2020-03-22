@@ -1,16 +1,13 @@
 <?php get_header(); ?>
 
-<div class="row mb-3">
-    <div class="col-12">
-        <div class="d-sm-flex justify-content-between align-items-center">
-            <h3 class="font-weight-bold">
-                <i class="far fa-fw fa-file text-muted"></i>
-                    Documentatie
-            </h3>
-            <a href="<?= get_bloginfo('url'); ?>/wp-admin/post-new.php?post_type=documentatie" class="btn btn-primary"><i class="fas fa-plus fa-fw"></i> Document toevoegen</a>
-        </div>
-    </div>
-</div>
+<?php
+  $icon = 'far fa-file';
+  $url = '/wp-admin/post-new.php?post_type=documentatie';
+  $title = 'Documentatie';
+  $button = '<i class="fas fa-plus fa-fw"></i> Document toevoegen';
+
+  require('partials/shared/title.php');
+?>
 
 <div class="row">
     <div class="col-12">

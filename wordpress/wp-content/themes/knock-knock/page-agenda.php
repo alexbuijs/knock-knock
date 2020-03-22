@@ -12,17 +12,14 @@
   $posts         = fetch()->upcomingEvents(mktime(0, 0, 0, $month, 1, $year));
 ?>
 
-<div class="row mb-3">
-  <div class="col-12">
-    <div class="d-sm-flex justify-content-between align-items-center">
-      <h3 class="font-weight-bold">
-        <i class="far fa-fw fa-calendar-alt text-muted"></i>
-        Agenda
-      </h3>
-      <a href="/wp-admin/post-new.php?post_type=agenda" class="btn btn-primary"><i class="fas fa-plus fa-fw"></i> Agenda item toevoegen</a>
-    </div>
-  </div>
-</div>
+<?php
+  $icon = 'far fa-calendar-alt';
+  $url = '/wp-admin/post-new.php?post_type=agenda';
+  $title = 'Agenda';
+  $button = '<i class="fas fa-plus fa-fw"></i> Agenda item toevoegen';
+
+  require('partials/shared/title.php');
+?>
 
 <div class="mb-3">
   <?php require('partials/page-agenda/navigation.php'); ?>

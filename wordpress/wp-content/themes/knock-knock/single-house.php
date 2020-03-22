@@ -1,16 +1,11 @@
 <?php get_header(); ?>
 
-<div class="row mb-3">
-    <div class="col-12">
-        <div class="d-flex justify-content-between">
-            <h3 class="font-weight-bold">
-                <i class="fas fa-fw fa-home text-muted"></i>
-                <?php the_title(); ?>
-            </h3>
-            <a class="btn btn-primary" href="<?= get_bloginfo('url'); ?>/huizen">Overzicht</a>
-        </div>
-    </div>
-</div>
+<?php
+  $icon = 'fas fa-home';
+  $url = '/huizen';
+
+  require('partials/shared/title.php');
+?>
 
 <div class="row">
     <div class="col-12 col-lg-8">
