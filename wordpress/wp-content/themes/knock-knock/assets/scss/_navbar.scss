@@ -14,6 +14,10 @@
 }
 
 .navbar-nav {
+  .nav-link.dropdown-toggle:focus {
+    outline: 0;
+  }
+
   .dropdown-menu {
     @include media-breakpoint-down(md) {
       position: absolute;
@@ -28,10 +32,10 @@
     a {
       @extend .nav-link;
 
-      padding: .5rem $spacer;
+      padding: 0.5rem $spacer;
       font-size: $font-size-base;
 
-      @include media-breakpoint-up(lg) { 
+      @include media-breakpoint-up(lg) {
         padding: 1rem;
       }
     }
@@ -64,11 +68,11 @@
 }
 
 .navbar-expand-lg > .container {
-    padding-left: 0;
-    padding-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 
-    @include media-breakpoint-up(sm) {
-        padding-left: $grid-gutter-width / 2;
-        padding-right: $grid-gutter-width / 2;
-    }
+  @include media-breakpoint-up(sm) {
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+  }
 }

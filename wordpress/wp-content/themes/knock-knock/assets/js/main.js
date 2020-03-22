@@ -19,7 +19,6 @@ import {
   faHome,
   faQuestion,
   faPlus,
-  faList,
   faPowerOff,
   faArrowLeft,
   faArrowRight
@@ -34,7 +33,6 @@ library.add(
   faHome,
   faQuestion,
   faPlus,
-  faList,
   faPowerOff,
   faArrowLeft,
   faArrowRight

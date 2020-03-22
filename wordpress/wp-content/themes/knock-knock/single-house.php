@@ -7,7 +7,7 @@
                 <i class="fas fa-fw fa-home text-muted"></i>
                 <?php the_title(); ?>
             </h3>
-            <a class="btn btn-primary" href="<?= get_bloginfo('url'); ?>/huizen"><i class="fas fa-fw fa-home"></i> Overzicht</a>
+            <a class="btn btn-primary" href="<?= get_bloginfo('url'); ?>/huizen">Overzicht</a>
         </div>
     </div>
 </div>
