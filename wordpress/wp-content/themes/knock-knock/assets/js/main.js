@@ -25,7 +25,8 @@ import {
   faArrowRight,
   faEnvelope,
   faPhone,
-  faMapMarker
+  faMapMarker,
+  faPencilAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 // Font awesome
@@ -43,7 +44,8 @@ library.add(
   faArrowRight,
   faEnvelope,
   faPhone,
-  faMapMarker
+  faMapMarker,
+  faPencilAlt
 )
 dom.watch()
 

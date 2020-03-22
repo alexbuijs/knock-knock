@@ -23,9 +23,16 @@
 
                 </div>
                 <div class="card-body">
-                    <h5 class="font-weight-bold mb-3">
-                        Info
-                    </h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="font-weight-bold mb-3">
+                            Info
+                        </h5>
+                        <?php if ($user->ID == get_current_user_id()) : ?>
+                            <a href="<?= admin_url('profile.php'); ?>" class="btn btn-sm btn-primary">
+                                <i class="fas fa-pencil-alt mr-1"></i> Bewerken
+                            </a>
+                        <?php endif; ?>
+                    </div>
                     <p><i class="fas fa-map-marker fa-fw mr-2"></i><?= App\getUserAddress($user->ID) ?></p>
                     <p><i class="fas fa-envelope fa-fw mr-2"></i><a href="mailto:<?= $user->user_email ?>"><?= $user->user_email ?></a></p>
                     <?php if ($phone = get_field('resident_phone', $user)) : ?>
