@@ -22,7 +22,10 @@ import {
   faList,
   faPowerOff,
   faArrowLeft,
-  faArrowRight
+  faArrowRight,
+  faEnvelope,
+  faPhone,
+  faMapMarker,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Font awesome
@@ -37,7 +40,10 @@ library.add(
   faList,
   faPowerOff,
   faArrowLeft,
-  faArrowRight
+  faArrowRight,
+  faEnvelope,
+  faPhone,
+  faMapMarker
 );
 dom.watch();
 

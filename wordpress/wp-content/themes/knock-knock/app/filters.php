@@ -25,6 +25,6 @@ add_filter('login_message', function ($message) {
  * Add custom query var for the single user page
  */
 add_filter('query_vars', function($qvars) {
-    $qvars[] = 'bewoner_id';
+    $qvars[] = 'bewoner_name';
     return $qvars;
 });

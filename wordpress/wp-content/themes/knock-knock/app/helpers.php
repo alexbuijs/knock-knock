@@ -55,6 +55,22 @@ function timeDiff($date, $short = false) {
     ]);
 }
 
+function getUserBySlug($slug) {
+    if (!$slug) {
+        return false;
+    }
+
+    $userQuery = new \WP_User_Query([
+        'search' => $slug,
+        'search_columns' => ['user_nicename']
+    ]);
+
+    $result = $userQuery->get_results();
+
+    // Result should be one user
+    return (count($result) == 1) ? $result[0] : [];
+}
+
 /**
  * Get available manifest instance
  *

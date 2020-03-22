@@ -85,5 +85,5 @@ add_action('after_setup_theme', function () {
  * Rewrite rule for the single use page
  */
 add_action('init', function() {
-    add_rewrite_rule('^bewoner/([0-9]+)/?', 'index.php?pagename=bewoner&bewoner_id=$matches[1]', 'top');
+    add_rewrite_rule('^bewoner/([0-9a-z-]+)/?', 'index.php?pagename=bewoner&bewoner_name=$matches[1]', 'top');
 });
