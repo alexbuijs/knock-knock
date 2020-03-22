@@ -55,7 +55,7 @@
         <?php $author_info = get_userdata($post->post_author); ?>
         <img src="<?= App\getUserImage('thumbnail', $author_info->ID) ?>" class="thumbnail" />
         <span class="small ml-2">
-          Organisator: <?= the_author_meta('first_name'); ?> -
+          Organisator: <?= App\userLink(get_user_by('ID', $author_info->ID), $linkable = true, $lastName = false) ?> -
           <?php if (get_the_modified_date('c') == get_the_date('c')): ?>
             Aangemaakt op <?php the_modified_date('j F'); ?> om <?php the_modified_date('H:i'); ?>
           <?php else: ?>

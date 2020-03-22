@@ -99,3 +99,20 @@ function asset($assetName)
     $uriBase = get_template_directory_uri() . '/dist/';
     return $uriBase . manifest()->get($assetName);
 }
+
+/**
+ * Get user page URL
+ *
+ * @param User $user object
+ */
+function userLink($user, $linkable = false, $lastName = true)
+{
+    $url = get_bloginfo('url') . '/bewoner/' . $user->user_nicename;
+
+    if ($linkable) {
+        return "<a href='$url'>" . $user->first_name . ($lastName ? ' ' . $user->last_name : ''). "</a>";
+        // return "<a href='$url'>$user->first_name $user->last_name</a>";
+    }
+
+    return $url;
+}

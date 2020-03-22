@@ -4,7 +4,7 @@
   $icon = 'far fa-user';
   $url = '/huizen';
   $title = 'Bewoners';
-  $button = '<i class="fas fa-list"></i> Bekijk per huis';
+  $buttonText = 'Bekijk per huis';
 
   require('partials/shared/title.php');
 ?>
@@ -26,8 +26,7 @@
                     </thead>
                     <tbody>
                         <?php foreach(fetch()->users() as $user) : ?>
-
-                            <tr data-href="<?= get_bloginfo('url') . '/bewoner/' . $user->user_nicename ?>">
+                            <tr data-href="<?= App\userLink($user) ?>">
                                 <td><img class="thumbnail" src="<?= App\getUserImage('thumbnail', $user->ID) ?>" alt="" /></td>
                                 <td><?= $user->first_name; ?></td>
                                 <td><?= $user->last_name; ?></td>

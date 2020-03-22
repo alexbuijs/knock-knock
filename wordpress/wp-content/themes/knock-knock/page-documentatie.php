@@ -4,7 +4,8 @@
   $icon = 'far fa-file';
   $url = '/wp-admin/post-new.php?post_type=documentatie';
   $title = 'Documentatie';
-  $button = '<i class="fas fa-plus fa-fw"></i> Document toevoegen';
+  $buttonIcon = 'fas fa-plus';
+  $buttonText = 'Document toevoegen';
 
   require('partials/shared/title.php');
 ?>

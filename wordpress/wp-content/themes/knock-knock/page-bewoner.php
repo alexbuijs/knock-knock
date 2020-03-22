@@ -1,18 +1,14 @@
 <?php get_header(); ?>
 
-<?php $user = App\getUserBySlug(get_query_var('bewoner_name')); ?> 
+<?php $user = App\getUserBySlug(get_query_var('bewoner_name')); ?>
 
-<div class="row mb-3">
-    <div class="col-12">
-        <div class="d-flex justify-content-between align-items-center">
-            <h3 class="font-weight-bold">
-                <i class="far fa-fw fa-user text-muted"></i>
-                    <?= $user ? $user->first_name . $user->last_name : 'Bewoner' ?>
-            </h3>
-            <a href="<?= get_bloginfo('url'); ?>/bewoners" class="btn btn-primary">Terug naar overzicht</a>
-        </div>
-    </div>
-</div>
+<?php
+  $icon = 'far fa-user';
+  $url = '/bewoners';
+  $title = $user ? $user->display_name : 'Bewoner';
+
+  require('partials/shared/title.php');
+?>
 
 <div class="row">
     <?php if ($user) : ?>
@@ -39,7 +35,7 @@
             </div>
         </div>
     <?php else : ?>
-        <div class="col-12"> 
+        <div class="col-12">
             <div class="card">
                 <div class="card-body pt-3">
                     <p>Bewoner niet gevonden</p>

@@ -16,7 +16,8 @@
   $icon = 'far fa-calendar-alt';
   $url = '/wp-admin/post-new.php?post_type=agenda';
   $title = 'Agenda';
-  $button = '<i class="fas fa-plus fa-fw"></i> Agenda item toevoegen';
+  $buttonIcon = 'fas fa-plus';
+  $buttonText = 'Agenda item toevoegen';
 
   require('partials/shared/title.php');
 ?>

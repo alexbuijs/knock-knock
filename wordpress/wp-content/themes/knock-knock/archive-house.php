@@ -4,7 +4,7 @@
   $icon = 'fas fa-home';
   $url = '/bewoners';
   $title = 'Huizen';
-  $button = '<i class="fas fa-list"></i> Lijst bewoners';
+  $buttonText = 'Lijst bewoners';
 
   require('partials/shared/title.php');
 ?>
@@ -23,7 +23,9 @@
                                     <div>
                                         <?php foreach(fetch()->usersByHouse($house->ID) as $user) : ?>
                                             <?php $userData = get_userdata($user->ID); ?>
-                                            <img class="thumbnail mb-1" src="<?= App\getUserImage('thumbnail', $user->ID) ?>" alt="" data-toggle="tooltip" data-placement="top" title="<?= $user->first_name ?>" />
+                                            <a href="<?= App\userLink($user) ?>">
+                                                <img class="thumbnail mb-1" src="<?= App\getUserImage('thumbnail', $user->ID) ?>" alt="" data-toggle="tooltip" data-placement="top" title="<?= $user->first_name ?>" />
+                                            </a>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>

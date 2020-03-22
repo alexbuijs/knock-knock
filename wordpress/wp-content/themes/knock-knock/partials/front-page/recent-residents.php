@@ -16,7 +16,9 @@
                         <img class="thumbnail" src="<?= App\getUserImage('thumbnail', $user->data->ID) ?>" alt="" />
                     </div>
                     <div>
-                        <p class="mb-0"><?= $user->display_name; ?></p>
+                        <p class="mb-0">
+                            <?= App\userLink($user, $linkable = true) ?>
+                        </p>
                         <p><small>
                             <?= get_field('bewoner_sinds', 'user_' . $user->data->ID); ?>,
                             <?= App\getUserAddress($user->data->ID); ?>
@@ -25,7 +27,7 @@
                 </li>
 
             <?php endforeach; ?>
-            
+
             <?php wp_reset_postdata(); ?>
         </ul>
     </div>

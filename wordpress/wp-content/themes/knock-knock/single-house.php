@@ -20,7 +20,7 @@
                             <div class="profile-picture" style="background-image:url('<?= App\getUserImage('medium', $user->ID) ?>')"></div>
 
                             <div class="mt-1 mb-3">
-                                <?= $userData->first_name ?>
+                                <?= App\userLink($user, $linkable = true, $lastName = false) ?>
                                 <div class="small">
                                     <?= get_field('resident_adres', $userData); ?>
                                 </div>
