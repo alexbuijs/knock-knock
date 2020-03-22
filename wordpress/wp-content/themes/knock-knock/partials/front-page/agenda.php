@@ -18,7 +18,7 @@
 
                 <li class="list-group-item d-flex align-items-center">
                     <div class="mr-3 text-right">
-                        <h4 class="font-weight-bold mb-0"><?= date_i18n("j", $start); ?></h4>
+                        <h4 class="date font-weight-bold mb-0"><?= date_i18n("j", $start); ?></h4>
                         <div class="text-uppercase font-weight-bold text-muted mb-0 small"><?= date_i18n("M", $start); ?></div>
                     </div>
                     <div class="text-truncate">
