@@ -20,3 +20,11 @@ add_filter('login_message', function ($message) {
 
     return $message;
 });
+
+/**
+ * Add custom query var for the single user page
+ */
+add_filter('query_vars', function($qvars) {
+    $qvars[] = 'bewoner_id';
+    return $qvars;
+});

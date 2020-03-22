@@ -80,3 +80,10 @@ add_action('after_setup_theme', function () {
         get_template_directory() . '/dist/manifest.json'
     );
 });
+
+/**
+ * Rewrite rule for the single use page
+ */
+add_action('init', function() {
+    add_rewrite_rule('^bewoner/([0-9]+)/?', 'index.php?pagename=bewoner&bewoner_id=$matches[1]', 'top');
+});
