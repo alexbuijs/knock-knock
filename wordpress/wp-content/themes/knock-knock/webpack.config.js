@@ -29,6 +29,15 @@ module.exports = {
         rules: [
             // Javascript 
             {
+                enforce: 'pre',
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                loader: 'eslint-loader',
+                options: {
+                    fix: true,
+                },
+            },
+            {
                 test: /\.m?js$/,
                 exclude: /(node_modules)/,
                 use: {
