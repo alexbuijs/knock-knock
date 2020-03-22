@@ -5,6 +5,7 @@ const autoprefixer = require("autoprefixer");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
     mode: isDev ? 'development' : 'production',
@@ -74,6 +75,9 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: isDev ? '[name].css' : '[name].[contenthash:8].css'
+        }),
+        new StylelintPlugin({
+            fix: true
         }),
         new ManifestPlugin(),
         new BrowserSyncPlugin({

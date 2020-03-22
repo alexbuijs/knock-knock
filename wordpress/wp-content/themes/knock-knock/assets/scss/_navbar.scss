@@ -5,12 +5,12 @@
 }
 
 .navbar-toggler {
+  background: darken($primary, 5%);
+  border: 0;
+
   @include media-breakpoint-down(md) {
     margin: 0 $spacer;
   }
-
-  border: none;
-  background: darken($primary, 5%);
 }
 
 .navbar-nav {
@@ -25,15 +25,16 @@
   }
 }
 
-.navbar-dark ul.navbar-nav {
+.navbar-dark {
   .menu-item {
+    /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
     @extend .nav-item;
 
     a {
+      /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
       @extend .nav-link;
-
-      padding: 0.5rem $spacer;
       font-size: $font-size-base;
+      padding: 0.5rem $spacer;
 
       @include media-breakpoint-up(lg) {
         padding: 1rem;
@@ -57,13 +58,13 @@
 }
 
 .navbar-brand {
+  @include media-breakpoint-down(md) {
+    margin: 0 $spacer;
+  }
+
   svg {
     height: 2rem;
     width: 2rem * $kv-logo-ratio;
-  }
-
-  @include media-breakpoint-down(md) {
-    margin: 0 $spacer;
   }
 }
 
