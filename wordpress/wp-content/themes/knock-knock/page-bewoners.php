@@ -13,7 +13,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body mt-1">
-                <table class="table table-responsive-lg">
+                <table class="table table-responsive-lg table-hover">
                     <thead>
                         <tr>
                             <th scope="col"></th>
@@ -29,12 +29,12 @@
 
                             <?php $userData = get_userdata($user->ID); ?>
 
-                            <tr>
+                            <tr data-href="<?= get_bloginfo('url') . '/bewoner/' . $user->user_nicename ?>">
                                 <td><img class="thumbnail" src="<?= App\getUserImage('thumbnail', $user->ID) ?>" alt="" /></td>
                                 <td><?= $userData->first_name; ?></td>
                                 <td><?= $userData->last_name; ?></td>
                                 <td><?= App\getUserAddress($user->ID) ?></td>
-                                <td><?= get_field('resident_phone', $userData); ?></td>
+                                <td><a href="tel:<?= get_field('resident_phone', $userData) ?>"><?= get_field('resident_phone', $userData); ?></a></td>
                                 <td><a href="mailto:<?= $userData->user_email ?>"><?= $userData->user_email ?></a></td>
                             </tr>
                         <?php endforeach; ?>

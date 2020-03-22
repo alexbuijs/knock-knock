@@ -25,7 +25,7 @@ import {
   faArrowRight,
   faEnvelope,
   faPhone,
-  faMapMarker,
+  faMapMarker
 } from "@fortawesome/free-solid-svg-icons";
 
 // Font awesome
@@ -58,6 +58,12 @@ domReady(function() {
   // Activate datepicker
   document.querySelectorAll("div.datetimepicker input").forEach(el => {
     flatpickr(el, flatpickrConfig);
+  });
+
+  document.querySelectorAll("table tr").forEach(el => {
+    el.onclick = function() {
+      window.location = el.getAttribute("data-href");
+    };
   });
 });
 
