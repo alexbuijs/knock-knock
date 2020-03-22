@@ -3,7 +3,7 @@
         <h5 class="font-weight-bold">
             <i class="far fa-fw fa-calendar-alt text-muted"></i>
             Agenda
-            <div class="text-muted small mt-1">Binnenkort op de Klopvaart</div>
+            <div class="text-muted small mt-1">Komende maand op de Klopvaart</div>
         </h5>
     </div>
 
