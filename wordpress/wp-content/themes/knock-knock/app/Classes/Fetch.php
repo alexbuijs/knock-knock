@@ -14,10 +14,24 @@ class Fetch
 
     }
 
-    public function upcomingEvents($start = null)
+    public function upcomingEvents($start = null, $hidePrivate = false)
     {
         if (!$start) {
             $start = time();
+        }
+
+        $conditions = [[
+            'key' => 'start',
+            'compare' => 'BETWEEN',
+            'value' => array(date('Y-m-d H:i:s', $start), date('Y-m-d H:i:s', strtotime('+1 month -1 second', $start))),
+        ]];
+
+        if ($hidePrivate) {
+            $conditions[] = [
+                'key'           => 'type',
+                'compare'       => '!=',
+                'value'         => 'pr-prive'
+            ];
         }
 
         $query = new \WP_Query([
@@ -26,13 +40,7 @@ class Fetch
             'order' => 'ASC',
             'orderby' => 'meta_value',
             'meta_key' => 'start',
-            'meta_query' => [
-                'relation' => 'AND', [
-                    'key' => 'start',
-                    'compare' => 'BETWEEN',
-                    'value' => array(date('Y-m-d H:i:s', $start), date('Y-m-d H:i:s', strtotime('+1 month -1 second', $start))),
-                ]
-            ]
+            'meta_query' => $conditions
         ]);
 
         return $query->posts;

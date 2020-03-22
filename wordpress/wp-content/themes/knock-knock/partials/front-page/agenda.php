@@ -10,7 +10,7 @@
     <div class="card-body">
         <ul class="list-group list-md">
 
-            <?php foreach(fetch()->upcomingEvents() as $post) : setup_postdata($post); ?>
+            <?php foreach(fetch()->upcomingEvents($start = null, $hidePrivate = true) as $post) : setup_postdata($post); ?>
                 <?php
                     $start = strtotime(get_field('start'));
                     $end = strtotime(get_field('einde'));
