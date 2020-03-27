@@ -28,3 +28,10 @@ add_filter('query_vars', function($qvars) {
     $qvars[] = 'bewoner_name';
     return $qvars;
 });
+
+/**
+ * Redirect after login
+ */
+add_filter('login_redirect', function() {
+    return get_bloginfo('url');
+});
