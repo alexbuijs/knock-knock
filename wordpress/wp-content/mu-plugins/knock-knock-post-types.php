@@ -42,9 +42,9 @@ add_action('init', function() {
         'capability_type' => 'post',
         'map_meta_cap' => true,
         'hierarchical' => false,
-        'rewrite' => [ 'slug' => 'documentatie', 'with_front' => true],
+        'rewrite' => ['slug' => 'documentatie', 'with_front' => true],
         'query_var' => true,
-        'supports' => [ 'title', 'editor', 'thumbnail','author'],
+        'supports' => ['title', 'editor', 'thumbnail', 'author', 'revisions'],
         'menu_icon' => 'dashicons-text-page'
     ];
 
