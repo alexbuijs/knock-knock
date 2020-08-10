@@ -2,7 +2,7 @@
 
 <?php
   $icon = 'fas fa-home';
-  $url = '/bewoners';
+  $url = get_bloginfo('url') . '/bewoners';
   $title = 'Huizen';
   $buttonText = 'Lijst bewoners';
 

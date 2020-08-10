@@ -29,6 +29,9 @@ import {
   faPencilAlt
 } from '@fortawesome/free-solid-svg-icons'
 
+// Local imports
+import profileForm from './profileForm'
+
 // Font awesome
 library.add(
   faCalendarAlt,
@@ -62,11 +65,15 @@ domReady(function () {
     flatpickr(el, flatpickrConfig)
   })
 
+  // Table links
   document.querySelectorAll('table tr').forEach(el => {
     el.onclick = function () {
       window.location = el.getAttribute('data-href')
     }
   })
+
+  // Profile form
+  profileForm(document.getElementById('profileForm'))
 })
 
 $(function () {

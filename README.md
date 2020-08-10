@@ -17,7 +17,7 @@ This repository contains the development environment and the WordPress theme for
 - Visit [http://localhost:8081](http://localhost:8081) for phpMyAdmin
 - Install plugins:
   + Advanced Custom Fields PRO
-- Create pages: 'Home', 'Agenda', 'Bewoners', 'Documentatie'
+- Create pages: 'Home', 'Agenda', 'Bewoners', 'Documentatie', 'Bewoner', 'Profiel'
 - Set landing page: Instellingen -> Lezen -> Statische pagina -> Voorpagina: 'Home'
 
 ### Theme development

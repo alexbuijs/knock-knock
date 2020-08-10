@@ -14,7 +14,7 @@
 
 <?php
   $icon = 'far fa-calendar-alt';
-  $url = '/wp-admin/post-new.php?post_type=agenda';
+  $url = get_bloginfo('url') . '/wp-admin/post-new.php?post_type=agenda';
   $title = 'Agenda';
   $buttonIcon = 'fas fa-plus';
   $buttonText = 'Agenda item toevoegen';

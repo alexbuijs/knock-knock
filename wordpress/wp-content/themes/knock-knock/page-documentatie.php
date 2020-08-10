@@ -2,7 +2,7 @@
 
 <?php
   $icon = 'far fa-file';
-  $url = '/wp-admin/post-new.php?post_type=documentatie';
+  $url = get_bloginfo('url') . '/wp-admin/post-new.php?post_type=documentatie';
   $title = 'Documentatie';
   $buttonIcon = 'fas fa-plus';
   $buttonText = 'Document toevoegen';

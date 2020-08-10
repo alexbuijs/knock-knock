@@ -2,7 +2,7 @@
 
 <?php
   $icon = 'far fa-file';
-  $url = '/documentatie';
+  $url = get_bloginfo('url') . '/documentatie';
 
   require('partials/shared/title.php');
 ?>

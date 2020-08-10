@@ -5,7 +5,7 @@
         <i class="<?= $icon ?> fa-fw text-muted"></i>
         <?= $title ?: the_title() ?>
       </h3>
-      <a class="btn btn-primary" href="<?= get_bloginfo('url'); ?><?= $url ?>">
+      <a class="btn btn-primary" href="<?= $url ?>">
         <i class="fas <?= isset($buttonIcon) ? $buttonIcon : 'fa-list' ?>"></i>
         <div class="ml-2 d-inline"><?= isset($buttonText) ? $buttonText : 'Overzicht' ?></div>
       </a>

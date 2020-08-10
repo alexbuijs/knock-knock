@@ -4,7 +4,7 @@
         <img class="user" src="<?=App\getUserImage()?> " alt=""/>
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="<?= admin_url('profile.php'); ?>">Profiel</a>
+        <a class="dropdown-item" href="<?= get_bloginfo('url') . '/profiel' ?>">Profiel</a>
         <a class="dropdown-item" href="<?= wp_logout_url(home_url()); ?>"><i class="fas fa-fw fa-power-off text-danger"></i> Uitloggen</a>
     </div>
 </li>

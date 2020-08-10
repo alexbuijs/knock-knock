@@ -2,7 +2,7 @@
 
 <?php
   $icon = 'fas fa-home';
-  $url = '/huizen';
+  $url = get_bloginfo('url') . '/huizen';
 
   require('partials/shared/title.php');
 ?>

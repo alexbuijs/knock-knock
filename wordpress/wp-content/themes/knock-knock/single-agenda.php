@@ -5,7 +5,7 @@
   $month = date('m', $postDate);
   $year = date('Y', $postDate);
   $icon = 'far fa-calendar-alt';
-  $url = "/agenda?maand=$month&jaar=$year";
+  $url = get_bloginfo('url') . "/agenda?maand=$month&jaar=$year";
 
   require('partials/shared/title.php');
 ?>

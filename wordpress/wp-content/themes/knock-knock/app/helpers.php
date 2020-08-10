@@ -111,7 +111,6 @@ function userLink($user, $linkable = false, $lastName = true)
 
     if ($linkable) {
         return "<a href='$url'>" . $user->first_name . ($lastName ? ' ' . $user->last_name : ''). "</a>";
-        // return "<a href='$url'>$user->first_name $user->last_name</a>";
     }
 
     return $url;

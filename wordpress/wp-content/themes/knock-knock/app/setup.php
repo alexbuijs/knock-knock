@@ -24,6 +24,10 @@ add_action('template_redirect', function () {
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('main', asset('main.js'), [], null, true);
     wp_enqueue_style('main', asset('main.css'), [], null);
+
+    wp_localize_script('main', 'ajax', [
+        'url' => admin_url('admin-ajax.php'),
+    ]);
 });
 
 /**

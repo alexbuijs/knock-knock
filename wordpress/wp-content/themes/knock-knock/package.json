@@ -86,6 +86,8 @@
     "bootstrap": "^4.5.0",
     "flatpickr": "^4.6.3",
     "jquery": "^3.5.1",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "promise.prototype.finally": "^3.1.2",
+    "whatwg-fetch": "^3.4.0"
   }
 }

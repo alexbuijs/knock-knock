@@ -17,7 +17,7 @@ array_map(
         if (!locate_template($file, true, true)) {
             wp_die(sprintf(__('Error locating <code>%s</code>.', 'knock-knock'), $file));
         }
-    }, ['setup', 'helpers', 'filters', 'shortcodes']
+    }, ['setup', 'helpers', 'filters', 'shortcodes', 'forms']
 );
 
 /**

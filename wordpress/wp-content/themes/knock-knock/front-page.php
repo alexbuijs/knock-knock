@@ -2,6 +2,7 @@
 
 <div class="row">
     <div class="col-12 col-lg-8">
+        <?php get_template_part('partials/front-page/user-image-check'); ?>
         <?php get_template_part('partials/front-page/recent-events'); ?>
     </div>
     <div class="col-12 col-lg-4">

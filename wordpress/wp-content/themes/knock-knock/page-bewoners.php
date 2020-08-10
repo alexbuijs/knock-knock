@@ -2,7 +2,7 @@
 
 <?php
   $icon = 'far fa-user';
-  $url = '/huizen';
+  $url = get_bloginfo('url') . '/huizen';
   $title = 'Bewoners';
   $buttonText = 'Bekijk per huis';
 
