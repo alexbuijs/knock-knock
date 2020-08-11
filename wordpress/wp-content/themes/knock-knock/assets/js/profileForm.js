@@ -56,7 +56,7 @@ export default (form) => {
             pictureEl.style.backgroundImage = 'url(' + response.data.image + ')'
           }
         } else {
-          showAlert(response.data, 'danger')
+          showAlert(response.data ? response.data : 'Er ging iets mis.', 'danger')
         }
       }).finally(() => {
         setLoading(false)
