@@ -20,7 +20,7 @@ function getUserImage($size = 'thumbnail', $userId = null)
     $image = get_field('resident_profile_image', 'user_' . $userId);
 
     if (!$image) {
-        return get_template_directory_uri() . '/assets/images/fallback.jpg';
+        return dirname(get_template_directory_uri()) . '/assets/images/fallback.jpg';
     }
 
     return $image['sizes'][$size];
@@ -96,7 +96,7 @@ function fetch()
  */
 function asset($assetName)
 {
-    $uriBase = get_template_directory_uri() . '/dist/';
+    $uriBase = dirname(get_template_directory_uri()) . '/dist/';
     return $uriBase . manifest()->get($assetName);
 }
 

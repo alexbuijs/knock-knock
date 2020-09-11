@@ -14,36 +14,18 @@ class Fetch
 
     }
 
-    public function upcomingEvents($start = null, $hidePrivate = false)
+    private function includeUserMeta($users) 
     {
-        if (!$start) {
-            $start = time();
+        foreach ($users as $user) {
+            $user->thumbnail = \App\getUserImage('thumbnail', $user->ID);
+            $user->addressLink = \App\getUserAddress($user->ID);
+            $user->since = get_field('bewoner_sinds', 'user_' . $user->ID);
+            $user->phone = get_field('resident_phone', 'user_' . $user->ID);
+            $user->url = \App\userLink($user);
+            $user->link = \App\userLink($user, true);
         }
 
-        $conditions = [[
-            'key' => 'start',
-            'compare' => 'BETWEEN',
-            'value' => array(date('Y-m-d H:i:s', $start), date('Y-m-d H:i:s', strtotime('+1 month -1 second', $start))),
-        ]];
-
-        if ($hidePrivate) {
-            $conditions[] = [
-                'key'           => 'type',
-                'compare'       => '!=',
-                'value'         => 'pr-prive'
-            ];
-        }
-
-        $query = new \WP_Query([
-            'post_type' => 'agenda',
-            'posts_per_page' => -1,
-            'order' => 'ASC',
-            'orderby' => 'meta_value',
-            'meta_key' => 'start',
-            'meta_query' => $conditions
-        ]);
-
-        return $query->posts;
+        return $users;
     }
 
     public function recentUsers()
@@ -56,7 +38,9 @@ class Fetch
             'role__in' => ['administrator', 'editor', 'author']
         ]);
 
-        return $query->get_results();
+        $results = $query->get_results();
+
+        return $this->includeUserMeta($results);
     }
 
     /**
@@ -79,7 +63,9 @@ class Fetch
             ],
         ]);
 
-        return $query->get_results();
+        $results = $query->get_results();
+
+        return $this->includeUserMeta($results);
     }
 
     /**
@@ -110,74 +96,22 @@ class Fetch
     }
 
     /**
-     * Get recent posts
-     */
-    function recentPosts()
-    {
-        $query = new \WP_Query([
-            'posts_per_page' => 15,
-            'orderby' => 'modified',
-            'order' => 'DESC',
-            'post_type' => ['agenda', 'documentatie'],
-        ]);
-
-        return $query->posts;
-    }
-
-    /**
      * Get houses
      */
-    function houses($excludeIds = [])
+    function houses()
     {
-        $query = new \WP_Query([
+        $args = [
             'post_type' => 'house',
             'posts_per_page' => -1,
-            'post__not_in' => $excludeIds
-        ]);
+        ];
 
-        usort($query->posts, function($a, $b) {
+        $houses = \Timber\Timber::get_posts($args, 'App\PostTypes\HousePost');
+
+        // Sort houses by name
+        usort($houses, function($a, $b) {
             return strnatcmp($a->post_title, $b->post_title);
         });
 
-        return $query->posts;
-    }
-
-    /**
-     * Get documentation, split per given categories
-     */
-    function docs($categories = null)
-    {
-        $categories = $categories ?: [
-            'Algemeen' => 'algemeen',
-            'Bestuur' => 'bestuur',
-            'Commissies' => 'commissies',
-            'Faciliteiten' => 'faciliteiten',
-            'Huur en nieuwe huurders' => 'huur-en-nieuwe-huurders',
-            'In, op en om het huis' => 'in-op-en-om-het-huis',
-            'Overige' => 'overige'
-        ];
-
-        $result = [];
-
-        foreach($categories as $key => $category)
-        {
-            $query = new \WP_Query([
-                'post_type' => 'documentatie',
-                'posts_per_page' => -1,
-                'orderby' => 'title',
-                'order' => 'ASC',
-                'meta_query' => [
-                    [
-                        'key' => 'categorie',
-                        'value' => $category,
-                        'compare' => '=',
-                    ]
-                ]
-            ]);
-
-            $result[$key] = $query->posts;
-        }
-
-        return $result;
+        return $houses;
     }
 }

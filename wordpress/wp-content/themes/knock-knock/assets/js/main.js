@@ -13,7 +13,8 @@ import {
   faBell,
   faCalendarAlt,
   faFile,
-  faUser
+  faUser,
+  faClock
 } from '@fortawesome/free-regular-svg-icons'
 import {
   faHome,
@@ -26,7 +27,8 @@ import {
   faEnvelope,
   faPhone,
   faMapMarker,
-  faPencilAlt
+  faPencilAlt,
+  faTrash
 } from '@fortawesome/free-solid-svg-icons'
 
 // Local imports
@@ -48,7 +50,9 @@ library.add(
   faEnvelope,
   faPhone,
   faMapMarker,
-  faPencilAlt
+  faPencilAlt,
+  faTrash,
+  faClock
 )
 dom.watch()
 

@@ -1,0 +1,18 @@
+{% extends "layouts/full-width.twig" %}
+
+{% block content %}
+    {% embed "partials/page-header.twig" with {'icon': 'fas fa-question'} %}
+        {% block title %}404{% endblock %}
+    {% endembed %}
+    {% embed "partials/card.twig" %}
+        {% block content %}Oh oh, deze pagina konden we helaas niet vinden!{% endblock %}
+        {% block footer %}
+            {% include "partials/button.twig" with {
+                'text': 'Keer terug naar home',
+                'icon': 'fas fa-home',
+                'url': site.url,
+                'classes': 'mt-2'
+            } %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

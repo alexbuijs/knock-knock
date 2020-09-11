@@ -81,9 +81,10 @@ add_action('after_setup_theme', function () {
     $container->bind('fetch', Fetch::class);
 
     $container->make('manifest')->registerManifest(
-        get_template_directory() . '/dist/manifest.json'
+        dirname(get_template_directory()) . '/dist/manifest.json'
     );
 });
+
 
 /**
  * Rewrite rule for the single use page
@@ -91,3 +92,4 @@ add_action('after_setup_theme', function () {
 add_action('init', function() {
     add_rewrite_rule('^bewoner/([0-9a-z-]+)/?', 'index.php?pagename=bewoner&bewoner_name=$matches[1]', 'top');
 });
+

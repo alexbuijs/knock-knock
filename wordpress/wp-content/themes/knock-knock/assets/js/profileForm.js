@@ -21,7 +21,7 @@ export default (form) => {
   }
 
   const submitButton = form.querySelector('button[type="submit"]')
-  const pictureEl = form.querySelector('.profile-picture')
+  const pictureEl = document.getElementById('profile-picture')
 
   const setLoading = (isLoading) => {
     submitButton.disabled = isLoading

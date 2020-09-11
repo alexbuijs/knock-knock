@@ -25,6 +25,7 @@ body > .container-lg {
   background-position: center;
   background-size: cover;
   border-radius: $border-radius;
+  display: block;
   padding-bottom: 100%;
   width: 100%;
 }

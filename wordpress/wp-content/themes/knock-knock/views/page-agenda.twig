@@ -1,0 +1,55 @@
+{% extends "layouts/full-width.twig" %}
+
+{% block content %}
+    {% embed "partials/page-header.twig" with {'icon': 'far fa-calendar-alt'} %}
+        {% block title %}Agenda{% endblock %}
+        {% block right %}
+            {% include "partials/button.twig" with {
+                'text': 'Agenda item toevoegen',
+                'icon': 'fas fa-plus',
+                'url': function('admin_url', 'post-new.php?post_type=agenda')
+            } %}
+        {% endblock %}
+    {% endembed %}
+
+    <div class="row mt-4">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <h1 class="title">{{ month|capitalize }}</h1>
+            <h3 class="font-weight-light">{{ year }}</h3>
+            <div class="d-flex align-items-center my-3">
+                <a class="btn btn-primary btn-sm mr-2" href="{{ site.url }}/agenda?maand={{ previousMonth }}&jaar={{ previousYear }}"><i class="fas fa-arrow-left"></i> {{ previousMonth|localMonth|capitalize }}</a>
+                <a class="btn btn-primary btn-sm" href="{{ site.url }}/agenda?maand={{ nextMonth }}&jaar={{ nextYear }}">{{ nextMonth|localMonth|capitalize }} <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        {% for item in agendaItems %}
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                {% embed "partials/card.twig" with {'classes': 'item-grow' ~ (item.hasPassed ? ' card-muted' : '')} %}
+                    {% block content %}
+                        <div class="d-flex flex-row align-items-center mb-2">
+                            <h1 class="font-weight-bold title mr-2">{{ localDate('j', item.start) }}</h1>
+                            <div class="small">
+                                <b>{{ localDate('F', item.start) }}</b><br>
+                                {{ localDate("l", item.start) }}
+                            </div>
+                        </div>
+                        <h5><a href="{{ item.link }}">{{ item.title }}</a></h5>
+                        <p class="small">
+                            <i class="far fa-clock fa-fw"></i> {{ localDate("H:i", item.start) ~ ' - ' ~ localDate("H:i", item.end)}}
+                        </p>
+                        <p class="text-muted small">
+                            {{ item.meta('type') }}
+                        </p>
+                    {% endblock %}
+                    {% block footer %}
+                        <div>
+                            <img src="{{ item.authorImage }}" class="thumbnail" />
+                            <span class="ml-2">
+                                {{ item.authorLink }}
+                            </span>
+                        </div>
+                    {% endblock %}
+                {% endembed %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

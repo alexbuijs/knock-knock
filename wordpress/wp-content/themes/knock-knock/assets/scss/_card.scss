@@ -17,4 +17,16 @@
   .card-footer {
     padding: 0.5rem 1.25rem 1.25rem;
   }
+
+  &.card-muted {
+    .card-header,
+    .card-body,
+    .card-footer {
+      opacity: 0.5;
+    }
+  }
+}
+
+.item-grow {
+  height: calc(100% - #{$grid-gutter-width});
 }

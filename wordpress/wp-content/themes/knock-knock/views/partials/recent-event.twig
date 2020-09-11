@@ -1,0 +1,15 @@
+<li class="d-flex justify-content-between py-3 border-bottom">
+    <div class='d-flex align-items-center'>
+        {% block content %}{% endblock %}
+    </div>
+    <div class='d-flex align-items-center text-nowrap text-muted small ml-1'>
+        <span class="d-none d-sm-inline">{{ post.isoDate|timeDiff }}</span>
+        <span class="d-sm-none">{{ post.isoDate|timeDiffShort }}</span>
+    </div>
+</li>
+
+{% macro icon(icon = "fa-calendar-alt", background = "bg-purple") %}
+    <div class='d-flex align-items-center justify-content-center mr-3 icon {{ background }}'>
+        <i class="far fa-fw {{ icon }}"></i>
+    </div>
+{% endmacro %}

@@ -71,8 +71,8 @@ add_action('wp_ajax_save_profile', function() {
             $attachment = array(
                 'guid' => wp_upload_dir()['url'] . '/' . basename($uploaded['file']),
                 'post_mime_type' => $uploaded['type'],
-                'post_title' => preg_replace('/\.[^.]+$/', ”, basename($uploaded['file'])),
-                'post_content' => ”,
+                'post_title' => preg_replace('/\.[^.]+$/', '', basename($uploaded['file'])),
+                'post_content' => '',
                 'post_status' => 'inherit'
             );
 

@@ -1,0 +1,29 @@
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+    <div class="container-lg">
+        <a class="navbar-brand" href="{{ site.url }}">
+            <svg role="img" class="normal" title="{{ site.name }}">
+                <use xlink:href="{{ theme_uri ~ '/assets/images/logo.svg#logo' }}"/>
+            </svg>
+        </a>
+        <ul class="navbar-nav ml-auto d-lg-none">
+            {% include "partials/navbar-user-badge.twig" %}
+        </ul>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-toggle" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="menu-toggle" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                {% for item in menu.items %}
+                    <li class="{{ item.classes|join(' ') }}">
+                        <a href="{{ item.link }}">{{ item.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul class="navbar-nav ml-auto d-none d-lg-block">
+                {% include "partials/navbar-user-badge.twig" %}
+            </ul>
+        </div>
+    </div>
+</nav>

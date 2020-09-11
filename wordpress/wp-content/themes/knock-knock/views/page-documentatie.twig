@@ -1,0 +1,37 @@
+{% extends "layouts/full-width.twig" %}
+
+{% block content %}
+    {% embed "partials/page-header.twig" with {'icon': 'far fa-file'} %}
+        {% block title %}Documentatie{% endblock %}
+        {% block right %}
+            {% include "partials/button.twig" with {
+                'text': 'Documentatie toevoegen',
+                'icon': 'fas fa-plus',
+                'url': site.url ~ '/wp-admin/post-new.php?post_type=documentatie'
+            } %}
+        {% endblock %}
+    {% endembed %}
+    {% for key, category in docs %}
+        {% embed "partials/card.twig" %}
+            {% block title %}{{ key }}{% endblock %}
+            {% block content %}
+                {% if category is not empty %}
+                    <div class="col-12">
+                        <ul class="list-unstyled list-sm row mb-3">
+                            {% for doc in category %}
+                                <li class="list-group-item col-12 col-sm-6 d-flex">
+                                    <div class="mr-1">
+                                        <i class="far fa-fw fa-file text-muted"></i>
+                                    </div>
+                                    <a href="{{ doc.link }}">{{ doc.post_title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
+                    <p class="text-muted">Geen documenten in deze categorie</p>
+                {% endif %}
+            {% endblock %}
+        {% endembed %}
+    {% endfor %}
+{% endblock %}

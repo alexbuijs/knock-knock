@@ -1,0 +1,30 @@
+<div href="#" class="card {{ classes }}">
+    {% block contentFull %}
+        <div class="card-header bg-transparent">
+            {% block header %}
+                {% set _title = block('title') %}
+                {% if _title is not empty %}
+                    <h5 class="font-weight-bold">
+                        {% if icon is not empty %}
+                            <i class="{{ iconLibrary ?? 'far' }} fa-fw {{ icon }} text-muted"></i>
+                        {% endif %}
+                        {% block title %}{% endblock %}
+                        {% set _subtitle = block('subtitle') %}
+                        {% if _subtitle is not empty %}
+                            <div class="text-muted small mt-1">{% block subtitle %}{% endblock %}</div>
+                        {% endif %} 
+                    </h5>
+                {% endif %}
+            {% endblock %}
+        </div>
+        <div class="card-body">
+            {% block content %}{% endblock %}
+        </div>
+        {% set _block = block('footer') %}
+        {% if _block is not empty %}
+            <div class="card-footer bg-transparent">
+                {% block footer %}{% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+</div>

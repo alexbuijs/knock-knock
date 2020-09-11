@@ -6,14 +6,14 @@
   flex-shrink: 0;
   height: $size;
   width: $size;
+}
 
-  &.calendar {
-    background-color: $yellow;
-  }
+.bg-yellow {
+  background-color: $yellow;
+}
 
-  &.document {
-    background-color: $purple;
-  }
+.bg-purple {
+  background-color: $purple;
 }
 
 ul {
@@ -27,3 +27,4 @@ ul {
 .date {
   width: 33px;
 }
+

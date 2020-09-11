@@ -1,0 +1,8 @@
+<a class="btn {{ type ?? 'btn-primary' }} {{ classes }}" href="{{ url }}">
+    {% if icon is not empty %}
+        <i class="{{ icon }}"></i>
+        <span class="ml-2 d-inline">{{ text }}</span>
+    {% else %}
+        {{ text }}
+    {% endif %}
+</a>

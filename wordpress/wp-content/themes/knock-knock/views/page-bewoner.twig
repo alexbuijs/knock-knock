@@ -1,0 +1,50 @@
+{% extends "layouts/two-column.twig" %}
+
+{% set leftColumn = 'col-sm-6' %}
+{% set rightColumn = 'col-sm-6' %}
+
+
+{% block header %}
+    {% embed "partials/page-header.twig" with {'icon': 'far fa-user'} %}
+        {% block title %}{{ user ? user.display_name : 'Bewoner niet gevonden' }}{% endblock %}
+        {% block right %}
+            {% include "partials/button.twig" with {
+                'text': 'Overzicht',
+                'icon': 'fas fa-list',
+                'url': site.url ~ '/bewoners'
+            } %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block left %}
+    {% embed "partials/card.twig" with {'classes': 'p-3'} %}
+        {% block contentFull %}     
+            <div class="profile-picture" style="background-image:url('{{ userImage }}')"></div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block right %}
+    {% embed "partials/card.twig" %}
+        {% block content %}
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="font-weight-bold">
+                        Info
+                    </h5>
+                    {% if user.ID == current_user.ID %}
+                        <a href="{{ site.url }}/profiel" class="btn btn-sm btn-primary">
+                            <i class="fas fa-pencil-alt mr-1"></i> Bewerken
+                        </a>
+                    {% endif %}
+                </div>
+                <p><i class="fas fa-map-marker fa-fw mr-2"></i>{{ userAddress }}</p>
+                <p><i class="fas fa-envelope fa-fw mr-2"></i><a href="mailto:{{ user.user_email }}">{{ user.user_email }}</a></p>
+                {% set phone = userField('resident_phone', user) %}
+                {% if phone %}
+                    <p><i class="fas fa-phone fa-fw mr-2"></i><a href="tel:{{ phone }}">{{ phone }}</a></p>
+                {% endif %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+

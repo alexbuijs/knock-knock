@@ -1,0 +1,91 @@
+{% extends "layouts/two-column.twig" %}
+
+{% block left %}
+    {% if not userImage %}
+        <div class="alert alert-primary" role="alert">
+            Hoi {{ current_user.first_name }}! Welkom op het intranet. <a href="{{ site.url }}/profiel" class="alert-link">Klik hier</a> om een profielfoto toe te voegen!</a>
+        </div>
+    {% endif %}
+
+    {% embed "partials/card.twig" with {'icon': 'fa-bell'} %}
+        {% block title %}Recente wijzigingen{% endblock %}
+        {% block content %}
+            <ul class='list-unstyled'>
+                {% for post in recentEvents %}
+
+                    {% embed "partials/recent-event.twig" %}
+                        {% block content %}
+
+                            {% if post.post_type == 'documentatie' %} 
+                                {{ _self.icon('fa-file', 'bg-purple') }}
+                            {% elseif post.post_type == 'agenda' %}
+                                {{ _self.icon('fa-calendar-alt', 'bg-yellow') }}
+                            {% endif %}
+
+                            <div>
+                                {% if post.post_type == 'documentatie' %} 
+                                    Het document 
+                                {% elseif post.post_type == 'agenda' %}
+                                    De activiteit
+                                {% endif %}
+                                <a href="{{ post.link }}">{{ post.title }}</a> is {{ post.isNew ? 'aangemaakt' : 'aangepast' }}
+                            </div>
+
+                        {% endblock %}
+                    {% endembed %}
+                {% endfor %}
+            </ul>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block right %}
+    {% embed "partials/card.twig" with {'icon': 'fa-calendar-alt'} %}
+        {% block title %}Agenda{% endblock %}
+        {% block subtitle %}Komende maand op de Klopvaart{% endblock %}
+        {% block content %}
+            <ul class="list-group list-md">
+                {% for post in upcomingActivities %}
+                    <li class="list-group-item d-flex align-items-center">
+                        <div class="mr-3 text-right">
+                            <h4 class="date font-weight-bold mb-0">{{ localDate('j', post.start) }}</h4>
+                            <div class="text-uppercase font-weight-bold text-muted mb-0 small">{{ localDate("M", post.start) }}</div>
+                        </div>
+                        <div class="text-truncate">
+                            <a href="{{ post.link }}">{{ post.title }}</a>
+                            <div class="text-muted small">{{ localDate("l", post.start) }} {{ localDate("H:i", post.start) ~ ' - ' ~ localDate("H:i", post.end)}}</div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endblock %}
+        {% block footer %}
+            <a href="{{ site.url }}/agenda" class="btn btn-primary">Bekijk alle agenda-items</a>
+        {% endblock %}
+    {% endembed %}
+
+    {% embed "partials/card.twig" with {'icon': 'fa-user'} %}
+        {% block title %}Nieuwe bewoners{% endblock %}
+        {% block subtitle %}Welkom!{% endblock %}
+        {% block content %}
+            <ul class="list-group">
+                {% for user in recentUsers %}
+                    <li class="list-group-item d-flex">
+                        <div class="mr-3">
+                            <img class="thumbnail" src="{{ user.thumbnail }}" alt="" />
+                        </div>
+                        <div>
+                            <p class="mb-0">
+                                {{ user.link }}
+                            </p>
+                            <p><small>
+                                {{ user.since }},
+                                {{ user.addressLink }}
+                            </small></p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

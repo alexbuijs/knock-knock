@@ -16,7 +16,8 @@
         "php": "^7.2.5",
         "illuminate/filesystem": "^6.7",
         "illuminate/container": "^6.7",
-        "nesbot/carbon": "^2.31"
+        "nesbot/carbon": "^2.31",
+        "timber/timber": "^1.17"
     },
     "prefer-stable": true
 }

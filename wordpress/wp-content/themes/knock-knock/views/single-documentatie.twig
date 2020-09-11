@@ -1,0 +1,69 @@
+{% extends "layouts/two-column.twig" %}
+
+{% block header %}
+    {% embed "partials/page-header.twig" with {'icon': 'far fa-file'} %}
+        {% block title %}{{ post.post_title }}{% endblock %}
+        {% block right %}
+            {% include "partials/button.twig" with {
+                'text': 'Overzicht',
+                'icon': 'fas fa-list',
+                'url': site.url ~ '/documentatie'
+            } %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block left %}
+    {% embed "partials/card.twig" %}
+        {% block content %}
+            {% if post.post_author == current_user.ID or function('current_user_can', 'edit_others_posts') %}
+                <div class="float-right ml-3 mb-2">
+                    {% include "partials/button.twig" with {
+                        'text': 'Bewerken',
+                        'icon': 'fas fa-pencil-alt',
+                        'url': function('get_edit_post_link'),
+                        'classes': 'btn-sm'
+                    } %}
+                </div>
+            {% endif %}
+            {{ post.content }}
+        {% endblock %}
+        {% block footer %}
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <div>
+                    <img src="{{ authorThumbnail }}" class="thumbnail" />
+                    <span class="text-muted ml-2">
+                        {{ authorLink }} is beheerder van dit document
+                    </span>
+                </div>
+                <div class="text-muted small">
+                    <span class="d-none d-sm-inline">{{ post.isoDate|timeDiff }}</span>
+                    <span class="d-sm-none">{{ post.isoDate|timeDiffShort }}</span>
+                    aangepast
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block right %}
+    {% embed "partials/card.twig" %}
+        {% block title %}Bijlagen{% endblock %}
+        {% block content %}
+            <ul class='list-unstyled mb-3'>
+                {% for item in post.meta('downloads') %}
+                    {% if item.bestand %}
+                        <li class='d-flex mb-1'>
+                            <div class='mr-1'>
+                                <i class="far fa-fw fa-file text-muted"></i>
+                            </div>
+                            <a href="{{ item.bestand.url }}" target="_blank">{{ item.omschrijving }}</a>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <p class="text-muted">Geen bestanden</p>
+                {% endfor %}
+            </ul>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

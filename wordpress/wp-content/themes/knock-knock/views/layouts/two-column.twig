@@ -1,0 +1,24 @@
+{% extends "layouts/base.twig" %}
+
+{% block content %}
+    <div class="row">
+        {% set _header = block('header') %}
+        {% if _header is not empty %}
+            <div class="col-12">
+                {% block header %}
+                    
+                {% endblock %}
+            </div>
+        {% endif %}
+        <div class="col-12 {{ leftColumn ?? 'col-lg-8' }}">
+            {% block left %}
+
+            {% endblock %}
+        </div>
+        <div class="col-12 {{ rightColumn ?? 'col-lg-4' }}">
+            {% block right %}
+
+            {% endblock %}
+        </div>
+</div>
+{% endblock %}

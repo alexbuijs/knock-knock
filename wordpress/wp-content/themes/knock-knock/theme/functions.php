@@ -3,17 +3,23 @@
 /**
  * Make sure composer dependencies are installed and load them
  */
-if (!file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+if (!file_exists($composer = dirname(__DIR__) . '/vendor/autoload.php')) {
     wp_die(__('Autoloader not found. Run <code>composer install</code> from theme directory.', 'knock-knock'));
 }
 require_once $composer;
+
+/**
+ * Initialize Timber
+ */
+$timber = new \Timber\Timber();
+Timber::$dirname = ['../views'];
 
 /**
  * Loads Knock Knock template files located in the app/ folder
  */
 array_map(
     function ($file) {
-        $file = "app/{$file}.php";
+        $file = "../app/{$file}.php";
         if (!locate_template($file, true, true)) {
             wp_die(sprintf(__('Error locating <code>%s</code>.', 'knock-knock'), $file));
         }

@@ -1,0 +1,57 @@
+{% extends "layouts/two-column.twig" %}
+
+{% block header %}
+    {% embed "partials/page-header.twig" with {'icon': 'fas fa-home'} %}
+        {% block title %}{{ post.post_title }}{% endblock %}
+        {% block right %}
+            {% include "partials/button.twig" with {
+                'text': 'Overzicht',
+                'icon': 'fas fa-list',
+                'url': site.url ~ '/huizen'
+            } %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block left %}
+    {% embed "partials/card.twig" %}
+        {% block content %}
+            <div class="row">
+                {% for resident in post.residents %}
+                    <div class="col-6 col-lg-4">
+                        <a href="{{ resident.url }}" class="profile-picture" style="background-image:url('{{ resident.image }}')"></a>
+                        <div class="mt-1 mb-3">
+                            <a href="{{ resident.url }}">{{ resident.first_name }}</a>
+                            <div class="small">
+                                {{ userField('resident_adres', resident) }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block right %}
+    {% embed "partials/card.twig" %}
+        {% block title %}Andere huizen{% endblock %}
+        {% block content %}
+            <ul class="list-group mb-2">
+                {% for house in houses %}
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="font-weight-bold">
+                                {% if post.ID == house.ID %}
+                                    {{ house.post_title }}
+                                {% else %}
+                                    <a href="{{ house.link }}">{{ house.post_title }}</a>
+                                {% endif %}
+                            </h5>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
