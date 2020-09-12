@@ -1,4 +1,4 @@
-.cache/
+.twig-cache/
 node_modules/
 dist/
 vendor/

@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -32,14 +34,28 @@ jobs:
       run: |
         cd ./wordpress/wp-content/themes/knock-knock
         composer install --prefer-dist --no-progress --no-suggest
-    - name: FTP-Deploy-Action theme
+    - name: Create empty cache folder
+      run: |
+        cd ./wordpress/wp-content/themes/knock-knock
+        if [ -d ".twig-cache" ]; then rm -Rf .twig-cache; fi
+        mkdir .twig-cache
+    - name: Delete Twig cache
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:
         FTP_SERVER: ${{ secrets.FTP_HOST }}
-        FTP_USERNAME: ${{ secrets.FTP_THEME_USER }}
-        FTP_PASSWORD: ${{ secrets.FTP_THEME_PASSWORD }}
-        LOCAL_DIR: wordpress/wp-content/themes/knock-knock
-        ARGS: --exclude=node_modules/ --exclude=.cache/ --exclude=assets/scss/ --exclude=assets/js/ -L --verbose
+        FTP_USERNAME: ${{ secrets.FTP_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        LOCAL_DIR: wordpress/wp-content/themes/knock-knock/.twig-cache
+        REMOTE_DIR: .twig-cache
+        ARGS: --delete
+    - name: FTP-Deploy-Action theme
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      with:
+        ftp-server: ${{ secrets.FTP_HOST }}
+        ftp-username: ${{ secrets.FTP_USER }}
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: wordpress/wp-content/themes/knock-knock/
+        git-ftp-args:
     - name: FTP-Deploy-Action mu-plugins
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:

@@ -96,5 +96,5 @@ add_filter('timber/twig', function($twig) {
  */
 
 add_filter( 'timber/cache/location', function() {
-    return dirname(get_stylesheet_directory()) . '/.cache';
+    return dirname(get_stylesheet_directory()) . '/.twig-cache';
 });
