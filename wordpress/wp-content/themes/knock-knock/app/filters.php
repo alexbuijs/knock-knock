@@ -90,3 +90,11 @@ add_filter('timber/twig', function($twig) {
 
     return $twig;
 });
+
+/**
+ * Set timber cache location
+ */
+
+add_filter( 'timber/cache/location', function() {
+    return dirname(get_stylesheet_directory()) . '/.cache';
+});

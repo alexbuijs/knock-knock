@@ -20,7 +20,7 @@ function getUserImage($size = 'thumbnail', $userId = null)
     $image = get_field('resident_profile_image', 'user_' . $userId);
 
     if (!$image) {
-        return dirname(get_template_directory_uri()) . '/assets/images/fallback.jpg';
+        return dirname(get_template_directory_uri()) . '/assets/images/fallback.png';
     }
 
     return $image['sizes'][$size];

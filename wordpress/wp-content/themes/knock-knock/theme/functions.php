@@ -13,6 +13,7 @@ require_once $composer;
  */
 $timber = new \Timber\Timber();
 Timber::$dirname = ['../views'];
+Timber::$cache = true;
 
 /**
  * Loads Knock Knock template files located in the app/ folder
