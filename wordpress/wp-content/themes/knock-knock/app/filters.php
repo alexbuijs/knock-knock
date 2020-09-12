@@ -39,6 +39,21 @@ add_filter('login_redirect', function($redirect_to) {
 });
 
 /**
+ * Change default acf-json folder location
+ */
+add_filter('acf/settings/save_json', function($path) {
+    return dirname(get_stylesheet_directory()) . '/assets/acf-json';
+});
+
+add_filter('acf/settings/load_json', function($paths) {
+    unset($paths[0]);
+    
+    $paths[] = dirname(get_stylesheet_directory()) . '/assets/acf-json';
+
+    return $paths;
+});
+
+/**
  * Make options available in all timber contexts
  */
 add_filter('timber/context', function ($context) {
