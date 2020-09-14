@@ -1,4 +1,15 @@
-import 'whatwg-fetch'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import domReady from '@wordpress/dom-ready'
+
+import ProfileForm from './components/profileForm'
+
+domReady(function () {
+    const root = document.getElementById('react-root')
+    ReactDOM.render(<ProfileForm {...(root.dataset)} />, root)
+})
+
+/* import 'whatwg-fetch'
 import 'bootstrap/js/dist/alert'
 import 'promise.prototype.finally'
 
@@ -57,9 +68,11 @@ export default (form) => {
           }
         } else {
           showAlert(response.data ? response.data : 'Er ging iets mis.', 'danger')
+          console.error(response)
         }
       }).finally(() => {
         setLoading(false)
       })
   })
 }
+*/

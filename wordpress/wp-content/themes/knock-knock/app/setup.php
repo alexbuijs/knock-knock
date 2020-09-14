@@ -28,6 +28,10 @@ add_action('wp_enqueue_scripts', function () {
     wp_localize_script('main', 'ajax', [
         'url' => admin_url('admin-ajax.php'),
     ]);
+
+    if (is_page('profiel')) {
+        wp_enqueue_script('profile', asset('profile.js'), ['main'], null, true);
+    }
 });
 
 /**

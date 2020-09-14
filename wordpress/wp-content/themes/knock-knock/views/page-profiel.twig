@@ -16,7 +16,14 @@
 {% block left %}
     {% embed "partials/card.twig" %}
         {% block content %}
-            <form id="profileForm">
+            {# Form handled in React, see assets/js/profile.js #}   
+            <div id="react-root" 
+                data-email="{{ current_user.user_email }}" 
+                data-phone="{{ userField('resident_phone', current_user) }}"
+                data-ajax-url="{{ function('admin_url', 'admin-ajax.php') }}"
+                data-nonce="{{ function('wp_create_nonce', 'save_profile-' ~ current_user.ID) }}">
+            </div>
+            {# <form id="profileForm">
                 <div class="alert alert-success d-none" role="alert"></div>
                 <h5 class="font-weight-bold">Persoonlijke gegevens</h5>
                 <div class="form-group mt-2">
@@ -30,7 +37,7 @@
                 <h5 class="font-weight-bold">Foto</h5>
                 <div class="form-group">
                     <label>Selecteer een nieuwe foto <small>(niet groter dan 2MB)</small> en klik op opslaan.</label>
-                    <input type="file" class="form-control-file" name="profile_photo">
+                    <input type="file" class="form-control-file" name="profilePhoto">
                 </div>
                 {{ function('wp_nonce_field', 'save_profile-' ~ current_user.ID) }}
                 <input name="action" value="save_profile" type="hidden">
@@ -38,7 +45,7 @@
                     <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                     <span class="body">Opslaan</span>
                 </button>
-            </form>
+            </form> #}
         {% endblock %}
         {% block footer %}
             <small>Wil je je wachtwoord wijzigen? Dat kan <a href="{{ function('admin_url', 'profile.php') }}">hier</a>.</small>

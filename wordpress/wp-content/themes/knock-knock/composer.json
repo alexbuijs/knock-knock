@@ -17,7 +17,10 @@
         "illuminate/filesystem": "^6.7",
         "illuminate/container": "^6.7",
         "nesbot/carbon": "^2.31",
-        "timber/timber": "^1.17"
+        "timber/timber": "^1.17",
+        "symfony/validator": "^5.1",
+        "doctrine/annotations": "^1.10",
+        "symfony/property-access": "^5.1"
     },
     "prefer-stable": true
 }

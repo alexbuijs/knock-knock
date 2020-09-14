@@ -14,10 +14,13 @@ module.exports = {
             './assets/js/main.js',
             './assets/scss/main.scss',
         ],
+        profile: [
+            './assets/js/profile.js',
+        ],
         // Separate datepicker for admin
         datepicker: [
             './assets/scss/_datepicker.scss'
-        ]
+        ],
     },
     devtool: isDev ? 'source-map' : false,
     output: {
@@ -43,7 +46,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ['@babel/preset-env'],
+                        plugins: ['@babel/plugin-transform-react-jsx']
                     }
                 }
             },
@@ -68,7 +72,11 @@ module.exports = {
                         loader: 'postcss-loader',
                         options: {
                             sourceMap: isDev,
-                            plugins: () => [autoprefixer]
+                            postcssOptions: {
+                                plugins: [
+                                    ['autoprefixer', {}],
+                                ],
+                            },
                         },
                     },
                     {
