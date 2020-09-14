@@ -69,6 +69,7 @@
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@prettier/plugin-php": "^0.14.3",
     "autoprefixer": "^9.8.6",
@@ -99,6 +100,8 @@
     "webpack-manifest-plugin": "^2.2.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "@babel/runtime-corejs3": "^7.11.2",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
