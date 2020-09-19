@@ -9,6 +9,10 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validation;
 
+add_action('wp_ajax_nopriv_test', function() {
+    echo 'hia';
+});
+
 add_action('wp_ajax_save_profile', function() {
     if (!wp_verify_nonce($_POST['security'], 'save_profile-' . get_current_user_id())) {
         wp_send_json_error('Forbidden', 403);
@@ -20,7 +24,7 @@ add_action('wp_ajax_save_profile', function() {
     $uploaded = null;
 
     // Upload file so we can assert it server side
-    if ($_FILES['photo']) {
+    if (isset($_FILES['photo'])) {
         if (!function_exists('wp_handle_upload')) {
             require_once(ABSPATH . 'wp-admin/includes/file.php');
         }
@@ -33,8 +37,8 @@ add_action('wp_ajax_save_profile', function() {
     }
 
     $input = [
-        'phone' => $_POST['phone'], 
-        'email' => $_POST['email'],
+        'phone' => isset($_POST['phone']) ? $_POST['phone'] : '', 
+        'email' => isset($_POST['email']) ? $_POST['email'] : '', 
         'photo' => isset($uploaded) ? $uploaded['file'] : null
     ];
 
@@ -46,7 +50,7 @@ add_action('wp_ajax_save_profile', function() {
         'email' => [
             new Assert\Email([
                 'message' => 'E-mailadres lijkt niet geldig te zijn']
-            ), new Assert\notBlank([
+            ), new Assert\NotBlank([
                 'message' => 'Dit veld mag niet leeg zijn'
             ]
         )],
