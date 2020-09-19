@@ -43,8 +43,8 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:
         FTP_SERVER: ${{ secrets.FTP_HOST }}
-        FTP_USERNAME: ${{ secrets.FTP_USER }}
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        FTP_USERNAME: ${{ secrets.FTP_THEME_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_THEME_PASSWORD }}
         LOCAL_DIR: wordpress/wp-content/themes/knock-knock/.twig-cache
         REMOTE_DIR: .twig-cache
         ARGS: --delete
@@ -52,8 +52,8 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
         ftp-server: ${{ secrets.FTP_HOST }}
-        ftp-username: ${{ secrets.FTP_USER }}
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        ftp-username: ${{ secrets.FTP_THEME_USER }}
+        ftp-password: ${{ secrets.FTP_THEME_PASSWORD }}
         local-dir: wordpress/wp-content/themes/knock-knock/
         git-ftp-args:
     - name: FTP-Deploy-Action mu-plugins
