@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Validation;
 
 add_action('wp_ajax_save_profile', function() {
     if (!wp_verify_nonce($_POST['security'], 'save_profile-' . get_current_user_id())) {
-        wp_send_json_error('Fordbidden', 403);
+        wp_send_json_error('Forbidden', 403);
     }
 
     $validator = Validation::createValidator();
