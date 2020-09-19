@@ -8,7 +8,6 @@ namespace App;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validation;
-use Symfony\Component\HttpFoundation\Request;
 
 add_action('wp_ajax_save_profile', function() {
     if (!wp_verify_nonce($_POST['security'], 'save_profile-' . get_current_user_id())) {
