@@ -30,7 +30,8 @@
                     {{ localDate("l", post.start) }}
                 </div>
             </div>
-            <p><i class="far fa-clock fa-fw"></i> {{ localDate("H:i", post.start) ~ ' - ' ~ localDate("H:i", post.end)}}<br>
+            <hr>
+            <p><strong><i class="far fa-clock fa-fw"></i> {{ localDate("H:i", post.start) ~ ' - ' ~ localDate("H:i", post.end)}}</strong><br>
             <span class="text-muted">{{ post.meta('type') }}</span></p>
             {{ post.content }}
         {% endblock %}

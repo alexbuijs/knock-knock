@@ -8,6 +8,7 @@ namespace App;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validation;
+use Symfony\Component\HttpFoundation\Request;
 
 add_action('wp_ajax_save_profile', function() {
     if (!wp_verify_nonce($_POST['security'], 'save_profile-' . get_current_user_id())) {
@@ -16,12 +17,26 @@ add_action('wp_ajax_save_profile', function() {
 
     $validator = Validation::createValidator();
     $accessor = PropertyAccess::createPropertyAccessor();
-    $errorMessages = [];
+    $errors = [];
+    $uploaded = null;
+
+    // Upload file so we can assert it server side
+    if ($_FILES['photo']) {
+        if (!function_exists('wp_handle_upload')) {
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+        }
+        
+        $uploaded = wp_handle_upload($_FILES['photo'], ['test_form' => false]);
+        if (!$uploaded || isset($uploaded['error'])) {
+            $accessor->setValue($errors, '[photo]', isset($uploaded['error']) ? $uploaded['error'] : 'Kon deze foto niet uploaden');
+            wp_send_json_error($errors);
+        }
+    }
 
     $input = [
         'phone' => $_POST['phone'], 
-        'email' => $_POST['email'], 
-        'profilePhoto' => $_FILES['profilePhoto']
+        'email' => $_POST['email'],
+        'photo' => isset($uploaded) ? $uploaded['file'] : null
     ];
 
     $constraints = new Assert\Collection([
@@ -36,33 +51,43 @@ add_action('wp_ajax_save_profile', function() {
                 'message' => 'Dit veld mag niet leeg zijn'
             ]
         )],
-        'profilePhoto' => [new Assert\Optional()]
+        'photo' => [new Assert\Optional([
+            new Assert\Image([
+                'maxSize' => ini_get('upload_max_filesize'),
+                'maxSizeMessage' => 'Foto mag niet groter zijn dan ' . ini_get('upload_max_filesize') . 'B',
+                'mimeTypes' => [
+                    'image/jpeg',
+                ],
+                'mimeTypesMessage' => 'Alleen jpg-bestanden zijn toegestaan',
+            ])
+        ])]
     ]);
 
     $violations = $validator->validate($input, $constraints);
 
     if (count($violations) > 0) {
         foreach ($violations as $violation) {
-            $accessor->setValue($errorMessages,
-                $violation->getPropertyPath(),
-                $violation->getMessage());
+            $accessor->setValue($errors, $violation->getPropertyPath(), $violation->getMessage());
         }
 
-        wp_send_json_error($errorMessages);
+        wp_delete_file($input['photo']);
+        wp_send_json_error($errors);
     } 
 
+    // Update phone number
     if ($input['phone'] !== get_user_meta(get_current_user_id(), 'resident_phone')[0]) {
         $result = update_user_meta(get_current_user_id(), 'resident_phone', esc_attr($input['phone']));
 
         if (!$result) {
-            $accessor->setValue($errorMessages, 'phone', 'Kon telefoonnummer niet opslaan.');
+            $accessor->setValue($errors, '[phone]', 'Kon telefoonnummer niet opslaan.');
         }
     }
 
+    // Update email
     if (wp_get_current_user()->data->user_email !== $input['email']) {    
         // Check if email address is free to use
         if (email_exists($input['email'])) {
-            $accessor->setValue($errorMessages, 'email', 'Er is al een account met dit emailadres.');
+            $accessor->setValue($errors, '[email]', 'Er is al een account met dit emailadres.');
         } else {
             // Update
             $result = wp_update_user([
@@ -71,62 +96,46 @@ add_action('wp_ajax_save_profile', function() {
             ]);
             
             if (is_wp_error($result)) {
-                $accessor->setValue($errorMessages, 'email', 'Kon e-mailadres niet wijzigen.');
+                $accessor->setValue($errors, '[email]', 'Kon e-mailadres niet wijzigen.');
             }
         }
     }
 
     // Update photo
-    $resultData = [];
-    if ($input['profilePhoto'] && $input['profilePhoto']['error'] === 0) {
+    if ($_FILES['photo'] && $_FILES['photo']['error'] === 0 && $uploaded) {
 
-        if (!function_exists('wp_handle_upload')) {
-            require_once(ABSPATH . 'wp-admin/includes/file.php');
+        $attachment = array(
+            'guid' => wp_upload_dir()['url'] . '/' . basename($uploaded['file']),
+            'post_mime_type' => $uploaded['type'],
+            'post_title' => preg_replace('/\.[^.]+$/', '', basename($uploaded['file'])),
+            'post_content' => '',
+            'post_status' => 'inherit'
+        );
+
+        // Insert in media library
+        $attachmentId = wp_insert_attachment($attachment, $uploaded['file']);
+
+        if (!$attachmentId || is_wp_error($attachmentId)) {
+            $accessor->setValue($errors, '[photo]', 'Kon foto niet opslaan.');
+            wp_send_json_error($errors);
         }
-        
-        // Check file type
-        $fileType = wp_check_filetype($input['profilePhoto']['name'])['type'];
-        if ($fileType !== 'image/jpeg') {
-            $accessor->setValue($errorMessages, 'profilePhoto', 'Alleen jpg-bestanden zijn toegestaan.');
-            wp_send_json_error($errorMessages);
-        }
 
-        // Upload file
-        $uploaded = wp_handle_upload($input['profilePhoto'], ['test_form' => false]);
+        // Create different sizes
+        wp_update_image_subsizes($attachmentId);
 
-        if ($uploaded && !isset($uploaded['error'])) {
+        // Update the user field
+        update_field('resident_profile_image', $attachmentId, 'user_' . wp_get_current_user()->ID);
 
-            $attachment = array(
-                'guid' => wp_upload_dir()['url'] . '/' . basename($uploaded['file']),
-                'post_mime_type' => $uploaded['type'],
-                'post_title' => preg_replace('/\.[^.]+$/', '', basename($uploaded['file'])),
-                'post_content' => '',
-                'post_status' => 'inherit'
-            );
-
-            // Insert in media library
-            $attachmentId = wp_insert_attachment($attachment, $uploaded['file']);
-
-            if (!$attachmentId || is_wp_error($attachmentId)) {
-                wp_send_json_error('Kon foto niet opslaan.');
-            }
-
-            // Create different sizes
-            wp_update_image_subsizes($attachmentId);
-
-            // Update the user field
-            update_field('resident_profile_image', $attachmentId, 'user_' . wp_get_current_user()->ID);
-
-            // Send back new url
-            $resultData['image'] = getUserImage('large');
-        }
+        // Delete photo from input array
+        unset($input['photo']);
     }
 
-    if (count($errorMessages) > 0) {
-        wp_send_json_error($errorMessages);
+    if (count($errors) > 0) {
+        wp_send_json_error($errors);
     }
 
-    wp_send_json_success(array_merge($resultData, [
+    wp_send_json_success(array_merge($input, [
+        'newPhoto' => getUserImage('large'), 
         'message' => 'Wijzigingen opgeslagen.'
     ]));
 });

@@ -8,11 +8,12 @@ const useFormValidation = (initialState, validate, submitForm) => {
     const handleChange = (e) => {
         const newValues = {
             ...values,
-            [e.target.name]: e.target.value
+            [e.target.name]: (e.target.type === 'file') ? e.target.files[0] : e.target.value
         }
+
         setValues(newValues)
 
-        // On change only check if errors get solved
+        // On change only check if   get solved
         const validationErrors = validate(newValues)
         if (Object.keys(validationErrors).length < Object.keys(errors).length) {
             setErrors(validationErrors)
@@ -21,15 +22,23 @@ const useFormValidation = (initialState, validate, submitForm) => {
 
     useEffect(() => {
         async function asyncSubmit () {
-            if (isSubmitting) {
-                const noErrors = (Object.keys(errors).length === 0)
-                if (noErrors) {
-                    await submitForm()
-                    setSubmitting(false)
-                } else {
-                    setSubmitting(false)
-                }
+            if (!isSubmitting) {
+                return
             }
+            const noErrors = (Object.keys(errors).length === 0)
+            if (noErrors) {
+                const response = await submitForm()
+
+                // Filter out the values we have in our form from the response
+                const newValues = response ? Object.keys(response)
+                    .filter(key => Object.keys(values).includes(key))
+                    .reduce((obj, key) => {
+                        return { ...obj, [key]: response[key] }
+                    }, {}) : {}
+                setValues({ ...values, ...newValues })
+            }
+
+            setSubmitting(false)
         }
         asyncSubmit()
     }, [errors])
@@ -46,7 +55,7 @@ const useFormValidation = (initialState, validate, submitForm) => {
         setSubmitting(true)
     }
 
-    return { handleChange, handleSubmit, handleBlur, values, errors, setErrors, isSubmitting }
+    return { handleChange, handleSubmit, handleBlur, values, setValues, errors, setErrors, isSubmitting }
 }
 
 export default useFormValidation

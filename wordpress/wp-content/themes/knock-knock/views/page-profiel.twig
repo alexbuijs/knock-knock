@@ -1,6 +1,6 @@
-{% extends "layouts/two-column.twig" %}
+{% extends "layouts/full-width.twig" %}
 
-{% block header %}
+{% block content %}
     {% embed "partials/page-header.twig" with {'icon': 'far fa-user'} %}
         {% block title %}Profiel{% endblock %}
         {% block right %}
@@ -11,52 +11,16 @@
             } %}
         {% endblock %}
     {% endembed %}
-{% endblock %}
 
-{% block left %}
-    {% embed "partials/card.twig" %}
-        {% block content %}
-            {# Form handled in React, see assets/js/profile.js #}   
-            <div id="react-root" 
-                data-email="{{ current_user.user_email }}" 
-                data-phone="{{ userField('resident_phone', current_user) }}"
-                data-ajax-url="{{ function('admin_url', 'admin-ajax.php') }}"
-                data-nonce="{{ function('wp_create_nonce', 'save_profile-' ~ current_user.ID) }}">
-            </div>
-            {# <form id="profileForm">
-                <div class="alert alert-success d-none" role="alert"></div>
-                <h5 class="font-weight-bold">Persoonlijke gegevens</h5>
-                <div class="form-group mt-2">
-                    <label for="phone">E-mailadres <small>(Let op: wordt nog niet gecontroleerd)</small></label>
-                    <input type="text" class="form-control" name="email" placeholder="E-mailadres" value="{{ current_user.user_email }}">
-                </div>    
-                <div class="form-group">
-                    <label for="phone">Telefoonnummer</label>
-                    <input type="text" class="form-control" name="phone" placeholder="Telefoonnummer" value="{{ userField('resident_phone', current_user) }}">
-                </div>                    
-                <h5 class="font-weight-bold">Foto</h5>
-                <div class="form-group">
-                    <label>Selecteer een nieuwe foto <small>(niet groter dan 2MB)</small> en klik op opslaan.</label>
-                    <input type="file" class="form-control-file" name="profilePhoto">
-                </div>
-                {{ function('wp_nonce_field', 'save_profile-' ~ current_user.ID) }}
-                <input name="action" value="save_profile" type="hidden">
-                <button type="submit" class="btn btn-primary">
-                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                    <span class="body">Opslaan</span>
-                </button>
-            </form> #}
-        {% endblock %}
-        {% block footer %}
-            <small>Wil je je wachtwoord wijzigen? Dat kan <a href="{{ function('admin_url', 'profile.php') }}">hier</a>.</small>
-        {% endblock %}
-    {% endembed %}
-{% endblock %}
-
-{% block right %}
-    {% embed "partials/card.twig" with {'classes': 'p-3'} %}
-        {% block contentFull %}
-            <div class="profile-picture" id="profile-picture" style="background-image:url('{{ userImage }}')"></div>
-        {% endblock %}
-    {% endembed %}
+    {# Form handled in React, see assets/js/profile.js #}   
+    <div id="react-root" class="row"
+        data-email="{{ current_user.user_email }}" 
+        data-phone="{{ userField('resident_phone', current_user) }}"
+        data-photo="{{ userImage }}"
+        data-ajax-url="{{ function('admin_url', 'admin-ajax.php') }}"
+        data-nonce="{{ function('wp_create_nonce', 'save_profile-' ~ current_user.ID) }}"
+        data-upload-max-filesize={{ function('ini_get', 'upload_max_filesize') }}
+        data-profile-link={{ function('admin_url', 'profile.php') }}>
+    </div>
+    
 {% endblock %}
