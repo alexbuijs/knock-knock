@@ -48,6 +48,8 @@ jobs:
         LOCAL_DIR: wordpress/wp-content/themes/knock-knock/.twig-cache
         REMOTE_DIR: .twig-cache
         ARGS: --delete
+    - name: Git status
+      run: git status
     - name: FTP-Deploy-Action theme
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
