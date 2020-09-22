@@ -28,5 +28,7 @@
 }
 
 .item-grow {
-  height: calc(100% - #{$grid-gutter-width});
+  @include media-breakpoint-up(md) {
+    height: calc(100% - #{$grid-gutter-width});
+  }
 }
