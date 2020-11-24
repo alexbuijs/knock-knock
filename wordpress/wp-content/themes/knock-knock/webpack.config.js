@@ -14,7 +14,7 @@ module.exports = {
             './assets/scss/main.scss',
         ],
         profile: [
-            './assets/js/profile.js',
+            './assets/js/profile.jsx',
         ],
         // Separate datepicker for admin
         datepicker: [
@@ -32,7 +32,7 @@ module.exports = {
             // Javascript 
             {
                 enforce: 'pre',
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /(node_modules)/,
                 loader: 'eslint-loader',
                 options: {
@@ -40,7 +40,7 @@ module.exports = {
                 },
             },
             {
-                test: /\.m?js$/,
+                test: /\.m?jsx?$/,
                 exclude: /(node_modules)/,
                 use: {
                     loader: 'babel-loader',
