@@ -1,7 +1,6 @@
 const isDev = process.env.NODE_ENV === 'development'
 
 const path = require('path');
-const autoprefixer = require("autoprefixer");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
@@ -80,7 +79,12 @@ module.exports = {
                             sourceMap: isDev,
                             postcssOptions: {
                                 plugins: [
-                                    ['autoprefixer', {}],
+                                    [
+                                        'postcss-preset-env',
+                                        {
+                                        // Options
+                                        },
+                                    ],
                                 ],
                             },
                         },
@@ -94,6 +98,9 @@ module.exports = {
                 ]
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.css', '.scss']
     },
     plugins: [
         new MiniCssExtractPlugin({
