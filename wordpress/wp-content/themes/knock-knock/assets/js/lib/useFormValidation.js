@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const useFormValidation = (initialState, validate, submitForm) => {
+const useFormValidation = (initialState, validate, submitForm, maxFileSize) => {
     const [values, setValues] = useState(initialState)
     const [errors, setErrors] = useState({})
     const [isSubmitting, setSubmitting] = useState(false)
@@ -14,7 +14,7 @@ const useFormValidation = (initialState, validate, submitForm) => {
         setValues(newValues)
 
         // On change only check if   get solved
-        const validationErrors = validate(newValues)
+        const validationErrors = validate(newValues, maxFileSize)
         if (Object.keys(validationErrors).length < Object.keys(errors).length) {
             setErrors(validationErrors)
         }
@@ -44,13 +44,13 @@ const useFormValidation = (initialState, validate, submitForm) => {
     }, [errors])
 
     const handleBlur = (e) => {
-        const validationErrors = validate(values)
+        const validationErrors = validate(values, maxFileSize)
         setErrors(validationErrors)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const validationErrors = validate(values)
+        const validationErrors = validate(values, maxFileSize)
         setErrors(validationErrors)
         setSubmitting(true)
     }

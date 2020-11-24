@@ -1,4 +1,6 @@
-export default function validateProfileForm (values) {
+import { getBytes } from './helpers'
+
+export default function validateProfileForm (values, maxFileSize) {
     const errors = {}
 
     // Email
@@ -16,8 +18,9 @@ export default function validateProfileForm (values) {
     }
 
     // Photo
-    if (values.photo && values.photo.size > 2 * 1024 * 1024) { // = 2MB
-        errors.photo = 'Bestand mag niet groter zijn dan 2MB'
+    console.log(getBytes(maxFileSize))
+    if (values.photo && values.photo.size > getBytes(maxFileSize)) {
+        errors.photo = `Bestand mag niet groter zijn dan ${maxFileSize}B`
     } else if (values.photo && values.photo.type !== 'image/jpeg') {
         errors.photo = 'Alleen jpg-bestanden zijn toegestaan'
     }

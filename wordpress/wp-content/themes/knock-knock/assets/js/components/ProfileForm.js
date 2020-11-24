@@ -12,7 +12,7 @@ const ProfileForm = ({ data, setUserImage }) => {
         email: data.email,
         phone: data.phone,
         photo: ''
-    }, validateProfileForm, submitProfileForm)
+    }, validateProfileForm, submitProfileForm, data.uploadMaxFilesize)
 
     const [alert, setAlert] = useState(false)
     const formRef = useRef(null)
