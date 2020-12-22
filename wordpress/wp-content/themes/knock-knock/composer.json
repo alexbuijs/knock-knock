@@ -13,15 +13,17 @@
         }
     },
     "require": {
-        "php": "^7.2.5 || ^8",
-        "illuminate/filesystem": "^6.7",
-        "illuminate/container": "^6.7",
+        "php": "^7.3 || ^8.0",
+        "illuminate/filesystem": "^8.20",
+        "illuminate/container": "^8.20",
         "nesbot/carbon": "^2.31",
         "timber/timber": "^1.18",
         "symfony/validator": "^5.1",
         "doctrine/annotations": "^1.10",
         "symfony/property-access": "^5.1",
-        "symfony/mime": "^5.1"
+        "symfony/mime": "^5.1",
+        "illuminate/contracts": "^8.20",
+        "illuminate/support": "^8.20"
     },
     "prefer-stable": true
 }
