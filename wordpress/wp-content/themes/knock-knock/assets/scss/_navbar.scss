@@ -26,6 +26,8 @@
 }
 
 .navbar-dark {
+  background-color: var(--primary-bg);
+
   .menu-item {
     /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
     @extend .nav-item;

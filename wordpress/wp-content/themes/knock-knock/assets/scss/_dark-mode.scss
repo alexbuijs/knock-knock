@@ -8,6 +8,7 @@
   --border-color: #394d56;
   --primary: #0af;
   --primary-darker: #{lighten(#0af, 15%)};
+  --primary-bg: #006596;
   --white: var(--body-bg); 
 }
   
@@ -21,6 +22,7 @@ body {
   --border-color: #{$border-color};
   --primary: #{$primary};
   --primary-darker: #{darken($primary, 15%)};
+  --primary-bg: #{$primary};
   --white: #{$white};
   
   .prefers-dark {
