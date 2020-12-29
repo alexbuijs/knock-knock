@@ -18,7 +18,6 @@ export default function validateProfileForm (values, maxFileSize) {
     }
 
     // Photo
-    console.log(getBytes(maxFileSize))
     if (values.photo && values.photo.size > getBytes(maxFileSize)) {
         errors.photo = `Bestand mag niet groter zijn dan ${maxFileSize}B`
     } else if (values.photo && values.photo.type !== 'image/jpeg') {
