@@ -1,6 +1,7 @@
 body,
 html {
-  background-color: #f3f4f8;
+  background-color: var(--body-bg);
+  color: var(--body-color);
 
   @include media-breakpoint-down(sm) {
     @include font-size($font-size-sm);
@@ -32,4 +33,12 @@ body > .container-lg {
 
 .title {
   margin-bottom: 0;
+}
+
+hr {
+  border-top: 1px solid var(--border-color);
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--border-color) !important;
 }

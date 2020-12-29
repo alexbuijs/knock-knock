@@ -63,8 +63,8 @@
   }
 
   svg {
-    height: 2rem;
-    width: 2rem * $kv-logo-ratio;
+    height: $navbar-brand-height;
+    width: $navbar-brand-height * $kv-logo-ratio;
   }
 }
 

@@ -1,8 +1,30 @@
-.table > tbody td {
-  cursor: pointer;
-  vertical-align: middle;
+.table {
+  color: var(--body-color);
+
+  tbody td {
+    cursor: pointer;
+    vertical-align: middle;
+  }
+
+  thead th {
+    border-bottom: (2 * $table-border-width) solid var(--border-color);
+    border-top: 0;
+  }
+
+  th,
+  td {
+    border-top: $table-border-width solid var(--border-color);
+  }
+
+  tbody + tbody {
+    border-top: (2 * $table-border-width) solid var(--border-color);
+  }
 }
 
-.table > thead th {
-  border-top: 0;
+.table-hover {
+  tbody {
+    tr:hover {
+      color: var(--body-color-darker);
+    }
+  }
 }

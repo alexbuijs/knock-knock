@@ -1,0 +1,35 @@
+@mixin dark-mode() {
+  // Dark mode
+  --body-bg: #0d1117;
+  --body-color: #c1c9ce;
+  --body-color-darker: #{lighten(#c1c9ce, 15%)};
+  --text-muted: #7d8386;
+  --card-bg: #1f2f38;
+  --border-color: #394d56;
+  --primary: #0af;
+  --primary-darker: #{lighten(#0af, 15%)};
+  --white: var(--body-bg); 
+}
+  
+body {
+  // Light mode
+  --body-bg: #{$body-bg};
+  --body-color: #{$body-color};
+  --body-color-darker: #{darken($body-color, 15%)};
+  --text-muted: #{$text-muted};
+  --card-bg: #{$card-bg};
+  --border-color: #{$border-color};
+  --primary: #{$primary};
+  --primary-darker: #{darken($primary, 15%)};
+  --white: #{$white};
+  
+  .prefers-dark {
+    @include dark-mode();
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    &:not(.prefers-light) {
+      @include dark-mode();
+    }
+  }
+}

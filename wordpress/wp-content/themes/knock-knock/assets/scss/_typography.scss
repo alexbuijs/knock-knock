@@ -5,3 +5,15 @@
 .title-large {
   font-size: 3.1rem;
 }
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+a {
+  color: var(--primary);
+
+  &:hover {
+    color: var(--primary-darker);
+  }
+}

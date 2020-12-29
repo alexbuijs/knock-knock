@@ -3,7 +3,7 @@
     padding: 0.75em 0 0;
 
     &:not(:last-child) {
-      border-bottom: $list-group-border-color 1px solid;
+      border-bottom: var(--border-color) 1px solid;
     }
   }
 }
