@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ProfileForm from './ProfileForm'
+import SettingsForm from './SettingsForm'
 
 const Profile = (data) => {
     const [userImage, setUserImage] = useState(data.photo)
@@ -15,6 +16,13 @@ const Profile = (data) => {
                     <div className="card-footer bg-transparent">
                         <small>Wil je je wachtwoord wijzigen? Dat kan <a href={data.profileLink}>hier</a>.</small>
                     </div>
+                </div>
+                <div className="card">
+                    <div className="card-header bg-transparent"></div>
+                    <div className="card-body">
+                        <SettingsForm data={data} />
+                    </div>
+                    <div className="card-footer bg-transparent"></div>
                 </div>
             </div>
             <div className="col-12 col-lg-4">

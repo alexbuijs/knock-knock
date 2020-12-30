@@ -32,7 +32,10 @@ import {
     faPhone,
     faMapMarker,
     faPencilAlt,
-    faTrash
+    faTrash,
+    faSun,
+    faAdjust,
+    faMoon
 } from '@fortawesome/free-solid-svg-icons'
 
 // Initialise
@@ -53,7 +56,10 @@ library.add(
     faMapMarker,
     faPencilAlt,
     faTrash,
-    faClock
+    faClock,
+    faSun,
+    faAdjust,
+    faMoon
 )
 dom.watch()
 

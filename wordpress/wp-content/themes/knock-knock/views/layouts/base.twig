@@ -16,7 +16,7 @@
     {{ function('wp_head') }}
 </head>
 
-<body>
+<body {{ function('body_class') }}>
     {% include "partials/navbar.twig" %}
 
     <div class="container-lg">

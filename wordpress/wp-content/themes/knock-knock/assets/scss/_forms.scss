@@ -9,3 +9,29 @@
     color: var(--body-color);
   }
 }
+
+.theme-select {
+  .custom-control-input {    
+    ~ .custom-control-label {
+      border: 1px solid var(--border-color);
+      border-radius: $border-radius;
+      color: var(--border-color);
+      padding: 0.5rem 0.75rem;
+    }
+
+    &:checked ~ .custom-control-label {
+      border: 1px solid var(--body-color);
+      color: var(--body-color);
+    }
+  }
+
+  .custom-control-label {
+    padding: 0 0.5rem;
+
+    &::before,
+    &::after {
+      top: 1.75rem;
+    }
+  }
+}
+

@@ -17,8 +17,9 @@
         data-email="{{ current_user.user_email }}" 
         data-phone="{{ userField('resident_phone', current_user) }}"
         data-photo="{{ userImage }}"
+        data-theme-preference="{{ userField('theme', current_user) }}"
         data-ajax-url="{{ function('admin_url', 'admin-ajax.php') }}"
-        data-nonce="{{ function('wp_create_nonce', 'save_profile-' ~ current_user.ID) }}"
+        data-nonce="{{ function('wp_create_nonce', 'security-' ~ current_user.ID) }}"
         data-upload-max-filesize={{ function('ini_get', 'upload_max_filesize') }}
         data-profile-link={{ function('admin_url', 'profile.php') }}>
     </div>

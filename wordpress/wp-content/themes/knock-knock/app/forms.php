@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validation;
 
 add_action('wp_ajax_save_profile', function() {
-    if (!wp_verify_nonce($_POST['security'], 'save_profile-' . get_current_user_id())) {
+    if (!wp_verify_nonce($_POST['security'], 'security-' . get_current_user_id())) {
         wp_send_json_error('Forbidden', 403);
     }
 
@@ -137,4 +137,22 @@ add_action('wp_ajax_save_profile', function() {
         'newPhoto' => getUserImage('large'), 
         'message' => 'Wijzigingen opgeslagen.'
     ]));
+});
+
+add_action('wp_ajax_save_theme_preference', function() {
+    if (!wp_verify_nonce($_POST['security'], 'security-' . get_current_user_id())) {
+        wp_send_json_error('Forbidden', 403);
+    }
+
+    if (!in_array($_POST['theme'], ['system-default', 'prefers-light', 'prefers-dark'])) {
+        wp_send_json_error('Bad request', 400);
+    }
+
+    $result = update_user_meta(get_current_user_id(), 'theme', $_POST['theme']);
+
+    if (!$result) {
+        wp_send_json_error('Failed to update theme');
+    }
+
+    wp_send_json_success(sprintf('Theme set to: %s', $_POST['theme']));
 });

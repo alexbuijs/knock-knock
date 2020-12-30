@@ -94,7 +94,15 @@ add_filter('timber/twig', function($twig) {
 /**
  * Set timber cache location
  */
-
 add_filter( 'timber/cache/location', function() {
     return dirname(get_stylesheet_directory()) . '/.twig-cache';
+});
+
+/**
+ * Apply user selected theme
+ */
+add_filter('body_class', function($classes) {
+    $theme = get_current_user_id() ? get_user_meta(get_current_user_id(), 'theme', true) : '';
+
+    return [$theme];
 });
