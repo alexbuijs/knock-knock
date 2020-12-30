@@ -16,8 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        fetch-depth: 2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2.1.4
       with:
@@ -40,27 +38,31 @@ jobs:
         if [ -d ".twig-cache" ]; then rm -Rf .twig-cache; fi
         mkdir .twig-cache
     - name: Delete Twig cache
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      env:
-        FTP_SERVER: ${{ secrets.FTP_HOST }}
-        FTP_USERNAME: ${{ secrets.FTP_THEME_USER }}
-        FTP_PASSWORD: ${{ secrets.FTP_THEME_PASSWORD }}
-        LOCAL_DIR: wordpress/wp-content/themes/knock-knock/.twig-cache
-        REMOTE_DIR: .twig-cache
-        ARGS: --delete
-    - name: FTP-Deploy-Action theme
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        ftp-server: ${{ secrets.FTP_HOST }}
-        ftp-username: ${{ secrets.FTP_THEME_USER }}
-        ftp-password: ${{ secrets.FTP_THEME_PASSWORD }}
-        local-dir: wordpress/wp-content/themes/knock-knock/
-        git-ftp-args:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_THEME_USER }}
+        password: ${{ secrets.FTP_THEME_PASSWORD }}
+        local-dir: wordpress/wp-content/themes/knock-knock/.twig-cache/
+        server-dir: .twig-cache/
+        dangerous-clean-slate: true
+    - name: FTP-Deploy-Action theme
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_THEME_USER }}
+        password: ${{ secrets.FTP_THEME_PASSWORD }}
+        local-dir: ./wordpress/wp-content/themes/knock-knock/
+        exclude: node_modules/**
+          - node_modules/**/*
+          - assets/scss
+          - assets/js
+          - .twig-cache
+          - webpack.config.js
     - name: FTP-Deploy-Action mu-plugins
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      env:
-        FTP_SERVER: ${{ secrets.FTP_HOST }}
-        FTP_USERNAME: ${{ secrets.FTP_MU_USER }}
-        FTP_PASSWORD: ${{ secrets.FTP_MU_PASSWORD }}
-        LOCAL_DIR: wordpress/wp-content/mu-plugins
-        ARGS: -L --verbose
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_MU_USER }}
+        password: ${{ secrets.FTP_MU_PASSWORD }}
+        local-dir: ./wordpress/wp-content/mu-plugins/
