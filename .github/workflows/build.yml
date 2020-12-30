@@ -55,10 +55,14 @@ jobs:
         local-dir: ./wordpress/wp-content/themes/knock-knock/
         exclude: node_modules/**
           - node_modules/**/*
-          - assets/scss
-          - assets/js
+          - assets/scss/**
+          - assets/js/**
           - .twig-cache
           - webpack.config.js
+          - package.json
+          - package-lock.json
+          - composer.json
+          - .gitignore
     - name: FTP-Deploy-Action mu-plugins
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
