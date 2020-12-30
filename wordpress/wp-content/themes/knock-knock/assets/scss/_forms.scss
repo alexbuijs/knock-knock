@@ -1,0 +1,11 @@
+.form-control,
+.custom-file-label {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--body-color);
+
+  &:focus {
+    background-color: var(--card-bg);
+    color: var(--body-color);
+  }
+}
