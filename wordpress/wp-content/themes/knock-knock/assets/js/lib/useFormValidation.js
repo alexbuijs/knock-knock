@@ -30,11 +30,13 @@ const useFormValidation = (initialState, validate, submitForm, maxFileSize) => {
                 const response = await submitForm()
 
                 // Filter out the values we have in our form from the response
-                const newValues = response ? Object.keys(response)
-                    .filter(key => Object.keys(values).includes(key))
-                    .reduce((obj, key) => {
-                        return { ...obj, [key]: response[key] }
-                    }, {}) : {}
+                const newValues = response
+                    ? Object.keys(response)
+                        .filter(key => Object.keys(values).includes(key))
+                        .reduce((obj, key) => {
+                            return { ...obj, [key]: response[key] }
+                        }, {})
+                    : {}
                 setValues({ ...values, ...newValues })
             }
 

@@ -2,7 +2,8 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+// const AssetsPlugin = require("assets-webpack-plugin");
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
@@ -62,10 +63,7 @@ module.exports = {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            
-                            hmr: isDev
-                        },
+                        options: {}
                     },
                     {
                         loader: 'css-loader',
@@ -105,7 +103,15 @@ module.exports = {
         new StylelintPlugin({
             fix: true
         }),
-        new ManifestPlugin(),
+        // new AssetsPlugin({
+        //     filename: "manifest.json",
+        //     path: path.join(process.cwd(), "dist"),
+        //     prettyPrint: true,
+        //     removeFullPathAutoPrefix: true
+        // }),
+        new WebpackManifestPlugin({
+            publicPath: ''
+        }),
         new BrowserSyncPlugin({
             open: false,
             proxy: 'localhost:8080',
