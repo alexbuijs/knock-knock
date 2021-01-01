@@ -13,31 +13,33 @@
     {% endembed %}
     {% embed "partials/card.twig" %}
         {% block content %}
-            <table class="table table-responsive-lg table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Voornaam</th>
-                        <th scope="col">Achternaam</th>
-                        <th scope="col">Adres</th>
-                        <th scope="col">Telefoon</th>
-                        <th scope="col">E-mailadres</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for user in users %}
-                        <tr data-href="{{ user.url }}" title="{{ user.display_name }}">
-                            <td><img class="thumbnail" src="{{ user.thumbnail }}" alt="" /></td>
-                            <td>{{ user.first_name }}</td>
-                            <td>{{ user.last_name }}</td>
-                            <td>{{ user.addressLink }}</td>
-                            {% set phone = userField('resident_phone', user) %}
-                            <td><a href="tel:{{ phone }}">{{ phone }}</a></td>
-                            <td><a href="mailto:{{ user.user_email }}">{{ user.user_email }}</a></td>
+            <div class="table-responsive-lg">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Voornaam</th>
+                            <th scope="col">Achternaam</th>
+                            <th scope="col">Adres</th>
+                            <th scope="col">Telefoon</th>
+                            <th scope="col">E-mailadres</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr data-href="{{ user.url }}" title="{{ user.display_name }}">
+                                <td><img class="thumbnail" src="{{ user.thumbnail }}" alt="" /></td>
+                                <td>{{ user.first_name }}</td>
+                                <td>{{ user.last_name }}</td>
+                                <td>{{ user.addressLink }}</td>
+                                {% set phone = userField('resident_phone', user) %}
+                                <td><a href="tel:{{ phone }}">{{ phone }}</a></td>
+                                <td><a href="mailto:{{ user.user_email }}">{{ user.user_email }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}

@@ -29,20 +29,20 @@
     {% embed "partials/card.twig" %}
         {% block content %}
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="font-weight-bold">
+                    <h5 class="fw-bold">
                         Info
                     </h5>
                     {% if user.ID == current_user.ID %}
                         <a href="{{ site.url }}/profiel" class="btn btn-sm btn-primary">
-                            <i class="fas fa-pencil-alt mr-1"></i> Bewerken
+                            <i class="fas fa-pencil-alt me-1"></i> Bewerken
                         </a>
                     {% endif %}
                 </div>
-                <p><i class="fas fa-map-marker fa-fw mr-2"></i>{{ userAddress }}</p>
-                <p><i class="fas fa-envelope fa-fw mr-2"></i><a href="mailto:{{ user.user_email }}">{{ user.user_email }}</a></p>
+                <p><i class="fas fa-map-marker fa-fw me-2"></i>{{ userAddress }}</p>
+                <p><i class="fas fa-envelope fa-fw me-2"></i><a href="mailto:{{ user.user_email }}">{{ user.user_email }}</a></p>
                 {% set phone = userField('resident_phone', user) %}
                 {% if phone %}
-                    <p><i class="fas fa-phone fa-fw mr-2"></i><a href="tel:{{ phone }}">{{ phone }}</a></p>
+                    <p><i class="fas fa-phone fa-fw me-2"></i><a href="tel:{{ phone }}">{{ phone }}</a></p>
                 {% endif %}
         {% endblock %}
     {% endembed %}

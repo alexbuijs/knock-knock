@@ -22,6 +22,7 @@ add_action('template_redirect', function () {
  * Register Knock Knock assets
  */
 add_action('wp_enqueue_scripts', function () {
+    wp_dequeue_style('wp-block-library');
     wp_enqueue_script('main', asset('main.js'), [], null, true);
     wp_enqueue_style('main', asset('main.css'), [], null);
 

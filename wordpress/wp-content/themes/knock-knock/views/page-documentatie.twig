@@ -17,10 +17,10 @@
             {% block content %}
                 {% if category is not empty %}
                     <div class="col-12">
-                        <ul class="list-unstyled list-sm row mb-3">
+                        <ul class="list-unstyled list-sm mb-3 row px-2">
                             {% for doc in category %}
                                 <li class="list-group-item col-12 col-sm-6 d-flex">
-                                    <div class="mr-1">
+                                    <div class="me-1">
                                         <i class="far fa-fw fa-file text-muted"></i>
                                     </div>
                                     <a href="{{ doc.link }}">{{ doc.post_title }}</a>

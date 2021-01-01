@@ -1,14 +1,8 @@
 import domReady from '@wordpress/dom-ready'
 import flatpickr from 'flatpickr'
 import { Dutch } from 'flatpickr/dist/l10n/nl'
-import $ from 'jquery'
-
-import 'bootstrap/js/dist/dropdown'
-import 'bootstrap/js/dist/collapse'
-import 'bootstrap/js/dist/modal'
-import 'bootstrap/js/dist/tooltip'
-
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { Dropdown, Tooltip } from 'bootstrap'
 
 // Regular
 import {
@@ -70,7 +64,7 @@ const flatpickrConfig = {
     locale: Dutch
 }
 
-domReady(function () {
+domReady(() => {
     // Activate datepicker
     document.querySelectorAll('div.datetimepicker input').forEach(el => {
         flatpickr(el, flatpickrConfig)
@@ -79,11 +73,23 @@ domReady(function () {
     // Table links
     document.querySelectorAll('table tr').forEach(el => {
         el.onclick = function () {
-            window.location = el.getAttribute('data-href')
+            const link = el.getAttribute('data-href')
+
+            if (link) {
+                window.location = link
+            }
         }
     })
-})
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    // Dropdown
+    const dropdownElements = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+    dropdownElements.map(el => {
+        return new Dropdown(el)
+    })
+
+    // Tooltips
+    const tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    tooltipElements.forEach(el => {
+        return new Tooltip(el)
+    })
 })

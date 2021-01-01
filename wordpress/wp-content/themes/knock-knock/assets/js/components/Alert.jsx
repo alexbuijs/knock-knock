@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 const Alert = ({ children, type, close }) => {
     return (
-        <div className={`alert alert-dismissible alert-${type}`} role="alert">
-            {children}
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={close}>
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div>
+            <div className={`alert alert-dismissible alert-${type}`} role="alert">
+                {children}
+                <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={close}></button>
+            </div>
         </div>
     )
 }

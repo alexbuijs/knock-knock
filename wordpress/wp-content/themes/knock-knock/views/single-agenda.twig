@@ -14,7 +14,7 @@
     {% embed "partials/card.twig" %}
         {% block content %}
             {% if post.post_author == current_user.ID or function('current_user_can', 'edit_others_posts') %}
-                <div class="float-right ml-3 mb-2">
+                <div class="float-end ms-3 mb-2">
                     {% include "partials/button.twig" with {
                         'text': 'Bewerken',
                         'icon': 'fas fa-pencil-alt',
@@ -24,7 +24,7 @@
                 </div>
             {% endif %}
             <div class="d-flex flex-row align-items-center mb-2">
-                <h1 class="font-weight-bold title title-large mr-2">{{ localDate('j', post.start) }}</h1>
+                <h1 class="fw-bold title title-large me-2">{{ localDate('j', post.start) }}</h1>
                 <div>
                     <b>{{ localDate('F', post.start) }}</b><br>
                     {{ localDate("l", post.start) }}
@@ -39,7 +39,7 @@
             <div class="d-flex justify-content-between align-items-center mt-2">
                 <div>
                     <img src="{{ post.authorImage }}" class="thumbnail" />
-                    <span class="text-muted ml-2">
+                    <span class="text-muted ms-2">
                         Organisator: {{ post.authorLink }}
                     </span>
                 </div>

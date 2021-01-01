@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
 import useFormValidation from '../lib/useFormValidation'
 import validateProfileForm from '../lib/validateProfileForm'
 import Alert from './Alert'
-import bsCustomFileInput from 'bs-custom-file-input'
 
 const ProfileForm = ({ data, setUserImage }) => {
     const { handleChange, handleSubmit, handleBlur, values, setValues, errors, setErrors, isSubmitting } = useFormValidation({
@@ -16,10 +15,6 @@ const ProfileForm = ({ data, setUserImage }) => {
 
     const [alert, setAlert] = useState(false)
     const formRef = useRef(null)
-
-    useEffect(() => {
-        bsCustomFileInput.init()
-    }, [])
 
     function submitProfileForm () {
         setAlert(false)
@@ -68,9 +63,9 @@ const ProfileForm = ({ data, setUserImage }) => {
             { alert &&
                 <Alert type={alert.type} close={() => setAlert(false)}>{ alert.message }</Alert>
             }
-            <h5 className="font-weight-bold">Persoonlijke gegevens</h5>
-            <div className="form-group mt-2">
-                <label htmlFor="phone">E-mailadres <small>(Let op: wordt niet gecontroleerd)</small></label>
+            <h5 className="fw-bold">Persoonlijke gegevens</h5>
+            <div className="mt-2">
+                <label htmlFor="phone" className="form-label">E-mailadres <small>(Let op: wordt niet gecontroleerd)</small></label>
                 <input
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -85,8 +80,8 @@ const ProfileForm = ({ data, setUserImage }) => {
                     </div>
                 }
             </div>
-            <div className="form-group mt-2">
-                <label htmlFor="phone">Telefoonnummer</label>
+            <div className="mt-2">
+                <label htmlFor="phone" className="form-label">Telefoonnummer</label>
                 <input
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -101,26 +96,25 @@ const ProfileForm = ({ data, setUserImage }) => {
                     </div>
                 }
             </div>
-            <h5 className="font-weight-bold">Foto</h5>
-            <div className="form-group">
-                <label>Selecteer een nieuwe foto <small>(max. { data.uploadMaxFilesize }B)</small> en klik op opslaan.</label>
-                <div className="custom-file">
-                    <input
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        type="file"
-                        className={`custom-file-input ${errors.photo ? 'is-invalid' : ''}`}
-                        name="photo" />
-                    <label className="custom-file-label" htmlFor="customFile">Selecteer foto</label>
-                    { errors.photo &&
-                        <div className="invalid-feedback">
-                            { errors.photo }
-                        </div>
-                    }
-                </div>
+            <h5 className="fw-bold mt-3">Foto</h5>
+            <div className="mt-2">
+                <label className="form-label" htmlFor="photo">Selecteer een nieuwe foto <small>(max. { data.uploadMaxFilesize }B)</small> en klik op opslaan.</label>
+                <input
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={`form-control ${errors.photo ? 'is-invalid' : ''}`}
+                    type="file"
+                    id="photo"
+                    name="photo"
+                />
+                { errors.photo &&
+                    <div className="invalid-feedback">
+                        { errors.photo }
+                    </div>
+                }
             </div>
-            <button type="submit" className="btn btn-primary" disabled={isSubmitting || Object.keys(errors).length}>
-                <span className={`spinner-border spinner-border-sm mr-2 ${!isSubmitting ? 'd-none' : ''}`} role="status" aria-hidden="true"></span>
+            <button type="submit" className="btn btn-primary mt-3" disabled={isSubmitting || Object.keys(errors).length}>
+                <span className={`spinner-border spinner-border-sm me-2 ${!isSubmitting ? 'd-none' : ''}`} role="status" aria-hidden="true"></span>
                 <span className="body">{isSubmitting ? 'Even geduld...' : 'Opslaan'}</span>
             </button>
         </form>

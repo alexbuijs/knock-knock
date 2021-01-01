@@ -79,13 +79,8 @@ module.exports = {
                             sourceMap: isDev,
                             postcssOptions: {
                                 plugins: [
-                                    [
-                                        'postcss-preset-env',
-                                        {
-                                        // Options
-                                        },
-                                    ],
-                                ],
+                                    require('autoprefixer')
+                                ]
                             },
                         },
                     },
@@ -93,6 +88,7 @@ module.exports = {
                         loader: 'sass-loader',
                         options: {
                             sourceMap: isDev,
+                            implementation: require("sass")
                         },
                     },
                 ]

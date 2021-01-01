@@ -8,6 +8,8 @@ $body-bg: #f3f4f8;
 $font-weight-black: 900;
 $enable-responsive-font-sizes: true;
 $font-size-sm: 0.925em;
+$link-decoration: none;
+$link-hover-decoration: underline;
 
 // Navbar
 $navbar-padding-y: 0;
@@ -21,6 +23,22 @@ $card-border-width: 0;
 $list-group-item-padding-x: 0;
 $list-group-border-width: 0;
 $list-group-bg: transparent;
+
+// Breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);
 
 // Other
 $box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);

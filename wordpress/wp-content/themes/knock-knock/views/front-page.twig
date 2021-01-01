@@ -47,9 +47,9 @@
             <ul class="list-group list-md">
                 {% for post in upcomingActivities %}
                     <li class="list-group-item d-flex align-items-center">
-                        <div class="mr-3 text-right">
-                            <h4 class="date font-weight-bold mb-0">{{ localDate('j', post.start) }}</h4>
-                            <div class="text-uppercase font-weight-bold text-muted mb-0 small">{{ localDate("M", post.start) }}</div>
+                        <div class="me-3 text-end">
+                            <h4 class="date fw-bold mb-0">{{ localDate('j', post.start) }}</h4>
+                            <div class="text-uppercase fw-bold text-muted mb-0 small">{{ localDate("M", post.start) }}</div>
                         </div>
                         <div class="text-truncate">
                             <a href="{{ post.link }}">{{ post.title }}</a>
@@ -71,7 +71,7 @@
             <ul class="list-group">
                 {% for user in recentUsers %}
                     <li class="list-group-item d-flex">
-                        <div class="mr-3">
+                        <div class="me-3">
                             <img class="thumbnail" src="{{ user.thumbnail }}" alt="" />
                         </div>
                         <div>

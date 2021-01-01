@@ -17,7 +17,7 @@
     {% embed "partials/card.twig" %}
         {% block content %}
             {% if post.post_author == current_user.ID or function('current_user_can', 'edit_others_posts') %}
-                <div class="float-right ml-3 mb-2">
+                <div class="float-end ms-3 mb-2">
                     {% include "partials/button.twig" with {
                         'text': 'Bewerken',
                         'icon': 'fas fa-pencil-alt',
@@ -32,7 +32,7 @@
             <div class="d-flex justify-content-between align-items-center mt-2">
                 <div>
                     <img src="{{ authorThumbnail }}" class="thumbnail" />
-                    <span class="text-muted ml-2">
+                    <span class="text-muted ms-2">
                         {{ authorLink }} is beheerder van dit document
                     </span>
                 </div>
@@ -54,7 +54,7 @@
                 {% for item in post.meta('downloads') %}
                     {% if item.bestand %}
                         <li class='d-flex mb-1'>
-                            <div class='mr-1'>
+                            <div class='me-1'>
                                 <i class="far fa-fw fa-file text-muted"></i>
                             </div>
                             <a href="{{ item.bestand.url }}" target="_blank">{{ item.omschrijving }}</a>

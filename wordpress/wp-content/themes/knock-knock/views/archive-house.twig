@@ -18,11 +18,11 @@
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between mb-3 align-items-center">
                             <div>
-                                <h5 class="font-weight-bold"><a class="text-body" href="{{ house.link }}">{{ house.post_title }}</a></h5>
+                                <h5 class="fw-bold"><a class="text-body" href="{{ house.link }}">{{ house.post_title }}</a></h5>
                                 <div>
                                     {% for resident in house.residents %}
                                         <a href="{{ resident.url }}" class="no-underline">
-                                            <img class="thumbnail mb-1" src="{{ resident.thumbnail }}" alt="" data-toggle="tooltip" data-placement="top" title="{{ resident.first_name }}" />
+                                            <img class="thumbnail mb-1" src="{{ resident.thumbnail }}" alt="" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ resident.first_name }}" />
                                         </a>
                                     {% endfor %}
                                 </div>
