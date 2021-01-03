@@ -1,6 +1,11 @@
-.navbar {
-  @include media-breakpoint-down(md) {
-    padding: 0;
+.navbar-brand {
+  @include media-breakpoint-down(lg) {
+    margin-left: var(--bs-gutter-x, 0.75rem);
+  }
+
+  svg {
+    height: $navbar-brand-height;
+    width: $navbar-brand-height * $kv-logo-ratio;
   }
 }
 
@@ -8,8 +13,8 @@
   background: darken($primary, 5%);
   border: 0;
 
-  @include media-breakpoint-down(md) {
-    margin: 0 $spacer;
+  @include media-breakpoint-down(lg) {
+    margin-right: var(--bs-gutter-x, 0.75rem);
   }
 }
 
@@ -19,7 +24,7 @@
   }
 
   .dropdown-menu {
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       position: absolute;
     }
   }
@@ -36,7 +41,7 @@
       /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
       @extend .nav-link;
       font-size: $font-size-base;
-      padding: 0.5rem $spacer;
+      padding: 0.75rem ($grid-gutter-width / 2);
 
       @include media-breakpoint-up(lg) {
         padding: 1rem;
@@ -45,6 +50,13 @@
 
     &.current-menu-item {
       background: darken($primary, 5%);
+    }
+  }
+
+  > .container-lg {
+    @include media-breakpoint-down(lg) {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
@@ -59,23 +71,3 @@
   }
 }
 
-.navbar-brand {
-  @include media-breakpoint-down(md) {
-    margin: 0 $spacer;
-  }
-
-  svg {
-    height: $navbar-brand-height;
-    width: $navbar-brand-height * $kv-logo-ratio;
-  }
-}
-
-.navbar-expand-lg > .container {
-  padding-left: 0;
-  padding-right: 0;
-
-  @include media-breakpoint-up(sm) {
-    padding-left: $grid-gutter-width / 2;
-    padding-right: $grid-gutter-width / 2;
-  }
-}

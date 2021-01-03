@@ -5,7 +5,7 @@
                 <use xlink:href="{{ theme_uri ~ '/assets/images/logo.svg#logo' }}"/>
             </svg>
         </a>
-        <ul class="navbar-nav ms-auto d-lg-none">
+        <ul class="navbar-nav ms-auto me-3 me-lg-0 d-lg-none">
             {% include "partials/navbar-user-badge.twig" %}
         </ul>
 
@@ -14,7 +14,7 @@
         </button>
 
         <div id="menu-toggle" class="collapse navbar-collapse">
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav">
                 {% for item in menu.items %}
                     <li class="{{ item.classes|join(' ') }}">
                         <a href="{{ item.link }}">{{ item.title }}</a>
