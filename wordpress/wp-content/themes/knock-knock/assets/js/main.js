@@ -4,6 +4,8 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core'
 import Dropdown from 'bootstrap/js/dist/dropdown'
 import Tooltip from 'bootstrap/js/dist/tooltip'
 
+import { isIE } from './lib/helpers'
+
 // Regular
 import {
     faBell,
@@ -58,6 +60,13 @@ library.add(
 dom.watch()
 
 domReady(() => {
+    // Detect IE
+    if (isIE()) {
+        const alert = document.getElementById('unsupported-browser')
+        alert.innerHTML = 'Je gebruikt een oudere browser die niet wordt ondersteund door het intranet. <a href="https://browsehappy.com">Update je browser</a>.'
+        alert.style.cssText = 'display: block !important;'
+    }
+
     // Table links
     document.querySelectorAll('table tr').forEach(el => {
         el.onclick = function () {
