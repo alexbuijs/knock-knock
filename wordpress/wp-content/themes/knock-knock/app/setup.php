@@ -44,8 +44,8 @@ add_action('admin_enqueue_scripts', function ($hook) {
     // Make datepicker available in agenda post edit screen
     if ($hook == 'post-new.php' || $hook == 'post.php') {
         if ('agenda' === $post->post_type) {
-            wp_enqueue_script('main', asset('main.js'), [], null, true);
-            wp_enqueue_style('datepicker', asset('datepicker.css'), [], null);
+            wp_enqueue_script('admin', asset('admin.js'), [], null, true);
+            wp_enqueue_style('admin', asset('admin.css'), [], null);
         }
     }
 });

@@ -9,21 +9,6 @@
   td {
     border-color: var(--border-color);
   }
-
-  // thead th {
-  //   border-bottom: (2 * $table-border-width) solid var(--border-color);
-  //   border-top: 0;
-  // }
-
-  // th,
-  // td {
-  //   border-top: $table-border-width solid var(--border-color);
-  // }
-
-  // tbody + tbody {
-  //   border-top: (2 * $table-border-width) solid var(--border-color);
-  // }
-
 }
 
 .table-hover {

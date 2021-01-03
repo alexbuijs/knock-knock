@@ -1,8 +1,8 @@
 import domReady from '@wordpress/dom-ready'
-import flatpickr from 'flatpickr'
-import { Dutch } from 'flatpickr/dist/l10n/nl'
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
-import { Dropdown, Tooltip } from 'bootstrap'
+
+import Dropdown from 'bootstrap/js/dist/dropdown'
+import Tooltip from 'bootstrap/js/dist/tooltip'
 
 // Regular
 import {
@@ -57,19 +57,7 @@ library.add(
 )
 dom.watch()
 
-const flatpickrConfig = {
-    enableTime: true,
-    allowInput: true,
-    dateFormat: 'Y-m-d H:i',
-    locale: Dutch
-}
-
 domReady(() => {
-    // Activate datepicker
-    document.querySelectorAll('div.datetimepicker input').forEach(el => {
-        flatpickr(el, flatpickrConfig)
-    })
-
     // Table links
     document.querySelectorAll('table tr').forEach(el => {
         el.onclick = function () {

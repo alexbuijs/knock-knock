@@ -2,10 +2,10 @@
 
 @import '~bootstrap/scss/bootstrap';
 
+/*! purgecss start ignore */
 @import 'global';
 @import 'typography';
 @import 'navbar';
-@import 'datepicker';
 @import 'card';
 @import 'list-group';
 @import 'footer';
@@ -14,3 +14,4 @@
 @import 'table';
 @import 'forms';
 @import 'dark-mode';
+/*! purgecss end ignore */

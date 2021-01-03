@@ -2,10 +2,10 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const AssetsPlugin = require("assets-webpack-plugin");
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const purgecss = require('@fullhuman/postcss-purgecss')
 
 module.exports = {
     mode: isDev ? 'development' : 'production',
@@ -17,9 +17,10 @@ module.exports = {
         profile: [
             './assets/js/profile.jsx',
         ],
-        // Separate datepicker for admin
-        datepicker: [
-            './assets/scss/_datepicker.scss'
+        // Separate scripts for admin
+        admin: [
+            './assets/js/admin.js',
+            './assets/scss/admin.scss'
         ],
     },
     devtool: isDev ? 'source-map' : false,
@@ -28,6 +29,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     watch: isDev,
+    optimization: {
+        minimize: !isDev
+    },
     module: {
         rules: [
             // Javascript 
@@ -46,7 +50,13 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env'],
+                        presets: [
+                            [
+                                '@babel/preset-env', {
+                                    modules: false
+                                }
+                            ]
+                        ],
                         plugins: [
                             '@babel/plugin-transform-react-jsx',
                             ["@babel/plugin-transform-runtime", {
@@ -60,6 +70,7 @@ module.exports = {
             // Sass
             {
                 test: /\.scss$/,
+                sideEffects: true,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -77,7 +88,17 @@ module.exports = {
                             sourceMap: isDev,
                             postcssOptions: {
                                 plugins: [
-                                    require('autoprefixer')
+                                    require('autoprefixer'),
+                                    purgecss({
+                                        content: [
+                                            `${path.join(__dirname, 'views')}/**/*.twig`, 
+                                            `${path.join(__dirname, 'assets', 'js')}/**/*.jsx`
+                                        ],
+                                        safelist: {
+                                            standard: [/show/],
+                                            deep: [/^alert/, /^navbar/, /file/, /tooltip/],
+                                        },
+                                    })
                                 ]
                             },
                         },
@@ -103,12 +124,6 @@ module.exports = {
         new StylelintPlugin({
             fix: true
         }),
-        // new AssetsPlugin({
-        //     filename: "manifest.json",
-        //     path: path.join(process.cwd(), "dist"),
-        //     prettyPrint: true,
-        //     removeFullPathAutoPrefix: true
-        // }),
         new WebpackManifestPlugin({
             publicPath: ''
         }),
