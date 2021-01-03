@@ -97,6 +97,7 @@ module.exports = {
                                         safelist: {
                                             standard: [/show/],
                                             deep: [/^alert/, /^navbar/, /file/, /tooltip/],
+                                            greedy: [/collaps/]
                                         },
                                     })
                                 ]

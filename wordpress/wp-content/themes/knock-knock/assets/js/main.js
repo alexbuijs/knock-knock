@@ -3,6 +3,7 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core'
 
 import Dropdown from 'bootstrap/js/dist/dropdown'
 import Tooltip from 'bootstrap/js/dist/tooltip'
+import Collapse from 'bootstrap/js/dist/collapse'
 
 import { isIE } from './lib/helpers'
 
@@ -88,5 +89,13 @@ domReady(() => {
     const tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     tooltipElements.forEach(el => {
         return new Tooltip(el)
+    })
+
+    // Collapse menu
+    const collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
+    collapseElementList.map(el => {
+        return new Collapse(el, {
+            toggle: false
+        })
     })
 })
