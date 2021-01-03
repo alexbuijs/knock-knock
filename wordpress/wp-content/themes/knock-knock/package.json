@@ -112,11 +112,10 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@popperjs/core": "^2.6.0",
     "@wordpress/dom-ready": "^2.10.0",
     "bootstrap": "^5.0.0-beta1",
     "flatpickr": "^4.6.6",
-    "popper.js": "^1.16.1",
-    "promise.prototype.finally": "^3.1.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
