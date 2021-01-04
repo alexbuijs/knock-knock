@@ -9,10 +9,7 @@
   }
 }
 
-.navbar-toggler {
-  background: darken($primary, 5%);
-  border: 0;
-
+.hamburger {  
   @include media-breakpoint-down(lg) {
     margin-right: var(--bs-gutter-x, 0.75rem);
   }

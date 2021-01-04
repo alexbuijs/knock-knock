@@ -94,6 +94,13 @@ domReady(() => {
     // Collapse menu
     const collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
     collapseElementList.map(el => {
+        if (el.id === 'menu-toggle') {
+            const button = document.querySelector('[data-bs-target="#menu-toggle"]')
+
+            el.addEventListener('show.bs.collapse', () => button.classList.add('active'))
+            el.addEventListener('hide.bs.collapse', () => button.classList.remove('active'))
+        }
+
         return new Collapse(el, {
             toggle: false
         })

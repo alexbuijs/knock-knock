@@ -9,8 +9,12 @@
             {% include "partials/navbar-user-badge.twig" %}
         </ul>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-controls="menu-toggle" data-bs-target="#menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="hamburger hamburger--default d-lg-none navbar-toggler" type="button"  data-bs-toggle="collapse" aria-controls="menu-toggle" data-bs-target="#menu-toggle" aria-expanded="false" aria-label="Toggle navigation"> 
+            <div class="inner">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </button>
 
         <div id="menu-toggle" class="collapse navbar-collapse">

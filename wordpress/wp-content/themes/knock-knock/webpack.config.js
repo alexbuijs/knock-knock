@@ -95,11 +95,12 @@ module.exports = {
                                             `${path.join(__dirname, 'assets', 'js')}/**/*.jsx`
                                         ],
                                         safelist: {
-                                            standard: [/show/],
+                                            standard: [/show/, /active/],
                                             deep: [/^alert/, /^navbar/, /file/, /tooltip/],
                                             greedy: [/collaps/]
                                         },
-                                    })
+                                    }),
+                                    null
                                 ]
                             },
                         },

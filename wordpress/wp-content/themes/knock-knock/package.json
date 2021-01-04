@@ -115,6 +115,7 @@
     "@popperjs/core": "^2.6.0",
     "@wordpress/dom-ready": "^2.10.0",
     "bootstrap": "^5.0.0-beta1",
+    "delicious-hamburgers": "^1.1.0",
     "flatpickr": "^4.6.6",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

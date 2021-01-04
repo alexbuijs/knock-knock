@@ -1,3 +1,5 @@
+@import '~bootstrap/scss/bootstrap-utilities';
+
 // Colors
 $primary: #0089cd;
 $secondary: #9be500;
@@ -39,6 +41,17 @@ $container-max-widths: (
   lg: 960px,
   xl: 1140px
 );
+
+// Hamburger menu button
+$hamburger-size: 40px;
+$hamburger-width: 50px;
+$hamburger-color: #fff;
+$hamburger-bar-border-radius: 1px;
+$hamburger-border-radius: 0.25rem;
+$hamburger-padding: 10px;
+$hamburger-background: darken($primary, 5%);
+$hamburger-background-transition-speed: 0s;
+$hamburger-extra-transition-rules: $navbar-toggler-transition;
 
 // Other
 $box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
