@@ -25,13 +25,13 @@ body {
   --primary-bg: #{$primary};
   --white: #{$white};
   
-  .prefers-dark {
-    @include dark-mode();
-  }
-  
   @media (prefers-color-scheme: dark) {
     &:not(.prefers-light) {
       @include dark-mode();
     }
   }
+}
+
+.prefers-dark {
+  @include dark-mode();
 }
