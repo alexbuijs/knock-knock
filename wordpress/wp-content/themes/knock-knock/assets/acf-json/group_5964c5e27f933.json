@@ -1,6 +1,6 @@
 {
     "key": "group_5964c5e27f933",
-    "title": "Extra opties voor dit document (admin)",
+    "title": "Extra opties voor dit document",
     "fields": [
         {
             "key": "field_5964c5ef98988",
@@ -120,23 +120,6 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "documentatie"
-            },
-            {
-                "param": "current_user_role",
-                "operator": "==",
-                "value": "administrator"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "documentatie"
-            },
-            {
-                "param": "current_user_role",
-                "operator": "==",
-                "value": "editor"
             }
         ]
     ],
@@ -159,7 +142,7 @@
         "tags",
         "send-trackbacks"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1575218585
+    "modified": 1610651669
 }
