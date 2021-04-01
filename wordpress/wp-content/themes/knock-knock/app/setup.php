@@ -6,8 +6,10 @@
 namespace App;
 
 use App\Classes\Fetch;
-use App\Classes\Manifest;
-use Illuminate\Container\Container;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Asset\Package;
+use Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy;
+use Timber\Timber;
 
 /**
  * Redirect non-logged in users to login
@@ -79,17 +81,35 @@ add_action('after_setup_theme', function () {
     }
 
     /**
-     * Register container bindings
+     * Initialize Timber
      */
-    $container = Container::getInstance();
-    $container->singleton('manifest', Manifest::class);
-    $container->bind('fetch', Fetch::class);
+    $timber = new Timber();
+    Timber::$dirname = ['../views'];
+    Timber::$cache = true;
 
-    $container->make('manifest')->registerManifest(
-        dirname(get_template_directory()) . '/dist/manifest.json'
-    );
+    /**
+     * Create app container
+     */
+    $container = new ContainerBuilder();
+
+    $container
+        ->register('asset', Package::class)
+        ->addArgument(new JsonManifestVersionStrategy(dirname(__DIR__) . '/dist/manifest.json'));
+
+    $container->register('fetch', Fetch::class);
+
+    /**
+     * Helper filters
+     */
+    add_filter('getAssetUrl', function ($assetName) use ($container) {
+        $uriBase = dirname(get_template_directory_uri()) . '/dist/';
+        return $uriBase . $container->get('asset')->getUrl($assetName);
+    });
+
+    add_filter('getFetch', function () use ($container) {
+        return $container->get('fetch');
+    });
 });
-
 
 /**
  * Rewrite rule for the single use page

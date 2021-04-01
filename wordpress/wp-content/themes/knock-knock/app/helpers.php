@@ -6,7 +6,6 @@
 namespace App;
 
 use Carbon\Carbon;
-use Illuminate\Container\Container;
 
 /**
  * Get user profile picture
@@ -55,6 +54,9 @@ function timeDiff($date, $short = false) {
     ]);
 }
 
+/**
+ * Get user by slug
+ */
 function getUserBySlug($slug) {
     if (!$slug) {
         return false;
@@ -69,35 +71,6 @@ function getUserBySlug($slug) {
 
     // Result should be one user
     return (count($result) == 1) ? $result[0] : [];
-}
-
-/**
- * Get available manifest instance
- *
- * @return mixed
- */
-function manifest()
-{
-    return Container::getInstance()->make('manifest');
-}
-
-/**
- * Get instance of the fetch class
- */
-function fetch()
-{
-    return Container::getInstance()->make('fetch');
-}
-
-/**
- * Get publicly accessible asset uri
- *
- * @param string $assetName Asset filename
- */
-function asset($assetName)
-{
-    $uriBase = dirname(get_template_directory_uri()) . '/dist/';
-    return $uriBase . manifest()->get($assetName);
 }
 
 /**

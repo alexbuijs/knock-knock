@@ -9,13 +9,6 @@ if (!file_exists($composer = dirname(__DIR__) . '/vendor/autoload.php')) {
 require_once $composer;
 
 /**
- * Initialize Timber
- */
-$timber = new \Timber\Timber();
-Timber::$dirname = ['../views'];
-Timber::$cache = true;
-
-/**
  * Loads Knock Knock template files located in the app/ folder
  */
 array_map(
@@ -31,15 +24,15 @@ array_map(
  * Global functions
  */
 if (!function_exists('asset')) {
-    function asset(...$args)
+    function asset($assetName)
     {
-        return App\asset(...$args);
+        return apply_filters('getAssetUrl', $assetName);
     }
 }
 
 if (!function_exists('fetch')) {
-    function fetch(...$args) 
+    function fetch() 
     {
-        return App\fetch(...$args);
+        return apply_filters('getFetch', null);
     }
 }
