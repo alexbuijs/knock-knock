@@ -10,6 +10,9 @@ services:
     restart: always
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
 
   wordpress:
     depends_on:
@@ -24,6 +27,9 @@ services:
     restart: always
     environment:
       WORDPRESS_DB_HOST: database:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress  
       WORDPRESS_TABLE_PREFIX: wpkv_
       WORDPRESS_DEBUG: 1
 
