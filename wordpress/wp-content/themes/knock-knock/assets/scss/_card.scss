@@ -1,7 +1,9 @@
+@use 'sass:math';
+
 .card {
   background-color: var(--card-bg);
   box-shadow: $box-shadow;
-  margin-bottom: $grid-gutter-width / 2;
+  margin-bottom: $grid-gutter-width * 0.5;
 
   @include media-breakpoint-up(lg) {
     margin-bottom: $grid-gutter-width;
