@@ -37,15 +37,6 @@ jobs:
         cd ./wordpress/wp-content/themes/knock-knock
         if [ -d ".twig-cache" ]; then rm -Rf .twig-cache; fi
         mkdir .twig-cache
-    - name: Delete Twig cache
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_THEME_USER }}
-        password: ${{ secrets.FTP_THEME_PASSWORD }}
-        local-dir: wordpress/wp-content/themes/knock-knock/.twig-cache/
-        server-dir: .twig-cache/
-        dangerous-clean-slate: true
     - name: FTP-Deploy-Action theme
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
@@ -64,6 +55,15 @@ jobs:
           - composer.json
           - composer.lock
           - .gitignore
+    - name: Delete Twig cache
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_THEME_USER }}
+        password: ${{ secrets.FTP_THEME_PASSWORD }}
+        local-dir: wordpress/wp-content/themes/knock-knock/.twig-cache/
+        server-dir: .twig-cache/
+        dangerous-clean-slate: true
     - name: FTP-Deploy-Action mu-plugins
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
