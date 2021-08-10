@@ -9,7 +9,7 @@
             {% include "partials/navbar-user-badge.twig" %}
         </ul>
 
-        <button class="hamburger hamburger--default d-lg-none navbar-toggler" type="button"  data-bs-toggle="collapse" aria-controls="menu-toggle" data-bs-target="#menu-toggle" aria-expanded="false" aria-label="Toggle navigation"> 
+        <button class="hamburger hamburger--default d-lg-none navbar-toggler" type="button" data-bs-toggle="collapse" aria-controls="menu-toggle" data-bs-target="#menu-toggle" aria-expanded="false" aria-label="Toggle navigation"> 
             <div class="inner">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -20,8 +20,8 @@
         <div id="menu-toggle" class="collapse navbar-collapse">
             <ul class="navbar-nav">
                 {% for item in menu.items %}
-                    <li class="{{ item.classes|join(' ') }}">
-                        <a href="{{ item.link }}">{{ item.title }}</a>
+                    <li class="nav-item {{ item.classes|join(' ') }}">
+                        <a class="nav-link" href="{{ item.link }}">{{ item.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
