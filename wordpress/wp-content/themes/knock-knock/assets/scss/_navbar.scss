@@ -47,8 +47,13 @@
       }
     }
 
-    &.current-menu-item {
+    &.current-menu-item,
+    &:hover {
       background: darken($primary, 5%);
+    }
+
+    &:active {
+      background: darken($primary, 8%);
     }
   }
 
