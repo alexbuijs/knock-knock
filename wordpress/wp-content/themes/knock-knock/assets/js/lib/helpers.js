@@ -6,7 +6,7 @@ export const isNumeric = value => {
 }
 
 /**
- * Converts a PHP size (like 2M) to number of bytes
+ * Converts a PHP size string (like 2M) to number of bytes
  */
 export const getBytes = size => {
     size.trim()
