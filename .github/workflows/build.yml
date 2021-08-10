@@ -31,7 +31,7 @@ jobs:
     - name: Install composer dependencies
       run: |
         cd ./wordpress/wp-content/themes/knock-knock
-        composer install --prefer-dist --no-progress --no-suggest
+        composer install --prefer-dist --no-progress
     - name: Create empty cache folder
       run: |
         cd ./wordpress/wp-content/themes/knock-knock
