@@ -6,6 +6,7 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const purgecss = require('@fullhuman/postcss-purgecss')
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     mode: isDev ? 'development' : 'production',
@@ -35,15 +36,15 @@ module.exports = {
     module: {
         rules: [
             // Javascript 
-            {
-                enforce: 'pre',
-                test: /\.jsx?$/,
-                exclude: /(node_modules)/,
-                loader: 'eslint-loader',
-                options: {
-                    fix: true,
-                },
-            },
+            // {
+            //     enforce: 'pre',
+            //     test: /\.jsx?$/,
+            //     exclude: /(node_modules)/,
+            //     loader: 'eslint-loader',
+            //     options: {
+            //         fix: true,
+            //     },
+            // },
             {
                 test: /\.m?jsx?$/,
                 exclude: /(node_modules)/,
@@ -120,6 +121,10 @@ module.exports = {
         extensions: ['.js', '.jsx', '.css', '.scss']
     },
     plugins: [
+        new ESLintPlugin({
+            extensions: ['.js', '.jsx'],
+            fix: true
+        }),
         new MiniCssExtractPlugin({
             filename: isDev ? '[name].css' : '[name].[contenthash:8].css'
         }),
