@@ -12,10 +12,8 @@
 }
 
 .table-hover {
-  tbody {
-    tr:hover {
-      color: var(--body-color-darker);
-    }
+  tr:hover td {
+    color: var(--body-color-darker);
   }
 }
 
