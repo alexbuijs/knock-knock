@@ -22,5 +22,10 @@
         "symfony/dependency-injection": "^5.2",
         "symfony/asset": "^5.2"
     },
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
 }
