@@ -7,7 +7,6 @@ services:
       - 8079:3306
     volumes:
       - ./database:/var/lib/mysql
-    restart: always
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: wordpress
@@ -24,7 +23,6 @@ services:
       - ./wordpress/favicons/favicon.ico:/var/www/html/favicon.ico
     ports:
       - 8080:80
-    restart: always
     environment:
       WORDPRESS_DB_HOST: database:3306
       WORDPRESS_DB_USER: wordpress
@@ -39,6 +37,5 @@ services:
     image: phpmyadmin/phpmyadmin
     ports:
       - 8081:80
-    restart: always
     environment: 
       PMA_HOST: database:3306
