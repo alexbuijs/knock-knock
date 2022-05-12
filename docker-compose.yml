@@ -16,7 +16,7 @@ services:
   wordpress:
     depends_on:
       - database
-    image: wordpress:latest
+    image: wordpress:php8.0
     volumes:
       - ./wordpress/wp-content:/var/www/html/wp-content
       - ./wordpress/favicons:/var/www/html/favicons
