@@ -52,7 +52,7 @@
                             <div class="text-uppercase fw-bold text-muted mb-0 small">{{ localDate("M", post.start) }}</div>
                         </div>
                         <div class="text-truncate">
-                            <a href="{{ post.link }}">{{ post.title }}</a>
+                            <a href="{{ post.link }}">{{ post.title|default('(geen titel)') }}</a>
                             <div class="text-muted small">{{ localDate("l", post.start) }} {{ localDate("H:i", post.start) ~ ' - ' ~ localDate("H:i", post.end)}}</div>
                         </div>
                     </li>
