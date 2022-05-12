@@ -28,7 +28,7 @@
                                 {% elseif post.post_type == 'agenda' %}
                                     De activiteit
                                 {% endif %}
-                                <a href="{{ post.link }}">{{ post.title }}</a> is {{ post.isNew ? 'aangemaakt' : 'aangepast' }}
+                                <a href="{{ post.link }}">{{ post.title|default('(geen titel)') }}</a> is {{ post.isNew ? 'aangemaakt' : 'aangepast' }}
                             </div>
 
                         {% endblock %}
