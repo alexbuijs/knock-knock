@@ -16,11 +16,11 @@
         "php": "^7.3 || ^8.0",
         "nesbot/carbon": "^2.31",
         "timber/timber": "^1.18",
-        "symfony/validator": "^5.1",
-        "symfony/property-access": "^5.1",
-        "symfony/mime": "^5.1",
-        "symfony/dependency-injection": "^5.2",
-        "symfony/asset": "^5.2"
+        "symfony/validator": "^6.0",
+        "symfony/property-access": "^6.0",
+        "symfony/mime": "^6.0",
+        "symfony/dependency-injection": "^6.0",
+        "symfony/asset": "^6.0"
     },
     "prefer-stable": true,
     "config": {
