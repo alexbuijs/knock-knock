@@ -32,7 +32,8 @@ import {
     faTrash,
     faSun,
     faAdjust,
-    faMoon
+    faMoon,
+    faInfoCircle
 } from '@fortawesome/free-solid-svg-icons'
 
 // Initialise
@@ -56,7 +57,8 @@ library.add(
     faClock,
     faSun,
     faAdjust,
-    faMoon
+    faMoon,
+    faInfoCircle
 )
 dom.watch()
 

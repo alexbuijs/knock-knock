@@ -20,6 +20,25 @@
             "maxlength": "",
             "rows": 3,
             "new_lines": ""
+        },
+        {
+            "key": "field_62b0cc1f5696d",
+            "label": "Maintenance Text",
+            "name": "maintenance_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -44,5 +63,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1632833196
+    "show_in_rest": 0,
+    "modified": 1655754451
 }
