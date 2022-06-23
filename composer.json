@@ -1,0 +1,67 @@
+{
+  "name": "kapoko/knock-knock",
+  "description": "Wordpress website for Blogexchange.nl with continuous integration through Github Actions.",
+  "authors": [
+    {
+      "name": "kapoko",
+      "email": "17455539+kapoko@users.noreply.github.com"
+    }
+  ],
+  "repositories":[
+    {
+      "type":"composer",
+      "url":"https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    },
+    {
+      "type": "composer",
+      "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-plugin/"
+    },
+    {
+      "type": "path",
+      "url": "./web/wp-content/themes/knock-knock",
+      "options": {
+        "symlink": false
+      }
+    }
+  ],
+  "config": {
+    "platform": {
+      "php": "8.0.13"
+    },
+    "allow-plugins": {
+      "composer/installers": true,
+      "johnpbloch/wordpress-core-installer": true,
+      "pivvenit/acf-pro-installer": true,
+      "symfony/flex": true
+    }
+  },
+  "extra": {
+    "wordpress-install-dir": "web/wp",
+    "installer-paths": {
+      "web/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ],
+      "web/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ]
+    }
+  },
+  "require": {
+    "johnpbloch/wordpress": "^6.0",
+    "symfony/dotenv": "~6.0",
+    "symfony/flex": "^1.19",
+    "klopvaart/knock-knock": "@dev",
+    "advanced-custom-fields/advanced-custom-fields-pro": "^5.12"
+  },
+  "scripts": {
+    "post-update": [
+      "composer dump-env dev"
+    ],
+    "post-install-cmd": "@post-update",
+    "post-update-cmd": "@post-update"
+  }
+}

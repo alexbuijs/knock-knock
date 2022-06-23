@@ -7,29 +7,36 @@ services:
       - 8079:3306
     volumes:
       - ./database:/var/lib/mysql
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+    env_file:
+      - .env
 
   wordpress:
     depends_on:
       - database
     image: wordpress:php8.0
     volumes:
-      - ./wordpress/wp-content:/var/www/html/wp-content
-      - ./wordpress/favicons:/var/www/html/favicons
-      - ./wordpress/favicons/favicon.ico:/var/www/html/favicon.ico
+      - ./vendor:/var/www/html/vendor
+      - ./web:/var/www/html/web
+      - ./.env.local.php:/var/www/html/.env.local.php
+      - ./.htaccess:/var/www/html/.htaccess
+      # Disable images wordpress install, we'll use the composer version
+      - ./web/index.php:/var/www/html/index.php
     ports:
       - 8080:80
-    environment:
-      WORDPRESS_DB_HOST: database:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: wordpress  
-      WORDPRESS_TABLE_PREFIX: wpkv_
-      WORDPRESS_DEBUG: 1
+    env_file:
+      - .env
+
+  wordpress-cli:
+    depends_on:
+      - database
+      - wordpress
+    image: wordpress:cli-php8.0
+    volumes:
+      - ./web:/var/www/html
+      - ./vendor:/var/www/vendor
+      - ./.env.local.php:/var/www/.env.local.php
+    env_file:
+      - .env
 
   phpmyadmin:
     depends_on:

@@ -1,11 +1,17 @@
 <?php
 
 /**
- * Make sure composer dependencies are installed and load them
+ * Make sure composer dependencies are installed, either in main project or in theme
  */
-if (!file_exists($composer = dirname(__DIR__) . '/vendor/autoload.php')) {
-    wp_die(__('Autoloader not found. Run <code>composer install</code> from theme directory.', 'knock-knock'));
+foreach ([5, 1] as $depth) {
+    $composer = dirname(__DIR__, $depth) . '/vendor/autoload.php';
+    if ($found = file_exists($composer)) break;
 }
+
+if (!$found) {
+    wp_die(__('Autoloader not found. Run <code>composer install</code>.', 'knock-knock'));
+}
+
 require_once $composer;
 
 /**

@@ -1,6 +1,6 @@
 {
     "name": "klopvaart/knock-knock",
-    "type": "package",
+    "type": "wordpress-theme",
     "authors": [
         {
             "name": "Klopvaart Intranet Team",
@@ -24,6 +24,9 @@
     },
     "prefer-stable": true,
     "config": {
+        "platform": {
+            "php": "8.0.2"
+        },
         "allow-plugins": {
             "composer/installers": true
         }
