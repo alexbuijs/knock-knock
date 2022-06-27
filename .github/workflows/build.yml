@@ -41,6 +41,10 @@ jobs:
         script: |
           PATH="/home/${{ secrets.SSH_USERNAME }}/bin/:$PATH"
           cd domains/intranet.klopvaart.nl/public_html && \
+          git checkout main
+          if ! git pull origin main; then
+            exit 1
+          fi
           composer-php8 install && \ 
           composer-php8 dump-env prod && \
           cd web/wp-content/themes/knock-knock &&
