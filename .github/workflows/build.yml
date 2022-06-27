@@ -12,62 +12,47 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2.1.4
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
       run: |
-        cd ./wordpress/wp-content/themes/knock-knock
+        cd web/wp-content/themes/knock-knock
         npm ci
         npm run production
         npm test
       env:
         CI: true
-    - name: Install composer dependencies
-      run: |
-        cd ./wordpress/wp-content/themes/knock-knock
-        composer install --prefer-dist --no-progress
-    - name: Create empty cache folder
-      run: |
-        cd ./wordpress/wp-content/themes/knock-knock
-        if [ -d ".twig-cache" ]; then rm -Rf .twig-cache; fi
-        mkdir .twig-cache
-    - name: FTP-Deploy-Action theme
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+    - name: Pull repo on server, delete twig cache
+      uses: appleboy/ssh-action@master
       with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_THEME_USER }}
-        password: ${{ secrets.FTP_THEME_PASSWORD }}
-        local-dir: ./wordpress/wp-content/themes/knock-knock/
-        exclude: node_modules/**
-          - node_modules/**/*
-          - assets/scss/**
-          - assets/js/**
-          - .twig-cache
-          - webpack.config.js
-          - package.json
-          - package-lock.json
-          - composer.json
-          - composer.lock
-          - .gitignore
-    - name: Delete Twig cache
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        proxy_host: ${{ secrets.SSH_PROXY_HOST }}
+        proxy_port: ${{ secrets.SSH_PROXY_PORT }}
+        proxy_username: ${{ secrets.SSH_PROXY_USERNAME }}
+        proxy_password: ${{ secrets.SSH_PROXY_PASSWORD }}
+        script: |
+          PATH="/home/${{ secrets.SSH_USERNAME }}/bin/:$PATH"
+          cd domains/intranet.klopvaart.nl/public_html && \
+          composer-php8 install && \ 
+          composer-php8 dump-env prod && \
+          rm -r wordpress/wp-content/themes/knock-knock/.twig-cache
+    - name: Copy artifacts
+      uses: appleboy/scp-action@master
       with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_THEME_USER }}
-        password: ${{ secrets.FTP_THEME_PASSWORD }}
-        local-dir: wordpress/wp-content/themes/knock-knock/.twig-cache/
-        server-dir: .twig-cache/
-        dangerous-clean-slate: true
-    - name: FTP-Deploy-Action mu-plugins
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_MU_USER }}
-        password: ${{ secrets.FTP_MU_PASSWORD }}
-        local-dir: ./wordpress/wp-content/mu-plugins/
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        proxy_host: ${{ secrets.SSH_PROXY_HOST }}
+        proxy_port: ${{ secrets.SSH_PROXY_PORT }}
+        proxy_username: ${{ secrets.SSH_PROXY_USERNAME }}
+        proxy_password: ${{ secrets.SSH_PROXY_PASSWORD }}
+        source: "web/wp-content/themes/knock-knock/dist"
+        target: "domains/intranet.klopvaart.nl/public_htmlweb/wp-content/themes/knock-knock/dist"
