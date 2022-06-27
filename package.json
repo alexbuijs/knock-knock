@@ -1,0 +1,13 @@
+{
+  "name": "@knock-knock/site",
+  "version": "0.1.0",
+  "description": "This repository contains the development environment and the WordPress theme for the [Klopvaart](http://intranet.klopvaart.nl) Intranet.",
+  "workspaces": [
+    "web/wp-content/themes/knock-knock"
+  ],
+  "scripts": {
+    "start": "npm run dev --ws",
+    "production": "npm run production --ws",
+    "test": "npm test --ws"
+  }
+}

@@ -1,5 +1,6 @@
 /database
 /vendor
+/node_modules
 /web/wp
 /web/wp-content/*
 !/web/wp-content/themes/
