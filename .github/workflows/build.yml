@@ -42,7 +42,7 @@ jobs:
           PATH="/home/${{ secrets.SSH_USERNAME }}/bin/:$PATH"
           cd domains/intranet.klopvaart.nl/public_html && \
           git checkout main
-          if ! git pull origin main; then
+          if ! git pull; then
             exit 1
           fi
           composer-php8 install && \ 
