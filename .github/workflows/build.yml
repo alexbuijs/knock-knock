@@ -47,7 +47,7 @@ jobs:
           fi
           composer-php8 install && \ 
           composer-php8 dump-env prod && \
-          cd web/wp-content/themes/knock-knock &&
+          cd web/wp-content/themes/knock-knock && \
           if [ -d ".twig-cache" ]; then rm -Rf .twig-cache; fi
     - name: Copy artifacts
       uses: appleboy/scp-action@master
