@@ -17,7 +17,7 @@ services:
     volumes:
       - ./vendor:/var/www/html/vendor
       - ./web:/var/www/html/web
-      - ./.env.local.php:/var/www/html/.env.local.php
+      - ./.env:/var/www/html/.env
       - ./.htaccess:/var/www/html/.htaccess
       # Disable images wordpress install, we'll use the composer version
       - ./web/index.php:/var/www/html/index.php
