@@ -57,12 +57,5 @@
     "klopvaart/knock-knock": "@dev",
     "advanced-custom-fields/advanced-custom-fields-pro": "^5.12",
     "wpackagist-plugin/easy-wp-smtp": "^1.4"
-  },
-  "scripts": {
-    "post-update": [
-      "composer dump-env dev"
-    ],
-    "post-install-cmd": "@post-update",
-    "post-update-cmd": "@post-update"
   }
 }
