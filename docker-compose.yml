@@ -46,3 +46,4 @@ services:
       - 8081:80
     environment: 
       PMA_HOST: database:3306
+      UPLOAD_LIMIT: 64M
