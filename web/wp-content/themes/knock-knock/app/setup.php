@@ -96,11 +96,6 @@ add_action('after_setup_theme', function () {
         ->register('asset', Package::class)
         ->addArgument(new JsonManifestVersionStrategy(dirname(__DIR__) . '/dist/manifest.json'));
     
-    // $fetch = new Fetch('joe');
-    // $reflector = new \ReflectionClass(Fetch::class);
-    // echo $reflector->getFileName();
-    // echo "\n";
-    
     $container->register('fetch', Fetch::class);
     
     /**
