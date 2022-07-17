@@ -14,7 +14,7 @@ export default function validateProfileForm (values, maxFileSize) {
     if (/[a-zA-Z]/i.test(values.phone)) {
         errors.phone = 'Letters zijn niet toegestaan'
     } else if (!/^[0-9\-+()]*$/i.test(values.phone)) {
-        errors.phone = 'Alleen de karakters 0 t/m 9, +, (, ) en - zijn toegestaan'
+        errors.phone = 'Je telefoonnummer mag alleen cijfers, of de symbolen ( ) + - bevatten'
     }
 
     // Photo
