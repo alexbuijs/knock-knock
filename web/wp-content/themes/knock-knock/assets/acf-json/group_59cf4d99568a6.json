@@ -26,7 +26,7 @@
             "label": "Maintenance Text",
             "name": "maintenance_text",
             "type": "text",
-            "instructions": "",
+            "instructions": "Laat een notificatie zien op elke pagina, bijvoorbeeld om onderhoud aan te kondigen. Als dit veld leeg blijft wordt er geen notificatie weergegeven.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -64,5 +64,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1655754451
+    "modified": 1658092808
 }
