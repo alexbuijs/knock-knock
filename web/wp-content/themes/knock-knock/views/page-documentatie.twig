@@ -7,7 +7,7 @@
             {% include "partials/button.twig" with {
                 'text': 'Document toevoegen',
                 'icon': 'fas fa-plus',
-                'url': site.url ~ '/wp-admin/post-new.php?post_type=documentatie'
+                'url': function('admin_url', 'post-new.php?post_type=documentatie')
             } %}
         {% endblock %}
     {% endembed %}
