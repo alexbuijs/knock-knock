@@ -58,5 +58,5 @@ jobs:
         proxy_port: ${{ secrets.SSH_PROXY_PORT }}
         proxy_username: ${{ secrets.SSH_PROXY_USERNAME }}
         proxy_password: ${{ secrets.SSH_PROXY_PASSWORD }}
-        local: web/wp-content/themes/knock-knock/dist
-        remote: domains/intranet.klopvaart.nl/public_html/web/wp-content/themes/knock-knock
+        source: web/wp-content/themes/knock-knock/dist
+        target: domains/intranet.klopvaart.nl/public_html/web/wp-content/themes/knock-knock
