@@ -27,9 +27,7 @@ jobs:
         npm ci
         npm run production
         npm test
-      env:
-        CI: true
-        
+
     - name: Run git pull on remote, install dependencies and copy artifacts
       uses: kapoko/scp-action@v0
       with:
