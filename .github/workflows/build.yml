@@ -16,10 +16,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+
     - name: npm install, build, and test
       run: |
         npm ci
@@ -27,8 +29,9 @@ jobs:
         npm test
       env:
         CI: true
-    - name: Pull repo on server, delete twig cache
-      uses: appleboy/ssh-action@master
+        
+    - name: Run git pull on remote, install dependencies and copy artifacts
+      uses: kapoko/scp-action@v0
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
@@ -37,7 +40,7 @@ jobs:
         proxy_port: ${{ secrets.SSH_PROXY_PORT }}
         proxy_username: ${{ secrets.SSH_PROXY_USERNAME }}
         proxy_password: ${{ secrets.SSH_PROXY_PASSWORD }}
-        script: |
+        command: |
           PATH="/home/${{ secrets.SSH_USERNAME }}/bin/:$PATH"
           cd domains/intranet.klopvaart.nl/public_html && \
           git checkout main
@@ -48,15 +51,5 @@ jobs:
           composer-php8 dump-env prod && \
           cd web/wp-content/themes/knock-knock && \
           if [ -d ".twig-cache" ]; then rm -Rf .twig-cache; fi
-    - name: Copy artifacts
-      uses: kapoko/scp-action@v0
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        password: ${{ secrets.SSH_PASSWORD }}
-        proxy_host: ${{ secrets.SSH_PROXY_HOST }}
-        proxy_port: ${{ secrets.SSH_PROXY_PORT }}
-        proxy_username: ${{ secrets.SSH_PROXY_USERNAME }}
-        proxy_password: ${{ secrets.SSH_PROXY_PASSWORD }}
         source: web/wp-content/themes/knock-knock/dist
         target: domains/intranet.klopvaart.nl/public_html/web/wp-content/themes/knock-knock
