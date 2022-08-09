@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "start": "npm run dev --ws",
-    "production": "npm run production --ws",
+    "build": "npm run build --ws",
     "test": "npm test --ws"
   }
 }
