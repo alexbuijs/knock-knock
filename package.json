@@ -6,7 +6,7 @@
     "web/wp-content/themes/knock-knock"
   ],
   "scripts": {
-    "start": "npm run dev --ws",
+    "start": "npm run start --ws",
     "build": "npm run build --ws",
     "test": "npm test --ws"
   }
