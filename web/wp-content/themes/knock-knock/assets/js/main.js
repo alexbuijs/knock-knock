@@ -72,7 +72,7 @@ domReady(() => {
 
     // Table links
     document.querySelectorAll('table tr').forEach(el => {
-        el.onclick = function () {
+        el.onclick = () => {
             const link = el.getAttribute('data-href')
 
             if (link) {
@@ -82,20 +82,13 @@ domReady(() => {
     })
 
     // Dropdown
-    const dropdownElements = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
-    dropdownElements.map(el => {
-        return new Dropdown(el)
-    })
+    document.querySelectorAll('.dropdown-toggle').forEach(el => new Dropdown(el))
 
     // Tooltips
-    const tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    tooltipElements.forEach(el => {
-        return new Tooltip(el)
-    })
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new Tooltip(el))
 
     // Collapse menu
-    const collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
-    collapseElementList.map(el => {
+    document.querySelectorAll('.collapse').forEach(el => {
         if (el.id === 'menu-toggle') {
             const button = document.querySelector('[data-bs-target="#menu-toggle"]')
 
