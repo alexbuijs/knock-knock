@@ -3,13 +3,11 @@
   "version": "0.1.0",
   "description": "Knock Knock, a Cohousing Intranet Wordpress Theme",
   "scripts": {
-    "start": "NODE_ENV=development webpack",
-    "build": "NODE_ENV=production webpack",
-    "test": "npm-run-all stylelint eslint",
+    "start": "APP_ENV=development vite",
+    "build": "APP_ENV=production vite build",
+    "test": "npm run stylelint && npm run eslint",
     "stylelint": "stylelint 'assets/scss/**/*.scss'",
-    "stylelint:fix": "stylelint 'assets/scss/**/*.scss' --fix",
-    "eslint": "eslint 'assets/js/**'",
-    "eslint:fix": "eslint 'assets/js/**' --fix"
+    "eslint": "eslint 'assets/js/**/*'"
   },
   "repository": {
     "type": "git",
@@ -36,29 +34,21 @@
   },
   "homepage": "https://github.com/alexbuijs/knock-knock#readme",
   "stylelint": {
-    "extends": "stylelint-config-sass-guidelines",
-    "rules": {
-      "max-nesting-depth": 3
-    },
-    "ignoreFiles": [
-      "dist/**/*"
-    ]
+    "extends": [
+      "stylelint-config-standard-scss",
+      "stylelint-config-prettier"
+    ],
+    "customSyntax": "postcss-scss"
   },
   "eslintConfig": {
     "extends": [
       "standard",
-      "plugin:react/recommended"
+      "plugin:react/recommended",
+      "prettier"
     ],
     "plugins": [
       "react"
     ],
-    "rules": {
-      "react/jsx-uses-react": 1,
-      "indent": [
-        "error",
-        4
-      ]
-    },
     "settings": {
       "react": {
         "version": "detect"
@@ -66,43 +56,27 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "^7.18.5",
-    "@babel/plugin-transform-react-jsx": "^7.17.12",
-    "@babel/plugin-transform-runtime": "^7.18.5",
-    "@babel/preset-env": "^7.18.2",
     "@fullhuman/postcss-purgecss": "^4.1.3",
-    "assets-webpack-plugin": "^7.1.1",
+    "@vitejs/plugin-legacy": "^2.0.1",
+    "@vitejs/plugin-react": "^2.0.1",
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
-    "babel-loader": "^8.2.5",
-    "babel-preset-react-app": "^10.0.1",
-    "browser-sync": "^2.27.10",
-    "browser-sync-webpack-plugin": "^2.3.0",
-    "css-loader": "^6.7.1",
-    "eslint": "^8.18.0",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-n": "^15.2.5",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.1",
-    "eslint-webpack-plugin": "^3.2.0",
-    "glob-all": "^3.3.0",
-    "mini-css-extract-plugin": "^2.6.1",
-    "npm-run-all": "^4.1.5",
-    "postcss-loader": "^7.0.0",
-    "purgecss-webpack-plugin": "^4.1.3",
+    "postcss-scss": "^4.0.4",
     "sass": "^1.53.0",
-    "sass-loader": "^13.0.2",
     "stylelint": "^14.9.1",
-    "stylelint-config-sass-guidelines": "^9.0.1",
-    "stylelint-webpack-plugin": "^3.3.0",
-    "webpack": "^5.73.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-manifest-plugin": "^5.0.0"
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard-scss": "^5.0.0",
+    "terser": "^5.14.2",
+    "vite": "^3.0.8"
   },
   "dependencies": {
-    "@babel/runtime": "^7.18.3",
-    "@babel/runtime-corejs3": "^7.18.3",
     "@fortawesome/fontawesome-free": "^6.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",

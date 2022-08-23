@@ -1,24 +1,24 @@
 .table {
   color: var(--body-color);
 
-  tbody td {
-    cursor: pointer;
-    vertical-align: middle;
-  }
-
   td {
     border-color: var(--border-color);
   }
-}
 
-.table-hover {
-  tr:hover td {
-    color: var(--body-color-darker);
+  tbody td {
+    cursor: pointer;
+    vertical-align: middle;
   }
 }
 
 tbody tr:last-child {
   td {
     border-bottom-width: 0;
+  }
+}
+
+.table-hover {
+  tr:hover td {
+    color: var(--body-color-darker);
   }
 }

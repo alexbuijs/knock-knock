@@ -1,37 +1,39 @@
+@use "sass:color";
+
 @mixin dark-mode() {
-  // Dark mode
+  /* Dark mode */
   --body-bg: #0d1117;
   --body-color: #c1c9ce;
-  --body-color-darker: #{lighten(#c1c9ce, 15%)};
+  --body-color-darker: #{color.adjust(#c1c9ce, $lightness: 15%)};
   --text-muted: #7d8386;
   --card-bg: #1f2f38;
   --border-color: #415761;
   --primary: #0af;
-  --primary-darker: #{lighten(#0af, 15%)};
+  --primary-darker: #{color.adjust(#0af, $lightness: 15%)};
   --primary-bg: #006596;
-  --white: var(--body-bg); 
+  --white: var(--body-bg);
 }
-  
+
 body {
-  // Light mode
+  /* Light mode */
   --body-bg: #{$body-bg};
   --body-color: #{$body-color};
-  --body-color-darker: #{darken($body-color, 15%)};
+  --body-color-darker: #{color.adjust($body-color, $lightness: -15%)};
   --text-muted: #{$text-muted};
   --card-bg: #{$card-bg};
   --border-color: #{$border-color};
   --primary: #{$primary};
-  --primary-darker: #{darken($primary, 15%)};
+  --primary-darker: #{color.adjust($primary, $lightness: -15%)};
   --primary-bg: #{$primary};
   --white: #{$white};
-  
+
   @media (prefers-color-scheme: dark) {
     &:not(.prefers-light) {
-      @include dark-mode();
+      @include dark-mode;
     }
   }
 }
 
 .prefers-dark {
-  @include dark-mode();
+  @include dark-mode;
 }

@@ -1,67 +1,67 @@
-@use 'sass:math';
+@use "sass:math";
+@use "sass:color";
 
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/maps';
-@import '~bootstrap/scss/mixins';
-@import '~bootstrap/scss/utilities';
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
 
-// Colors
+/* Colors */
 $primary: #0089cd;
 $secondary: #9be500;
 $text-muted: #adb5bd;
 $body-bg: #f3f4f8;
 
-// Typography
+/* Typography */
 $font-weight-black: 900;
 $enable-responsive-font-sizes: true;
 $font-size-sm: 0.925em;
 $link-decoration: none;
 $link-hover-decoration: underline;
 
-// Navbar
+/* Navbar */
 $navbar-padding-y: 0;
 $navbar-dark-color: #fff;
 $navbar-brand-padding-y: 0.75rem;
 $navbar-dark-hover-color: #fff;
 $navbar-nav-link-padding-x: 1rem;
 
-// Cards
+/* Cards */
 $card-border-width: 0;
 
-// List group
+/* List group */
 $list-group-item-padding-x: 0;
 $list-group-border-width: 0;
 $list-group-bg: transparent;
 
-// Breakpoints
+/* Breakpoints */
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1200px,
 );
-
 $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1140px
+  xl: 1140px,
 );
 
-// Hamburger menu button
+/* Hamburger menu button */
 $hamburger-size: 40px;
 $hamburger-width: 50px;
 $hamburger-color: #fff;
 $hamburger-bar-border-radius: 1px;
 $hamburger-border-radius: 0.25rem;
 $hamburger-padding: 10px;
-$hamburger-background: darken($primary, 5%);
+$hamburger-background: color.adjust($primary, $lightness: -5%);
 $hamburger-background-transition-speed: 0s;
 $hamburger-extra-transition-rules: $navbar-toggler-transition;
 
-// Other
-$box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+/* Other */
+$box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
 $border-radius: 0.2rem;
 $kv-logo-ratio: math.div(638.09, 194.06);

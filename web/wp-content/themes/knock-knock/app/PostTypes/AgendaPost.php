@@ -4,48 +4,52 @@ namespace App\PostTypes;
 
 use Timber\Post;
 
-class AgendaPost extends Post {
-
-    public function start() 
+class AgendaPost extends Post
+{
+    public function start()
     {
-        return strtotime(get_field('start', $this->ID));
+        return strtotime(get_field("start", $this->ID));
     }
 
-    public function end() 
+    public function end()
     {
-        return strtotime(get_field('einde', $this->ID));
+        return strtotime(get_field("einde", $this->ID));
     }
 
     /**
      * Returns author image
      */
-    public function authorImage() 
+    public function authorImage()
     {
-        return \App\getUserImage('thumbnail', $this->post_author);
+        return \App\getUserImage("thumbnail", $this->post_author);
     }
 
     /**
      * Returns author link
      */
-    public function authorLink() 
+    public function authorLink()
     {
-        return \App\userLink(get_user_by('ID', $this->post_author), true, false);
+        return \App\userLink(
+            get_user_by("ID", $this->post_author),
+            true,
+            false,
+        );
     }
 
     /**
      * Returns if item has passed
      */
-    public function hasPassed() 
+    public function hasPassed()
     {
-        $start = get_field('start', $this->ID);
-        return (date('Y-m-d', strtotime($start)) < date('Y-m-d'));
+        $start = get_field("start", $this->ID);
+        return date("Y-m-d", strtotime($start)) < date("Y-m-d");
     }
 
     /**
-     * Returns ISO date 
+     * Returns ISO date
      */
-    public function isoDate() 
+    public function isoDate()
     {
-        return get_the_modified_date('c', $this->ID);
+        return get_the_modified_date("c", $this->ID);
     }
 }

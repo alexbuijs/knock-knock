@@ -6,10 +6,10 @@
       "email": "17455539+kapoko@users.noreply.github.com"
     }
   ],
-  "repositories":[
+  "repositories": [
     {
-      "type":"composer",
-      "url":"https://wpackagist.org",
+      "type": "composer",
+      "url": "https://wpackagist.org",
       "only": [
         "wpackagist-plugin/*",
         "wpackagist-theme/*"
@@ -56,5 +56,11 @@
     "klopvaart/knock-knock": "@dev",
     "advanced-custom-fields/advanced-custom-fields-pro": "^5.12",
     "wpackagist-plugin/easy-wp-smtp": "^1.4"
+  },
+  "scripts": {
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
   }
 }

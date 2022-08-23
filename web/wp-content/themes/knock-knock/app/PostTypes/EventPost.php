@@ -4,21 +4,22 @@ namespace App\PostTypes;
 
 use Timber\Post;
 
-class EventPost extends Post {
-
+class EventPost extends Post
+{
     /**
-     * Returns ISO date 
+     * Returns ISO date
      */
-    public function isoDate() 
+    public function isoDate()
     {
-        return get_the_modified_date('c', $this->ID);
+        return get_the_modified_date("c", $this->ID);
     }
 
     /**
      * Return if post is newly made or edited
      */
-    public function isNew() 
+    public function isNew()
     {
-        return get_the_modified_date('c', $this->ID) == get_the_date('c', $this->ID);
+        return get_the_modified_date("c", $this->ID) ==
+            get_the_date("c", $this->ID);
     }
 }

@@ -22,7 +22,7 @@ This repository contains the development environment and the WordPress theme for
 ### Theme development
 
 - Run `composer install && npm install`
-- Run `npm run start`. This runs webpack with BrowserSync
+- Run `npm start`. This runs Vite.
 
 ### Build for production
-- Run `npm run production`
+- Run `npm run build`

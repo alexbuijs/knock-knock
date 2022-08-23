@@ -10,9 +10,13 @@
 }
 
 .theme-select {
-  .form-check-input {    
+  .form-check-label {
+    padding: 0 0.5rem;
+  }
+
+  .form-check-input {
     margin-right: 0.5em;
-    
+
     ~ .form-check-label {
       border: 1px solid var(--border-color);
       border-radius: $border-radius;
@@ -24,9 +28,5 @@
       border: 1px solid var(--body-color);
       color: var(--body-color);
     }
-  }
-
-  .form-check-label {
-    padding: 0 0.5rem;
   }
 }

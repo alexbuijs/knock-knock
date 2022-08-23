@@ -1,3 +1,9 @@
 .btn-primary {
-  @include button-variant($primary, $primary, #fff, $active-color: #fff, $disabled-color: #fff);
+  @include button-variant(
+    $primary,
+    $primary,
+    #fff,
+    $active-color: #fff,
+    $disabled-color: #fff
+  );
 }

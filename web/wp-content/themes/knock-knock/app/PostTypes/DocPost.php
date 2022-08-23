@@ -4,22 +4,22 @@ namespace App\PostTypes;
 
 use Timber\Post;
 
-class DocPost extends Post {
-
+class DocPost extends Post
+{
     /**
-     * Returns ISO date 
+     * Returns ISO date
      */
-    public function isoDate() 
+    public function isoDate()
     {
-        return get_the_modified_date('c', $this->ID);
+        return get_the_modified_date("c", $this->ID);
     }
 
     /**
      * Returns author image
      */
-    public function authorImage() 
+    public function authorImage()
     {
         $author_info = get_userdata($post->post_author);
-        return App\getUserImage('thumbnail', $author_info->ID);
+        return App\getUserImage("thumbnail", $author_info->ID);
     }
 }

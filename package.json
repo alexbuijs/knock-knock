@@ -9,5 +9,12 @@
     "start": "npm run start --ws",
     "build": "npm run build --ws",
     "test": "npm test --ws"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.18.9",
+    "prettier": "^2.7.1"
+  },
+  "prettier": {
+    "phpVersion": "8.0"
   }
 }
