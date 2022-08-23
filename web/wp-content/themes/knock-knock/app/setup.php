@@ -29,7 +29,12 @@ add_action("wp_enqueue_scripts", function () {
     Vite::enqueueScript("assets/js/main.js");
 
     if (!Vite::isRunning()) {
-        wp_enqueue_style("knock-knock/main", Vite::asset("assets/js/main.css"));
+        wp_enqueue_style(
+            "knock-knock/main",
+            Vite::asset("assets/js/main.css"),
+            [],
+            null,
+        );
     }
 
     if (is_page("profiel")) {

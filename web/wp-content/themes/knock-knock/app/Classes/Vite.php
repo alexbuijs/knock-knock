@@ -64,13 +64,15 @@ class Vite
     {
         ["filename" => $handle, "extension" => $extension] = pathinfo($entry);
 
-        wp_enqueue_script("knock-knock/$handle", Vite::asset($entry));
+        wp_enqueue_script("knock-knock/$handle", Vite::asset($entry), [], null);
 
         if (!self::$running) {
             if (!wp_script_is("knock-knock/polyfill")) {
                 wp_enqueue_script(
                     "knock-knock/polyfill",
                     Vite::asset("vite/legacy-polyfills-legacy"),
+                    [],
+                    null,
                 );
             }
 
@@ -78,6 +80,7 @@ class Vite
                 "knock-knock/$handle/legacy",
                 Vite::asset("assets/js/$handle-legacy.$extension"),
                 ["knock-knock/polyfill"],
+                null,
             );
         }
     }
