@@ -457,11 +457,11 @@
         },
         {
             "name": "klopvaart/knock-knock",
-            "version": "dev-vite",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./web/wp-content/themes/knock-knock",
-                "reference": "d8178f3d82045722a7ed62ee21cc9d7b47021804"
+                "reference": "dc43da3ae4076327144eaa4476a0095397b8a913"
             },
             "require": {
                 "nesbot/carbon": "^2.31",
