@@ -20,8 +20,7 @@
     "symfony/property-access": "^6.0",
     "symfony/mime": "^6.0",
     "symfony/dependency-injection": "^6.0",
-    "symfony/asset": "^6.0",
-    "pentatrion/vite-bundle": "^2.1"
+    "symfony/asset": "^6.0"
   },
   "prefer-stable": true,
   "config": {
