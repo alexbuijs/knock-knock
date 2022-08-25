@@ -18,11 +18,18 @@ This repository contains the development environment and the WordPress theme for
 - Visit [http://localhost:8081](http://localhost:8081) for phpMyAdmin
 - Create pages: 'Home', 'Agenda', 'Bewoners', 'Documentatie', 'Bewoner', 'Profiel'
 - Set landing page: Instellingen -> Lezen -> Statische pagina -> Voorpagina: 'Home'
+- Refresh permalinks
 
-### Theme development
+## Development
 
 - Run `composer install && npm install`
 - Run `npm start`. This runs Vite.
 
 ### Build for production
 - Run `npm run build`
+
+### Wordpress CLI
+
+```
+docker compose run --rm wordpress-cli --path='web/wp' <cli command>
+```

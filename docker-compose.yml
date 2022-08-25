@@ -32,9 +32,9 @@ services:
       - wordpress
     image: wordpress:cli-php8.0
     volumes:
-      - ./web:/var/www/html
-      - ./vendor:/var/www/vendor
-      - ./.env.local.php:/var/www/.env.local.php
+      - ./vendor:/var/www/html/vendor
+      - ./web:/var/www/html/web
+      - ./.env:/var/www/html/.env
     env_file:
       - .env
 
