@@ -54,7 +54,7 @@
     "symfony/dotenv": "~6.0",
     "symfony/flex": "^1.19",
     "klopvaart/knock-knock": "@dev",
-    "advanced-custom-fields/advanced-custom-fields-pro": "^5.12",
+    "advanced-custom-fields/advanced-custom-fields-pro": "^6",
     "wpackagist-plugin/easy-wp-smtp": "^1.4"
   },
   "scripts": {

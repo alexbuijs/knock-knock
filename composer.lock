@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f6f1487f88b819fa30587d37c99f5c5",
+    "content-hash": "495ccdb79a3fae97a606668679d964c8",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
-            "version": "5.12.4",
+            "version": "6.0.5",
             "dist": {
                 "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/v2/plugins/download?p=pro&t=5.12.4"
+                "url": "https://connect.advancedcustomfields.com/v2/plugins/download?p=pro&t=6.0.5"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0",
@@ -309,20 +309,20 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "6.1.0",
+            "version": "6.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "e1672dd7a4db40a06dfa60816f572eb41a16c1e8"
+                "reference": "d9ee7d6193781c9ee6288be6ca5681ee0c3f85b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/e1672dd7a4db40a06dfa60816f572eb41a16c1e8",
-                "reference": "e1672dd7a4db40a06dfa60816f572eb41a16c1e8",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/d9ee7d6193781c9ee6288be6ca5681ee0c3f85b8",
+                "reference": "d9ee7d6193781c9ee6288be6ca5681ee0c3f85b8",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "6.1.0",
+                "johnpbloch/wordpress-core": "6.1.1",
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=5.6.20"
             },
@@ -351,20 +351,20 @@
                 "issues": "https://core.trac.wordpress.org/",
                 "source": "https://core.trac.wordpress.org/browser"
             },
-            "time": "2022-11-02T01:18:45+00:00"
+            "time": "2022-11-15T19:12:03+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.1.0",
+            "version": "6.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "2804caa571802035b95441e32a3be0f80672b199"
+                "reference": "c9688597721b8579f3c29028e572a7b9753db893"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/2804caa571802035b95441e32a3be0f80672b199",
-                "reference": "2804caa571802035b95441e32a3be0f80672b199",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/c9688597721b8579f3c29028e572a7b9753db893",
+                "reference": "c9688597721b8579f3c29028e572a7b9753db893",
                 "shasum": ""
             },
             "require": {
@@ -372,7 +372,7 @@
                 "php": ">=5.6.20"
             },
             "provide": {
-                "wordpress/core-implementation": "6.1.0"
+                "wordpress/core-implementation": "6.1.1"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -399,7 +399,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2022-11-02T01:18:41+00:00"
+            "time": "2022-11-15T19:11:58+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -2505,23 +2505,23 @@
         },
         {
             "name": "timber/timber",
-            "version": "1.22.0",
+            "version": "1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "43be3208bcb35cede75bbc470e079c31e84bf7ea"
+                "reference": "57fc582c42519f1b05fff5fb2ebf4291b5cd638f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/43be3208bcb35cede75bbc470e079c31e84bf7ea",
-                "reference": "43be3208bcb35cede75bbc470e079c31e84bf7ea",
+                "url": "https://api.github.com/repos/timber/timber/zipball/57fc582c42519f1b05fff5fb2ebf4291b5cd638f",
+                "reference": "57fc582c42519f1b05fff5fb2ebf4291b5cd638f",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0",
                 "php": ">=7.2.5 || ^8.0",
                 "twig/cache-extension": "^1.5",
-                "twig/twig": ">=1.44.7 || ^2.10",
+                "twig/twig": "^1.44.7 || ^2.10",
                 "upstatement/routes": "^0.9"
             },
             "require-dev": {
@@ -2567,7 +2567,7 @@
                 "issues": "https://github.com/timber/timber/issues",
                 "source": "https://github.com/timber/timber"
             },
-            "time": "2022-11-08T03:52:22+00:00"
+            "time": "2022-11-24T03:42:29+00:00"
         },
         {
             "name": "twig/cache-extension",
@@ -2643,22 +2643,23 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.4.3",
+            "version": "v2.15.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "c38fd6b0b7f370c198db91ffd02e23b517426b58"
+                "reference": "ab402673db8746cb3a4c46f3869d6253699f614a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c38fd6b0b7f370c198db91ffd02e23b517426b58",
-                "reference": "c38fd6b0b7f370c198db91ffd02e23b517426b58",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ab402673db8746cb3a4c46f3869d6253699f614a",
+                "reference": "ab402673db8746cb3a4c46f3869d6253699f614a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=7.1.3",
                 "symfony/polyfill-ctype": "^1.8",
-                "symfony/polyfill-mbstring": "^1.3"
+                "symfony/polyfill-mbstring": "^1.3",
+                "symfony/polyfill-php72": "^1.8"
             },
             "require-dev": {
                 "psr/container": "^1.0",
@@ -2667,10 +2668,13 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "2.15-dev"
                 }
             },
             "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                },
                 "psr-4": {
                     "Twig\\": "src/"
                 }
@@ -2703,7 +2707,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.4.3"
+                "source": "https://github.com/twigphp/Twig/tree/v2.15.3"
             },
             "funding": [
                 {
@@ -2715,7 +2719,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-28T08:42:51+00:00"
+            "time": "2022-09-28T08:40:08+00:00"
         },
         {
             "name": "upstatement/routes",
