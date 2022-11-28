@@ -13,16 +13,28 @@
     {% endembed %}
     {% embed "partials/card.twig" %}
         {% block content %}
-            {% if post.post_author == current_user.ID or function('current_user_can', 'edit_others_posts') %}
-                <div class="float-end ms-3 mb-2">
+            <div class="float-end ms-3 mb-2">
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="ms-2 d-inline">Aan kalender toevoegen</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ calendar.google }}" target="_blank"><i class="fa-brands fa-google text-muted me-2"></i> Google</a></li>
+                        <li><a class="dropdown-item" href="{{ calendar.office365 }}" target="_blank"><i class="fa-brands fa-microsoft text-muted me-2"></i> Office 365</a></li>
+                        <li><a class="dropdown-item" href="{{ calendar.outlook }}" target="_blank"><i class="fa-brands fa-microsoft text-muted me-2"></i> Outlook</a></li>
+                        <li><a class="dropdown-item" href="{{ calendar.ics }}" download="{{ post.post_title|sanitizeTitle }}.ics"><i class="far fa-calendar-alt text-muted me-2"></i> iCal / .ics</a></li>
+                    </ul>
+                </div>
+                {% if post.post_author == current_user.ID or function('current_user_can', 'edit_others_posts') %}
                     {% include "partials/button.twig" with {
                         'text': 'Bewerken',
                         'icon': 'fas fa-pencil-alt',
                         'url': function('get_edit_post_link'),
-                        'classes': 'btn-sm'
+                        'classes': 'btn-sm ms-1'
                     } %}
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
             <div class="d-flex flex-row align-items-center mb-2">
                 <h1 class="fw-bold title title-large me-2">{{ localDate('j', post.start) }}</h1>
                 <div>
@@ -34,6 +46,7 @@
             <p><strong><i class="far fa-clock fa-fw"></i> {{ localDate("H:i", post.start) ~ ' - ' ~ localDate("H:i", post.end)}}</strong><br>
             <span class="text-muted">{{ post.meta('type') }}</span></p>
             {{ post.content }}
+                                                {{ calendar.ics_base64 }}
         {% endblock %}
         {% block footer %}
             <div class="d-flex justify-content-between align-items-center mt-2">

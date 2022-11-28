@@ -6,6 +6,7 @@
 namespace App;
 
 use App\Classes\Fetch;
+use App\Classes\Calendar;
 use App\Classes\Vite;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Asset\Package;
@@ -115,6 +116,7 @@ add_action("after_setup_theme", function () {
         );
 
     $container->register("fetch", Fetch::class);
+    $container->register("calendar", Calendar::class);
 
     /**
      * Helper filters
@@ -126,6 +128,10 @@ add_action("after_setup_theme", function () {
 
     add_filter("getFetch", function () use ($container) {
         return $container->get("fetch");
+    });
+
+    add_filter("getCalendarLinks", function ($event) use ($container) {
+        return $container->get("calendar")->getLinks($event);
     });
 });
 

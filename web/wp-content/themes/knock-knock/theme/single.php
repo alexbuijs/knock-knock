@@ -8,6 +8,8 @@ switch (get_post_type()) {
         $postDate = strtotime(get_field("start", $post->ID));
         $month = date("m", $postDate);
         $year = date("Y", $postDate);
+
+        $context["calendar"] = apply_filters("getCalendarLinks", $post);
         $context["agendaUrl"] =
             get_bloginfo("url") . "/agenda?maand=$month&jaar=$year";
         break;

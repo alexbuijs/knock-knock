@@ -39,6 +39,9 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
+// Brands
+import { faGoogle, faMicrosoft } from "@fortawesome/free-brands-svg-icons";
+
 // Initialise
 library.add(
   faCalendarAlt,
@@ -61,7 +64,9 @@ library.add(
   faSun,
   faAdjust,
   faMoon,
-  faInfoCircle
+  faInfoCircle,
+  faGoogle,
+  faMicrosoft
 );
 dom.watch();
 

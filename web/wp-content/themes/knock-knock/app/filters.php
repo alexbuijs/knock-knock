@@ -89,6 +89,12 @@ add_filter("timber/twig", function ($twig) {
         }),
     );
 
+    $twig->addFilter(
+        new Timber\Twig_Filter("sanitizeTitle", function ($str) {
+            return sanitize_title($str);
+        }),
+    );
+
     $twig->addFunction(
         new Timber\Twig_Function("localDate", function ($format, $date) {
             return date_i18n($format, $date);
