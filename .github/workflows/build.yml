@@ -47,6 +47,10 @@ jobs:
           fi
           composer-php8 install && \ 
           composer-php8 dump-env prod && \
+          wp --path=web/wp language core update && \
+          wp --path=web/wp language plugin --all update && \
+          wp --path=web/wp language theme --all update && \
+          wp --path=web/wp rewrite flush && \
           cd web/wp-content/themes/knock-knock && \
           if [ -d ".twig-cache" ]; then rm -Rf .twig-cache; fi
         source: web/wp-content/themes/knock-knock/dist
