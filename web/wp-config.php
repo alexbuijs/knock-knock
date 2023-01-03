@@ -21,33 +21,33 @@
 
 use Symfony\Component\Dotenv\Dotenv;
 
-if (!file_exists($composer = dirname(__DIR__) . '/vendor/autoload.php')) {
-	die('Autoloader not found. Run <code>composer install</code>.');
+if (!file_exists($composer = dirname(__DIR__) . "/vendor/autoload.php")) {
+    die("Autoloader not found. Run <code>composer install</code>.");
 }
 
 require_once $composer;
 
 $dotenv = new Dotenv();
-$dotenv->bootEnv(dirname(__DIR__).'/.env');
+$dotenv->bootEnv(dirname(__DIR__) . "/.env");
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', $_ENV['WORDPRESS_DB_NAME'] );
+define("DB_NAME", $_ENV["WORDPRESS_DB_NAME"]);
 
 /** MySQL database username */
-define( 'DB_USER', $_ENV['WORDPRESS_DB_USER']);
+define("DB_USER", $_ENV["WORDPRESS_DB_USER"]);
 
 /** MySQL database password */
-define( 'DB_PASSWORD', $_ENV['WORDPRESS_DB_PASSWORD'] );
+define("DB_PASSWORD", $_ENV["WORDPRESS_DB_PASSWORD"]);
 
 /** MySQL hostname */
-define( 'DB_HOST', $_ENV['WORDPRESS_DB_HOST'] );
+define("DB_HOST", $_ENV["WORDPRESS_DB_HOST"]);
 
 /** Database Charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
+define("DB_CHARSET", "utf8");
 
 /** The Database Collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
+define("DB_COLLATE", "");
 
 /**#@+
  * Authentication unique keys and salts.
@@ -60,14 +60,14 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',          $_ENV['AUTH_KEY']  );
-define( 'SECURE_AUTH_KEY',   $_ENV['SECURE_AUTH_KEY']  );
-define( 'LOGGED_IN_KEY',     $_ENV['LOGGED_IN_KEY']  );
-define( 'NONCE_KEY',         $_ENV['NONCE_KEY']  );
-define( 'AUTH_SALT',         $_ENV['AUTH_SALT']  );
-define( 'SECURE_AUTH_SALT',  $_ENV['SECURE_AUTH_SALT']  );
-define( 'LOGGED_IN_SALT',    $_ENV['LOGGED_IN_SALT']  );
-define( 'NONCE_SALT',        $_ENV['NONCE_SALT']  );
+define("AUTH_KEY", $_ENV["AUTH_KEY"]);
+define("SECURE_AUTH_KEY", $_ENV["SECURE_AUTH_KEY"]);
+define("LOGGED_IN_KEY", $_ENV["LOGGED_IN_KEY"]);
+define("NONCE_KEY", $_ENV["NONCE_KEY"]);
+define("AUTH_SALT", $_ENV["AUTH_SALT"]);
+define("SECURE_AUTH_SALT", $_ENV["SECURE_AUTH_SALT"]);
+define("LOGGED_IN_SALT", $_ENV["LOGGED_IN_SALT"]);
+define("NONCE_SALT", $_ENV["NONCE_SALT"]);
 
 /**
  * WordPress database table prefix.
@@ -75,7 +75,7 @@ define( 'NONCE_SALT',        $_ENV['NONCE_SALT']  );
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = $_ENV['WORDPRESS_TABLE_PREFIX'];
+$table_prefix = $_ENV["WORDPRESS_TABLE_PREFIX"];
 
 /**
  * For developers: WordPress debugging mode.
@@ -89,24 +89,32 @@ $table_prefix = $_ENV['WORDPRESS_TABLE_PREFIX'];
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', filter_var($_ENV['WORDPRESS_DEBUG'], FILTER_VALIDATE_BOOLEAN) );
-define( 'WP_CONTENT_DIR', dirname(__FILE__) ."/wp-content" );
-define( 'WP_CONTENT_URL', $_ENV['PUBLIC_URL'] . '/wp-content' );
-define( 'DISALLOW_FILE_MODS', filter_var($_ENV['WORDPRESS_DISALLOW_FILE_MODS'], FILTER_VALIDATE_BOOLEAN) ); 
-define( 'WP_HOME', $_ENV['PUBLIC_URL'] );
-define( 'WP_SITEURL', $_ENV['PUBLIC_URL'] . '/wp' );
-define( 'APP_ENV', $_ENV['APP_ENV'] );
-define( 'WP_MEMORY_LIMIT', '256M' );
+define(
+    "WP_DEBUG",
+    filter_var($_ENV["WORDPRESS_DEBUG"], FILTER_VALIDATE_BOOLEAN),
+);
 
 /* Add any custom values between this line and the "stop editing" line. */
+
+define("WP_CONTENT_DIR", dirname(__FILE__) . "/wp-content");
+define("WP_CONTENT_URL", $_ENV["PUBLIC_URL"] . "/wp-content");
+define(
+    "DISALLOW_FILE_MODS",
+    filter_var($_ENV["WORDPRESS_DISALLOW_FILE_MODS"], FILTER_VALIDATE_BOOLEAN),
+);
+define("WP_HOME", $_ENV["PUBLIC_URL"]);
+define("WP_SITEURL", $_ENV["PUBLIC_URL"] . "/wp");
+define("APP_ENV", $_ENV["APP_ENV"]);
+define("WP_MEMORY_LIMIT", "256M");
+define("WP_CACHE_KEY_SALT", "intranet.klopvaart.nl");
+define("WP_CACHE", true);
 
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
-if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', __DIR__ . '/wp/' );
+if (!defined("ABSPATH")) {
+    define("ABSPATH", __DIR__ . "/wp/");
 }
 
 /** Sets up WordPress vars and included files. */
-require_once ABSPATH . 'wp-settings.php';
-
+require_once ABSPATH . "wp-settings.php";
