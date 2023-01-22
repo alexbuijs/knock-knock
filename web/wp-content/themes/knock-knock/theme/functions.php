@@ -36,7 +36,7 @@ array_map(
             );
         }
     },
-    ["setup", "helpers", "filters", "shortcodes", "forms"],
+    ["setup", "helpers", "filters", "forms"],
 );
 
 /**
