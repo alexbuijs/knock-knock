@@ -12,13 +12,13 @@ switch ($post->post_name) {
      * Page agenda
      */
     case "agenda":
-        $year = isset($_GET["jaar"]) ? $_GET["jaar"] : date("Y");
-        $month = isset($_GET["maand"]) ? $_GET["maand"] : date("m");
+        $year = get_query_var("jaar") ?: date("Y");
+        $month = get_query_var("maand") ?: date("m");
         $previousDate = date_create("$year-$month previous month");
-        $context["previousMonth"] = $previousDate->format("m");
+        $context["previousMonth"] = $previousDate->format("n");
         $context["previousYear"] = $previousDate->format("Y");
         $nextDate = date_create("$year-$month next month");
-        $context["nextMonth"] = $nextDate->format("m");
+        $context["nextMonth"] = $nextDate->format("n");
         $context["nextYear"] = $nextDate->format("Y");
         $start = mktime(0, 0, 0, $month, 1, $year);
         $context["month"] = date_i18n("F", strtotime("$year-$month"));

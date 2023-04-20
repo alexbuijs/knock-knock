@@ -136,12 +136,24 @@ add_action("after_setup_theme", function () {
 });
 
 /**
- * Rewrite rule for the single user page
+ * Theme specific rewrite rules
  */
 add_action("init", function () {
+    /**
+     * Rewrite rule for the single user page
+     */
     add_rewrite_rule(
         "^bewoner/([0-9a-z-]+)/?",
         'index.php?pagename=bewoner&bewoner_name=$matches[1]',
+        "top",
+    );
+
+    /**
+     * Rewrite rule for agenda
+     */
+    add_rewrite_rule(
+        "^agenda/([0-9]+)/([0-9]+)?",
+        'index.php?pagename=agenda&maand=$matches[2]&jaar=$matches[1]',
         "top",
     );
 });

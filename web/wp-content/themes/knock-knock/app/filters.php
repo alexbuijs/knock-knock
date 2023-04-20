@@ -28,10 +28,13 @@ add_filter("login_message", function ($message) {
 });
 
 /**
- * Add custom query var for the single user page
+ * Add custom query var for the single user page and agenda
  */
 add_filter("query_vars", function ($qvars) {
     $qvars[] = "bewoner_name";
+    $qvars[] = "maand";
+    $qvars[] = "jaar";
+
     return $qvars;
 });
 

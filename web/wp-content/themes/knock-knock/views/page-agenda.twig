@@ -17,8 +17,8 @@
             <h1 class="title">{{ month|capitalize }}</h1>
             <h3 class="fw-light">{{ year }}</h3>
             <div class="d-flex align-items-center my-3">
-                <a class="btn btn-primary btn-sm me-2" href="{{ site.url }}/agenda?maand={{ previousMonth }}&jaar={{ previousYear }}"><i class="fas fa-arrow-left"></i> {{ previousMonth|localMonth|capitalize }}</a>
-                <a class="btn btn-primary btn-sm" href="{{ site.url }}/agenda?maand={{ nextMonth }}&jaar={{ nextYear }}">{{ nextMonth|localMonth|capitalize }} <i class="fas fa-arrow-right"></i></a>
+                <a class="btn btn-primary btn-sm me-2" href="{{ site.url }}/agenda/{{ previousYear }}/{{ previousMonth }}"><i class="fas fa-arrow-left"></i> {{ previousMonth|localMonth|capitalize }}</a>
+                <a class="btn btn-primary btn-sm" href="{{ site.url }}/agenda/{{ nextYear }}/{{ nextMonth }}">{{ nextMonth|localMonth|capitalize }} <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
         {% for item in agendaItems %}
