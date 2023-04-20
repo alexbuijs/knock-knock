@@ -8,10 +8,10 @@
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
-            "version": "6.1.1",
+            "version": "6.1.4",
             "dist": {
                 "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/v2/plugins/download?p=pro&t=6.1.1"
+                "url": "https://connect.advancedcustomfields.com/v2/plugins/download?p=pro&t=6.1.4"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0",
