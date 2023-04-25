@@ -19,6 +19,7 @@ services:
       - ./web:/var/www/html/web
       - ./.env:/var/www/html/.env
       - ./.htaccess:/var/www/html/.htaccess
+      - ./config/extra.ini:/usr/local/etc/php/conf.d/extra.ini
       # Disable images wordpress install, we'll use the composer version
       - ./web/index.php:/var/www/html/index.php
     ports:
