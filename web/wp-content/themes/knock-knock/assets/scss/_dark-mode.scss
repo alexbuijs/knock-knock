@@ -12,15 +12,19 @@
   --primary-darker: #{color.adjust(#0af, $lightness: 15%)};
   --primary-bg: #006596;
   --white: var(--body-bg);
+  --bs-dropdown-bg: var(--body-bg);
 }
 
 body {
   /* Light mode */
   --body-bg: #{$body-bg};
   --body-color: #{$body-color};
+  --bs-body-color: var(
+    --body-color
+  ); /* Fix, since Bootstrap 5.3 has implemented darkmode itself which causes some problems */
   --body-color-darker: #{color.adjust($body-color, $lightness: -15%)};
   --text-muted: #{$text-muted};
-  --card-bg: #{$card-bg};
+  --card-bg: #fff;
   --border-color: #{$border-color};
   --primary: #{$primary};
   --primary-darker: #{color.adjust($primary, $lightness: -15%)};

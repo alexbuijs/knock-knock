@@ -1,7 +1,13 @@
+@use "sass:math";
+
 .form-control {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   color: var(--body-color);
+
+  &[type="file"]::file-selector-button {
+    color: $body-color;
+  }
 
   &:focus {
     background-color: var(--card-bg);
@@ -19,7 +25,7 @@
 
     ~ .form-check-label {
       border: 1px solid var(--border-color);
-      border-radius: $border-radius;
+      border-radius: math.div($border-radius, 2);
       color: var(--border-color);
       padding: 0.5rem 0.75rem;
     }

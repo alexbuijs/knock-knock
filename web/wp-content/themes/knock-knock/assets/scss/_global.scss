@@ -19,7 +19,7 @@ body > .container-lg {
 }
 
 .thumbnail {
-  border-radius: $border-radius;
+  border-radius: math.div($border-radius, 2);
   height: 3rem;
   width: 3rem;
 }
@@ -27,7 +27,7 @@ body > .container-lg {
 .profile-picture {
   background-position: center;
   background-size: cover;
-  border-radius: $border-radius;
+  border-radius: var(--bs-border-radius);
   display: block;
   padding-bottom: 100%;
   width: 100%;
