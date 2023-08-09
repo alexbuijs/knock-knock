@@ -35,7 +35,8 @@
       "composer/installers": true,
       "johnpbloch/wordpress-core-installer": true,
       "pivvenit/acf-pro-installer": true,
-      "symfony/flex": true
+      "symfony/flex": true,
+      "roots/wordpress-core-installer": true
     }
   },
   "extra": {
@@ -50,12 +51,12 @@
     }
   },
   "require": {
-    "johnpbloch/wordpress": "^6.0",
     "symfony/dotenv": "~6.0",
     "symfony/flex": "^1.19",
     "klopvaart/knock-knock": "@dev",
     "advanced-custom-fields/advanced-custom-fields-pro": "^6",
-    "wpackagist-plugin/easy-wp-smtp": "^1.4"
+    "wpackagist-plugin/easy-wp-smtp": "^2",
+    "roots/wordpress": "^6.3"
   },
   "scripts": {
     "auto-scripts": {
