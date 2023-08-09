@@ -22,6 +22,7 @@ body {
   --bs-body-color: var(
     --body-color
   ); /* Fix, since Bootstrap 5.3 has implemented darkmode itself which causes some problems */
+
   --body-color-darker: #{color.adjust($body-color, $lightness: -15%)};
   --text-muted: #{$text-muted};
   --card-bg: #fff;
