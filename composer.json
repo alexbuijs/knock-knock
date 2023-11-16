@@ -17,7 +17,7 @@
     },
     {
       "type": "composer",
-      "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-plugin/"
+      "url": "https://connect.advancedcustomfields.com"
     },
     {
       "type": "path",
@@ -34,7 +34,6 @@
     "allow-plugins": {
       "composer/installers": true,
       "johnpbloch/wordpress-core-installer": true,
-      "pivvenit/acf-pro-installer": true,
       "symfony/flex": true,
       "roots/wordpress-core-installer": true
     }
@@ -54,13 +53,11 @@
     "symfony/dotenv": "~6.0",
     "symfony/flex": "^1.19",
     "klopvaart/knock-knock": "@dev",
-    "advanced-custom-fields/advanced-custom-fields-pro": "^6",
     "wpackagist-plugin/easy-wp-smtp": "^2",
-    "roots/wordpress": "^6.3"
+    "roots/wordpress": "^6.3",
+    "wpengine/advanced-custom-fields-pro": "^6.2"
   },
   "scripts": {
-    "auto-scripts": {
-
-    }
+    "auto-scripts": {}
   }
 }
