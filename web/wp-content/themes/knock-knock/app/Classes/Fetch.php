@@ -2,6 +2,7 @@
 
 namespace App\Classes;
 
+use Timber;
 class Fetch
 {
     /**
@@ -103,12 +104,10 @@ class Fetch
      */
     function houses()
     {
-        $args = [
+        $houses = Timber::get_posts([
             "post_type" => "house",
             "posts_per_page" => -1,
-        ];
-
-        $houses = \Timber\Timber::get_posts($args, "App\PostTypes\HousePost");
+        ])->to_array();
 
         // Sort houses by name
         usort($houses, function ($a, $b) {

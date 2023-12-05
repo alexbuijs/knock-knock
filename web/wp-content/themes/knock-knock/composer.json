@@ -15,7 +15,7 @@
   "require": {
     "php": "^7.3 || ^8.0",
     "nesbot/carbon": "^2.31",
-    "timber/timber": "^1.18",
+    "timber/timber": "^2.0",
     "symfony/validator": "^6.0",
     "symfony/property-access": "^6.0",
     "symfony/mime": "^6.0",

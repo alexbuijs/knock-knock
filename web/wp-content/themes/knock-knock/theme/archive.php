@@ -8,15 +8,10 @@ if (is_post_type_archive()) {
 
     switch (get_post_type()) {
         case "house":
-            $args = [
+            $context["houses"] = Timber::get_posts([
                 "post_type" => "house",
                 "posts_per_page" => -1,
-            ];
-
-            $context["houses"] = Timber::get_posts(
-                $args,
-                "App\PostTypes\HousePost",
-            );
+            ])->to_array();
 
             // Sort houses by name
             usort($context["houses"], function ($a, $b) {

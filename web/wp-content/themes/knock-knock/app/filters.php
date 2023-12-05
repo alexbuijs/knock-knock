@@ -6,6 +6,7 @@
 namespace App;
 
 use Timber;
+use Twig;
 
 /**
  * Show message for old members trying to log in
@@ -65,8 +66,8 @@ add_filter("acf/settings/load_json", function ($paths) {
  */
 add_filter("timber/context", function ($context) {
     $context["options"] = get_fields("option");
-    $context["menu"] = new Timber\Menu();
-    $context["current_user"] = new Timber\User();
+    $context["menu"] = Timber::get_menu("menu");
+    $context["current_user"] = Timber::get_user(get_current_user_id());
     $context["current_user_thumbnail"] = getUserImage();
     $context["theme_uri"] = dirname(get_template_directory_uri());
 
@@ -75,37 +76,37 @@ add_filter("timber/context", function ($context) {
 
 add_filter("timber/twig", function ($twig) {
     $twig->addFilter(
-        new Timber\Twig_Filter("timeDiff", function ($isoTime) {
+        new Twig\TwigFilter("timeDiff", function ($isoTime) {
             return timeDiff($isoTime);
         }),
     );
 
     $twig->addFilter(
-        new Timber\Twig_Filter("timeDiffShort", function ($isoTime) {
+        new Twig\TwigFilter("timeDiffShort", function ($isoTime) {
             return timeDiff($isoTime, true);
         }),
     );
 
     $twig->addFilter(
-        new Timber\Twig_Filter("localMonth", function ($month) {
+        new Twig\TwigFilter("localMonth", function ($month) {
             return date_i18n("F", strtotime(date("Y") . "-" . $month));
         }),
     );
 
     $twig->addFilter(
-        new Timber\Twig_Filter("sanitizeTitle", function ($str) {
+        new Twig\TwigFilter("sanitizeTitle", function ($str) {
             return sanitize_title($str);
         }),
     );
 
     $twig->addFunction(
-        new Timber\Twig_Function("localDate", function ($format, $date) {
+        new Twig\TwigFunction("localDate", function ($format, $date) {
             return date_i18n($format, $date);
         }),
     );
 
     $twig->addFunction(
-        new Timber\Twig_Function("userField", function ($field, $user) {
+        new Twig\TwigFunction("userField", function ($field, $user) {
             return get_field($field, $user);
         }),
     );
@@ -114,10 +115,26 @@ add_filter("timber/twig", function ($twig) {
 });
 
 /**
+ * Map custom post types to classes
+ */
+add_filter("timber/post/classmap", function ($classmap) {
+    $custom_classmap = [
+        "agenda" => PostTypes\AgendaPost::class,
+        "documentatie" => PostTypes\DocPost::class,
+        "house" => PostTypes\HousePost::class,
+    ];
+
+    return array_merge($classmap, $custom_classmap);
+});
+
+/**
  * Set timber cache location
  */
-add_filter("timber/cache/location", function () {
-    return dirname(get_stylesheet_directory()) . "/.twig-cache";
+add_filter("timber/twig/environment/options", function ($options) {
+    $options["cache"] = true;
+    $options["auto_reload"] = true;
+
+    return $options;
 });
 
 /**

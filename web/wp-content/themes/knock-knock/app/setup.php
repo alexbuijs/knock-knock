@@ -98,9 +98,8 @@ add_action("after_setup_theme", function () {
     /**
      * Initialize Timber
      */
-    $timber = new Timber();
-    Timber::$dirname = ["../views"];
-    Timber::$cache = true;
+    Timber::init();
+    Timber::$dirname = "../views";
 
     /**
      * Create app container

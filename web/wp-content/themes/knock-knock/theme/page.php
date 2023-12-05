@@ -2,7 +2,7 @@
 
 $context = Timber::context();
 
-$post = new Timber\Post();
+$post = Timber::get_post();
 $context["post"] = $post;
 $templates = ["page-" . $post->post_name . ".twig", "index.twig"];
 
@@ -43,10 +43,7 @@ switch ($post->post_name) {
             ],
         ];
 
-        $context["agendaItems"] = Timber::get_posts(
-            $args,
-            "App\PostTypes\AgendaPost",
-        );
+        $context["agendaItems"] = Timber::get_posts($args);
         break;
 
     /**

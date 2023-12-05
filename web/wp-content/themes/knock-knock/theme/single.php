@@ -1,10 +1,10 @@
 <?php
 
 $context = Timber::context();
+$post = Timber::get_post();
 
 switch (get_post_type()) {
     case "agenda":
-        $post = Timber::get_post(false, "App\PostTypes\AgendaPost");
         $postDate = strtotime(get_field("start", $post->ID));
         $month = date("m", $postDate);
         $year = date("Y", $postDate);
@@ -14,7 +14,6 @@ switch (get_post_type()) {
             get_bloginfo("url") . "/agenda?maand=$month&jaar=$year";
         break;
     case "documentatie":
-        $post = Timber::get_post(false, "App\PostTypes\DocPost");
         $context["authorThumbnail"] = App\getUserImage(
             "thumbnail",
             $post->post_author,
@@ -26,12 +25,10 @@ switch (get_post_type()) {
         );
         break;
     case "house":
-        $post = Timber::get_post(false, "App\PostTypes\HousePost");
         $context["houses"] = fetch()->houses();
         break;
 }
 
-$post = $post ?: Timber::get_post();
 $context["post"] = $post;
 
 Timber::render(

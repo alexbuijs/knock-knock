@@ -4,19 +4,16 @@ $context = Timber::context();
 $templates = ["index.twig"];
 
 // Recent events
-$args = [
+$context["recentEvents"] = Timber::get_posts([
     "posts_per_page" => 15,
     "orderby" => "modified",
     "order" => "DESC",
     "post_type" => ["agenda", "documentatie"],
-];
-
-$context["recentEvents"] = Timber::get_posts($args, "App\PostTypes\EventPost");
+]);
 
 // Upcoming activities
 $start = time();
-
-$args = [
+$context["upcomingActivities"] = Timber::get_posts([
     "post_type" => "agenda",
     "posts_per_page" => -1,
     "order" => "ASC",
@@ -37,12 +34,7 @@ $args = [
             "value" => "pr-prive",
         ],
     ],
-];
-
-$context["upcomingActivities"] = Timber::get_posts(
-    $args,
-    "App\PostTypes\AgendaPost",
-);
+]);
 
 // Recent users
 $context["recentUsers"] = fetch()->recentUsers();
@@ -55,4 +47,4 @@ $context["userImage"] = get_field(
 
 array_unshift($templates, "front-page.twig");
 
-Timber::render($templates, $context);
+Timber::render("front-page.twig", $context);

@@ -52,7 +52,6 @@ jobs:
           wp --path=web/wp language plugin --all update && \
           wp --path=web/wp language theme --all update && \
           wp --path=web/wp rewrite flush && \
-          cd web/wp-content/themes/knock-knock && \
-          if [ -d ".twig-cache" ]; then rm -Rf .twig-cache; fi
+          wp --path=web/wp timber clear-cache
         source: web/wp-content/themes/knock-knock/dist
         target: domains/intranet.klopvaart.nl/public_html/web/wp-content/themes/knock-knock

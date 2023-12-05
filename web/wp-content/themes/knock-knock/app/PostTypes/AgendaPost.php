@@ -52,4 +52,13 @@ class AgendaPost extends Post
     {
         return get_the_modified_date("c", $this->ID);
     }
+
+    /**
+     * Return if post is newly made or edited
+     */
+    public function isNew()
+    {
+        return get_the_modified_date("c", $this->ID) ==
+            get_the_date("c", $this->ID);
+    }
 }
