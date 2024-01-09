@@ -128,7 +128,7 @@ add_filter("timber/post/classmap", function ($classmap) {
 });
 
 /**
- * Set timber cache location
+ * Set timber environment options
  */
 add_filter("timber/twig/environment/options", function ($options) {
     $options["cache"] = true;
