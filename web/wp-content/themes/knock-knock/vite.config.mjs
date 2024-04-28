@@ -45,5 +45,10 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [react(), legacy()],
+  plugins: [
+    react(),
+    legacy({
+      targets: ["defaults"],
+    }),
+  ],
 });

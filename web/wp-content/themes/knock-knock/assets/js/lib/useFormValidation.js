@@ -46,7 +46,7 @@ const useFormValidation = (initialState, validate, submitForm, maxFileSize) => {
     asyncSubmit();
   }, [errors]);
 
-  const handleBlur = (e) => {
+  const handleBlur = () => {
     const validationErrors = validate(values, maxFileSize);
     setErrors(validationErrors);
   };

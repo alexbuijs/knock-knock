@@ -51,9 +51,7 @@ class Vite
         try {
             return asset($entry);
         } catch (Exception $e) {
-            wp_die(
-                "Asset <code>$entry</code> not found. Did you run <code>npm start</code> or <code>npm run build</code>?",
-            );
+            wp_die($e->getMessage() . " Did you run <code>npm start</code> or <code>npm run build</code>?");
         }
     }
 

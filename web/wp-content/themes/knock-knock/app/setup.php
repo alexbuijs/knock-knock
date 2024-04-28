@@ -110,7 +110,7 @@ add_action("after_setup_theme", function () {
         ->register("asset", Package::class)
         ->addArgument(
             new ViteAssetVersionStrategy(
-                dirname(__DIR__) . "/dist/manifest.json",
+                dirname(__DIR__) . "/dist/.vite/manifest.json",
             ),
         );
 

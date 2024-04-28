@@ -48,10 +48,24 @@ class ViteAssetVersionStrategy implements VersionStrategyInterface
             return $this->assets[$path]["file"];
         }
 
+        if (substr($path, -4) === ".css") {
+            $jsAsset = str_replace(".css", ".js", $path);
+            if (isset($this->assets[$jsAsset]["css"])) {
+                $cssAssets = $this->assets[$jsAsset]["css"];
+
+                if (count($cssAssets) > 1) {
+                    // Could make this more flexible, for now return an error
+                    throw new RuntimeException("More than one css asset in js file");
+                }
+
+                return $cssAssets[0];
+            }
+        }
+
         if ($this->strictMode) {
             throw new AssetNotFoundException(
                 sprintf(
-                    'assets "%s" not found in entrypoints file "%s".',
+                    'Asset "%s" not found in entrypoints file "%s".',
                     $path,
                     $this->manifestPath,
                 ),

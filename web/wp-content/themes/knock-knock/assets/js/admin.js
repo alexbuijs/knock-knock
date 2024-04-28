@@ -16,4 +16,6 @@ domReady(() => {
   document.querySelectorAll("div.datetimepicker input").forEach((el) => {
     flatpickr(el, flatpickrConfig);
   });
-});
+})
+
+
