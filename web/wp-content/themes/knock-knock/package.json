@@ -67,6 +67,7 @@
     "eslint-plugin-n": "^17.9.0",
     "eslint-plugin-promise": "^6.2.0",
     "eslint-plugin-react": "^7.34.3",
+    "globals": "^15.6.0",
     "postcss-scss": "^4.0.9",
     "sass": "^1.77.6",
     "stylelint": "^16.6.1",
