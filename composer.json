@@ -53,9 +53,9 @@
     "symfony/dotenv": "~6.0",
     "symfony/flex": "^1.19",
     "klopvaart/knock-knock": "@dev",
-    "wpackagist-plugin/easy-wp-smtp": "^2",
     "roots/wordpress": "^6.3",
-    "wpengine/advanced-custom-fields-pro": "^6.2"
+    "wpengine/advanced-custom-fields-pro": "^6.2",
+    "wpackagist-plugin/wp-mail-smtp": "^4.0"
   },
   "scripts": {
     "auto-scripts": {}
