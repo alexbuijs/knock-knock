@@ -46,8 +46,8 @@ jobs:
           if ! git pull; then
             exit 1
           fi
-          composer-php8 install && \ 
-          composer-php8 dump-env prod && \
+          composer install && \ 
+          composer dump-env prod && \
           wp --path=web/wp language core update && \
           wp --path=web/wp language plugin --all update && \
           wp --path=web/wp language theme --all update && \
