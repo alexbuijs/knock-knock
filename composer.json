@@ -55,7 +55,8 @@
     "klopvaart/knock-knock": "@dev",
     "roots/wordpress": "^6.3",
     "wpengine/advanced-custom-fields-pro": "^6.2",
-    "wpackagist-plugin/wp-mail-smtp": "^4.0"
+    "wpackagist-plugin/wp-mail-smtp": "^4.0",
+    "wpackagist-theme/twentytwentyfour": "^1.2"
   },
   "scripts": {
     "auto-scripts": {}
