@@ -9,6 +9,8 @@ License:      GPL-3.0-or-later
 
 add_filter('site_status_tests', function($tests) {
     unset($tests['async']['background_updates']);
+    unset($tests['async']['page_cache']);
+    unset($tests['direct']['persistent_object_cache']);
     return $tests;
 });
 
