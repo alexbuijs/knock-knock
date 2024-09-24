@@ -11,7 +11,7 @@ services:
   wordpress:
     depends_on:
       - database
-    image: wordpress:php8.0
+    image: wordpress:php8.3
     volumes:
       - ./vendor:/var/www/html/vendor
       - ./web:/var/www/html/web
@@ -29,7 +29,7 @@ services:
     depends_on:
       - database
       - wordpress
-    image: wordpress:cli-php8.0
+    image: wordpress:cli-php8.3
     volumes:
       - ./vendor:/var/www/html/vendor
       - ./web:/var/www/html/web
