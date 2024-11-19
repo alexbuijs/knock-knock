@@ -53,5 +53,5 @@ jobs:
           wp --path=web/wp language theme --all update && \
           wp --path=web/wp rewrite flush && \
           wp --path=web/wp timber clear-cache
-        source: web/wp-content/themes/knock-knock/dist
-        target: domains/intranet.klopvaart.nl/public_html/web/wp-content/themes/knock-knock
+        source: packages/knock-knock/dist
+        target: domains/intranet.klopvaart.nl/public_html/packages/knock-knock
