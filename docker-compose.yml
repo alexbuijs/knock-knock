@@ -13,6 +13,7 @@ services:
       - database
     image: wordpress:php8.3
     volumes:
+      - ./packages:/var/www/html/packages
       - ./vendor:/var/www/html/vendor
       - ./web:/var/www/html/web
       - ./.env:/var/www/html/.env

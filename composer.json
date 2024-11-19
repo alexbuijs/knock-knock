@@ -1,64 +1,64 @@
 {
-  "name": "kapoko/intranet-klopvaart",
-  "authors": [
-    {
-      "name": "kapoko",
-      "email": "17455539+kapoko@users.noreply.github.com"
-    }
-  ],
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://wpackagist.org",
-      "only": [
-        "wpackagist-plugin/*",
-        "wpackagist-theme/*"
-      ]
+    "name": "kapoko/intranet-klopvaart",
+    "authors": [
+        {
+            "name": "kapoko",
+            "email": "17455539+kapoko@users.noreply.github.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        },
+        {
+            "type": "composer",
+            "url": "https://connect.advancedcustomfields.com"
+        },
+        {
+            "type": "path",
+            "url": "./packages/knock-knock",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "config": {
+        "platform": {
+            "php": "8.3"
+        },
+        "allow-plugins": {
+            "composer/installers": true,
+            "johnpbloch/wordpress-core-installer": true,
+            "symfony/flex": true,
+            "roots/wordpress-core-installer": true
+        }
     },
-    {
-      "type": "composer",
-      "url": "https://connect.advancedcustomfields.com"
+    "extra": {
+        "wordpress-install-dir": "web/wp",
+        "installer-paths": {
+            "web/wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ],
+            "web/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ]
+        }
     },
-    {
-      "type": "path",
-      "url": "./web/wp-content/themes/knock-knock",
-      "options": {
-        "symlink": false
-      }
-    }
-  ],
-  "config": {
-    "platform": {
-      "php": "8.3"
+    "require": {
+        "symfony/dotenv": "~6.0",
+        "symfony/flex": "^1.19",
+        "klopvaart/knock-knock": "@dev",
+        "roots/wordpress": "^6.3",
+        "wpengine/advanced-custom-fields-pro": "^6.2",
+        "wpackagist-plugin/wp-mail-smtp": "^4.0",
+        "wpackagist-theme/twentytwentyfour": "^1.2"
     },
-    "allow-plugins": {
-      "composer/installers": true,
-      "johnpbloch/wordpress-core-installer": true,
-      "symfony/flex": true,
-      "roots/wordpress-core-installer": true
+    "scripts": {
+        "auto-scripts": {}
     }
-  },
-  "extra": {
-    "wordpress-install-dir": "web/wp",
-    "installer-paths": {
-      "web/wp-content/themes/{$name}/": [
-        "type:wordpress-theme"
-      ],
-      "web/wp-content/plugins/{$name}/": [
-        "type:wordpress-plugin"
-      ]
-    }
-  },
-  "require": {
-    "symfony/dotenv": "~6.0",
-    "symfony/flex": "^1.19",
-    "klopvaart/knock-knock": "@dev",
-    "roots/wordpress": "^6.3",
-    "wpengine/advanced-custom-fields-pro": "^6.2",
-    "wpackagist-plugin/wp-mail-smtp": "^4.0",
-    "wpackagist-theme/twentytwentyfour": "^1.2"
-  },
-  "scripts": {
-    "auto-scripts": {}
-  }
 }

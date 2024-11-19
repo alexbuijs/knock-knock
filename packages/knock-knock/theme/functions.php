@@ -3,7 +3,8 @@
 /**
  * Make sure composer dependencies are installed, either in main project or in theme
  */
-foreach ([5, 1] as $depth) {
+
+foreach ([3, 1, 5] as $depth) {
     $composer = dirname(__DIR__, $depth) . "/vendor/autoload.php";
     if ($found = file_exists($composer)) {
         break;
