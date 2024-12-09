@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Theme helpers
  */
@@ -95,4 +96,10 @@ function userLink($user, $linkable = false, $lastName = true)
     }
 
     return $url;
+}
+
+function lastEditedBy($postId)
+{
+    $user = get_post_meta($postId, '_edit_last', true);
+    return $user ? $user : get_post($postId)->post_author;
 }

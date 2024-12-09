@@ -14,12 +14,13 @@ switch (get_post_type()) {
             get_bloginfo("url") . "/agenda?maand=$month&jaar=$year";
         break;
     case "documentatie":
+        $lastEdited = App\lastEditedBy($post->ID);
         $context["authorThumbnail"] = App\getUserImage(
             "thumbnail",
-            $post->post_author,
+            $lastEdited,
         );
         $context["authorLink"] = App\userLink(
-            get_user_by("ID", $post->post_author),
+            get_user_by("ID", $lastEdited),
             $linkable = true,
             $lastName = false,
         );
