@@ -1,6 +1,6 @@
 import legacy from "@vitejs/plugin-legacy";
 import react from "@vitejs/plugin-react";
-import purgecss from "@fullhuman/postcss-purgecss";
+import { purgeCSSPlugin } from "@fullhuman/postcss-purgecss";
 import autoprefixer from "autoprefixer";
 import { defineConfig } from "vite";
 
@@ -31,9 +31,14 @@ export default defineConfig({
     },
   },
   css: {
+    preprocessorOptions: {
+      scss: {
+        quietDeps: true,
+      },
+    },
     postcss: {
       plugins: [
-        purgecss({
+        purgeCSSPlugin({
           content: ["views/**/*.twig", "assets/js/**/*.jsx"],
           safelist: {
             standard: [/show/, /active/],
