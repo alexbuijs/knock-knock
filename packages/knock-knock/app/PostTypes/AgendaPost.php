@@ -17,6 +17,21 @@ class AgendaPost extends Post
     }
 
     /**
+     * Return type of agenda item
+     */
+    public function type()
+    {
+        $type = get_field("type", $this->ID);
+
+        // Deprecated options since 20-1-2025, fallback here
+        if ($type === "pr-openbaar") {
+            return "Reservering 't Klophuis - Openbaar";
+        }
+
+        return $type;
+    }
+
+    /**
      * Returns author image
      */
     public function authorImage()

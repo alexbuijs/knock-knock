@@ -6,6 +6,7 @@
             "key": "field_5ba4a495bc713",
             "label": "Let op!",
             "name": "",
+            "aria-label": "",
             "type": "message",
             "instructions": "",
             "required": 0,
@@ -23,6 +24,7 @@
             "key": "field_59232d5de71f1",
             "label": "Start",
             "name": "start",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 1,
@@ -42,6 +44,7 @@
             "key": "field_59232dade71f2",
             "label": "Einde",
             "name": "einde",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 1,
@@ -61,6 +64,7 @@
             "key": "field_59649eaa6cdf2",
             "label": "Type activiteit\/reservering",
             "name": "type",
+            "aria-label": "",
             "type": "select",
             "instructions": "",
             "required": 1,
@@ -72,16 +76,18 @@
             },
             "choices": {
                 "pr-verenigingsactiviteit": "Reservering 't Klophuis - Verenigingsactiviteit",
-                "pr-openbaar": "Reservering 't Klophuis - Openbaar",
-                "pr-prive": "Reservering 't Klophuis - Privé",
+                "pr-prive": "Reservering 't Klophuis - CW Privé",
+                "pr-commercieel": "Reservering 't Klophuis - CW Commercieel",
+                "pr-nietcw": "Reservering 't Klophuis - Niet CW",
                 "verenigingsactiviteit": "Verenigingsactiviteit"
             },
-            "default_value": [],
-            "allow_null": 0,
+            "default_value": false,
+            "return_format": "label",
             "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
-            "return_format": "label",
             "placeholder": ""
         }
     ],
@@ -103,7 +109,8 @@
         "slug",
         "featured_image"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1575218444
+    "show_in_rest": 0,
+    "modified": 1737385121
 }
