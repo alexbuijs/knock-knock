@@ -1,25 +1,27 @@
 @use "sass:math";
+@use "variables";
+@use "bootstrap" as bs;
 
 body,
 html {
   background-color: var(--body-bg);
   color: var(--body-color);
 
-  @include media-breakpoint-down(sm) {
-    @include font-size($font-size-sm);
+  @include bs.media-breakpoint-down(sm) {
+    @include bs.font-size(bs.$font-size-sm);
   }
 }
 
 body > .container-lg {
-  margin-top: $grid-gutter-width * 0.5;
+  margin-top: bs.$grid-gutter-width * 0.5;
 
-  @include media-breakpoint-up(lg) {
+  @include bs.media-breakpoint-up(lg) {
     margin-top: 1.5rem;
   }
 }
 
 .thumbnail {
-  border-radius: math.div($border-radius, 2);
+  border-radius: math.div(variables.$border-radius, 2);
   height: 3rem;
   width: 3rem;
 }

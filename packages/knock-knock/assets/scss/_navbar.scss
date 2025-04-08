@@ -1,19 +1,34 @@
 @use "sass:math";
 @use "sass:color";
+@use "variables";
+@use "bootstrap" as bs;
+
+@use "delicious-hamburgers/scss/base" with (
+  $hamburger-size: 40px,
+  $hamburger-width: 50px,
+  $hamburger-color: #fff,
+  $hamburger-bar-border-radius: 1px,
+  $hamburger-border-radius: 0.25rem,
+  $hamburger-padding: 10px,
+  $hamburger-background: color.adjust(bs.$primary, $lightness: -5%),
+  $hamburger-background-transition-speed: 0s,
+  $hamburger-extra-transition-rules: bs.$navbar-toggler-transition,
+);
+@use "delicious-hamburgers/scss/animations/default";
 
 .navbar-brand {
-  @include media-breakpoint-down(lg) {
+  @include bs.media-breakpoint-down(lg) {
     margin-left: var(--bs-gutter-x, 0.75rem);
   }
 
   svg {
-    height: $navbar-brand-height;
-    width: $navbar-brand-height * $kv-logo-ratio;
+    height: variables.$navbar-brand-height;
+    width: variables.$navbar-brand-height * variables.$kv-logo-ratio;
   }
 }
 
 .hamburger {
-  @include media-breakpoint-down(lg) {
+  @include bs.media-breakpoint-down(lg) {
     margin-right: var(--bs-gutter-x, 0.75rem);
   }
 }
@@ -24,7 +39,7 @@
   }
 
   .dropdown-menu {
-    @include media-breakpoint-down(lg) {
+    @include bs.media-breakpoint-down(lg) {
       position: absolute;
     }
   }
@@ -35,26 +50,26 @@
 
   .nav-item {
     .nav-link {
-      font-size: $font-size-base;
-      padding: 0.75rem $grid-gutter-width * 0.5;
+      font-size: variables.$font-size-base;
+      padding: 0.75rem variables.$grid-gutter-width * 0.5;
 
-      @include media-breakpoint-up(lg) {
+      @include bs.media-breakpoint-up(lg) {
         padding: 1rem;
       }
     }
 
     &.current-menu-item,
     &:hover {
-      background: color.adjust($primary, $lightness: -5%);
+      background: color.adjust(variables.$primary, $lightness: -5%);
     }
 
     &:active {
-      background: color.adjust($primary, $lightness: -8%);
+      background: color.adjust(variables.$primary, $lightness: -8%);
     }
   }
 
   > .container-lg {
-    @include media-breakpoint-down(lg) {
+    @include bs.media-breakpoint-down(lg) {
       padding-left: 0;
       padding-right: 0;
     }
@@ -63,7 +78,7 @@
   .user {
     $size: 2.5rem;
 
-    border: 2px $white solid;
+    border: 2px variables.$white solid;
     border-radius: 50%;
     height: $size;
     margin-left: 0.25rem;

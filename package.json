@@ -11,8 +11,8 @@
         "test": "npm test --ws"
     },
     "devDependencies": {
-        "@prettier/plugin-php": "^0.22.2",
-        "prettier": "^3.4.2"
+        "@prettier/plugin-php": "^0.22.4",
+        "prettier": "^3.5.3"
     },
     "prettier": {
         "phpVersion": "8.0"

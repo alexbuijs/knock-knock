@@ -1,12 +1,14 @@
 @use "sass:math";
+@use "variables";
+@use "bootstrap" as bs;
 
 .card {
   background-color: var(--card-bg);
-  box-shadow: $box-shadow;
-  margin-bottom: $grid-gutter-width * 0.5;
+  box-shadow: variables.$box-shadow;
+  margin-bottom: variables.$grid-gutter-width * 0.5;
 
-  @include media-breakpoint-up(lg) {
-    margin-bottom: $grid-gutter-width;
+  @include bs.media-breakpoint-up(lg) {
+    margin-bottom: variables.$grid-gutter-width;
   }
 
   .card-header {
@@ -31,7 +33,7 @@
 }
 
 .item-grow {
-  @include media-breakpoint-up(md) {
-    height: calc(100% - #{$grid-gutter-width});
+  @include bs.media-breakpoint-up(md) {
+    height: calc(100% - #{variables.$grid-gutter-width});
   }
 }

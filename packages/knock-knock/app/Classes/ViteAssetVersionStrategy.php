@@ -1,4 +1,5 @@
 <?php
+
 // Inspired by https://github.com/lhapaipai/vite-bundle/blob/4510dab0b8d9d4c6ff410468d76c00449046fdc4/src/Asset/ViteAssetVersionStrategy.php
 
 namespace App\Classes;
@@ -75,7 +76,7 @@ class ViteAssetVersionStrategy implements VersionStrategyInterface
         return null;
     }
 
-    private function loadManifest()
+    private function loadManifest(): void
     {
         if (!is_file($this->manifestPath)) {
             throw new RuntimeException("Manifest does not exist.");

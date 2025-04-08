@@ -3,6 +3,7 @@
 namespace App\Classes;
 
 use Timber;
+
 class Fetch
 {
     /**

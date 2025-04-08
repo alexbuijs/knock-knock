@@ -1,9 +1,12 @@
+@use "bootstrap" as bs;
+@use "variables";
+
 .btn-primary {
-  @include button-variant(
-    $primary,
-    $primary,
+  @include bs.button-variant(
+    variables.$primary,
+    variables.$primary,
     #fff,
-    $active-color: #fff,
-    $disabled-color: #fff
+    variables.$active-color: #fff,
+    variables.$disabled-color: #fff
   );
 }

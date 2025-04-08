@@ -29,6 +29,7 @@ export default defineConfig({
         changeOrigin: false,
       },
     },
+    allowedHosts: ["host.docker.internal"]
   },
   css: {
     preprocessorOptions: {
