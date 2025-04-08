@@ -2,7 +2,6 @@
 @use "sass:color";
 @use "variables";
 @use "bootstrap" as bs;
-
 @use "delicious-hamburgers/scss/base" with (
   $hamburger-size: 40px,
   $hamburger-width: 50px,
