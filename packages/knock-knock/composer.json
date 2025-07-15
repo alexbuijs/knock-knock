@@ -14,19 +14,16 @@
   },
   "require": {
     "php": "^7.3 || ^8.0",
-    "nesbot/carbon": "^2.31",
+    "nesbot/carbon": "^3",
     "timber/timber": "^2.0",
-    "symfony/validator": "^6.0",
-    "symfony/property-access": "^6.0",
-    "symfony/mime": "^6.0",
-    "symfony/dependency-injection": "^6.0",
-    "symfony/asset": "^6.0"
+    "symfony/validator": "^7",
+    "symfony/property-access": "^7",
+    "symfony/mime": "^7",
+    "symfony/dependency-injection": "^7",
+    "symfony/asset": "^7"
   },
   "prefer-stable": true,
   "config": {
-    "platform": {
-      "php": "8.0.2"
-    },
     "allow-plugins": {
       "composer/installers": true
     }

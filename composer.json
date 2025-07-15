@@ -50,8 +50,8 @@
         }
     },
     "require": {
-        "symfony/dotenv": "~6.0",
-        "symfony/flex": "^1.19",
+        "symfony/dotenv": "^7",
+        "symfony/flex": "^2",
         "klopvaart/knock-knock": "@dev",
         "roots/wordpress": "^6.3",
         "wpengine/advanced-custom-fields-pro": "^6.2",

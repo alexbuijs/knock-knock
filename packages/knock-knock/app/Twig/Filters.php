@@ -5,11 +5,10 @@ namespace App\Twig;
 use Carbon\Carbon;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
-use Twig\TwigFunction;
 
 class Filters extends AbstractExtension
 {
-    public function getFilters()
+    public function getFilters(): array
     {
         $filters = [
             new TwigFilter("sanitizeTitle", fn($str) => sanitize_title($str)),
@@ -37,7 +36,7 @@ class Filters extends AbstractExtension
     /**
      * Change time into diff format (e.g. n minutes ago)
      */
-    private static function timeDiff($date, $short = false)
+    private static function timeDiff($date, $short = false): string
     {
         return Carbon::parse($date)
             ->locale("nl_NL")
