@@ -140,7 +140,9 @@ const AdminDateTimePicker = ({ inputEl }) => {
     inputEl.addEventListener("focus", handleFocus);
     inputEl.addEventListener("blur", handleManualInput);
     inputEl.addEventListener("change", handleManualInput);
+    document.addEventListener("pointerdown", handleOutsideClick);
     document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
     document.addEventListener("focusin", handleDocumentFocusIn);
     document.addEventListener("keydown", handleEscape);
     window.addEventListener("resize", handleWindowChange);
@@ -154,7 +156,9 @@ const AdminDateTimePicker = ({ inputEl }) => {
       inputEl.removeEventListener("focus", handleFocus);
       inputEl.removeEventListener("blur", handleManualInput);
       inputEl.removeEventListener("change", handleManualInput);
+      document.removeEventListener("pointerdown", handleOutsideClick);
       document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
       document.removeEventListener("focusin", handleDocumentFocusIn);
       document.removeEventListener("keydown", handleEscape);
       window.removeEventListener("resize", handleWindowChange);
@@ -184,23 +188,34 @@ const AdminDateTimePicker = ({ inputEl }) => {
           locale={nl}
           showOutsideDays
         />
-        <label className="d-flex align-items-center gap-2 mt-2 small">
-          Tijd
-          <input
-            type="time"
-            lang="nl-NL"
-            step="60"
-            inputMode="numeric"
-            className="form-control form-control-sm"
-            value={timeValue}
-            onChange={(event) => {
-              const nextTimeValue = event.target.value;
-              if (!nextTimeValue) return;
+        <div className="d-flex align-items-end justify-content-between gap-2 mt-2">
+          <label className="d-flex align-items-center gap-2 small mb-0">
+            Tijd
+            <input
+              type="time"
+              lang="nl-NL"
+              step="60"
+              inputMode="numeric"
+              className="form-control form-control-sm"
+              value={timeValue}
+              onChange={(event) => {
+                const nextTimeValue = event.target.value;
+                if (!nextTimeValue) return;
 
-              applyDateAndTime(selectedDate, nextTimeValue);
+                applyDateAndTime(selectedDate, nextTimeValue);
+              }}
+            />
+          </label>
+          <button
+            type="button"
+            className="btn btn-primary btn-sm text-white"
+            onClick={() => {
+              setIsOpen(false);
             }}
-          />
-        </label>
+          >
+            Ok
+          </button>
+        </div>
       </div>
     </div>,
     document.body,
