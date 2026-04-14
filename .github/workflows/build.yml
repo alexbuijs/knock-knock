@@ -16,7 +16,7 @@ jobs:
         node-version: [24.x]
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v5
@@ -30,7 +30,7 @@ jobs:
         npm test
 
     - name: Upload build files
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: production-assets
         path: packages/knock-knock/dist
@@ -42,7 +42,7 @@ jobs:
 
     steps:
     - name: Download artifact
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v8
       with:
         name: production-assets
         path: packages/knock-knock/dist
