@@ -140,9 +140,7 @@ const AdminDateTimePicker = ({ inputEl }) => {
     inputEl.addEventListener("focus", handleFocus);
     inputEl.addEventListener("blur", handleManualInput);
     inputEl.addEventListener("change", handleManualInput);
-    document.addEventListener("pointerdown", handleOutsideClick);
     document.addEventListener("mousedown", handleOutsideClick);
-    document.addEventListener("touchstart", handleOutsideClick);
     document.addEventListener("focusin", handleDocumentFocusIn);
     document.addEventListener("keydown", handleEscape);
     window.addEventListener("resize", handleWindowChange);
@@ -156,9 +154,7 @@ const AdminDateTimePicker = ({ inputEl }) => {
       inputEl.removeEventListener("focus", handleFocus);
       inputEl.removeEventListener("blur", handleManualInput);
       inputEl.removeEventListener("change", handleManualInput);
-      document.removeEventListener("pointerdown", handleOutsideClick);
       document.removeEventListener("mousedown", handleOutsideClick);
-      document.removeEventListener("touchstart", handleOutsideClick);
       document.removeEventListener("focusin", handleDocumentFocusIn);
       document.removeEventListener("keydown", handleEscape);
       window.removeEventListener("resize", handleWindowChange);
