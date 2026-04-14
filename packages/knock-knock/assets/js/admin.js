@@ -1,21 +1,36 @@
 import domReady from "@wordpress/dom-ready";
-import flatpickr from "flatpickr";
-import { Dutch } from "flatpickr/dist/l10n/nl";
+import React from "react";
+import { createRoot } from "react-dom/client";
+
+import "react-day-picker/style.css";
 
 import "../scss/admin.scss";
 
-const flatpickrConfig = {
-  enableTime: true,
-  allowInput: true,
-  dateFormat: "Y-m-d H:i",
-  locale: Dutch,
-};
+domReady(async () => {
+  if (import.meta.env.DEV) {
+    await import("@vitejs/plugin-react/preamble");
+  }
 
-domReady(() => {
-  // Activate datepicker
-  document.querySelectorAll("div.datetimepicker input").forEach((el) => {
-    flatpickr(el, flatpickrConfig);
+  const { default: AdminDateTimePicker } = await import(
+    "./components/AdminDateTimePicker"
+  );
+
+  document.querySelectorAll("div.datetimepicker input").forEach((inputEl) => {
+    if (!inputEl.parentNode) {
+      return;
+    }
+
+    const wrapperEl = document.createElement("div");
+
+    wrapperEl.className = "daypicker-wrapper";
+    inputEl.parentNode.insertBefore(wrapperEl, inputEl);
+    wrapperEl.appendChild(inputEl);
+
+    const mountEl = document.createElement("div");
+
+    wrapperEl.appendChild(mountEl);
+    createRoot(mountEl).render(
+      React.createElement(AdminDateTimePicker, { inputEl }),
+    );
   });
-})
-
-
+});

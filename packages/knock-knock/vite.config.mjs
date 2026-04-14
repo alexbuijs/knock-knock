@@ -1,10 +1,10 @@
 import legacy from "@vitejs/plugin-legacy";
 import react from "@vitejs/plugin-react";
-import { purgeCSSPlugin } from "@fullhuman/postcss-purgecss";
+import purgecss from "@fullhuman/postcss-purgecss";
 import autoprefixer from "autoprefixer";
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default defineConfig(() => ({
   build: {
     manifest: true,
     rollupOptions: {
@@ -18,9 +18,6 @@ export default defineConfig({
       },
     },
   },
-  esbuild: {
-    loader: "jsx",
-  },
   server: {
     host: true,
     proxy: {
@@ -29,7 +26,7 @@ export default defineConfig({
         changeOrigin: false,
       },
     },
-    allowedHosts: ["host.docker.internal"]
+    allowedHosts: ["host.docker.internal"],
   },
   css: {
     preprocessorOptions: {
@@ -39,11 +36,19 @@ export default defineConfig({
     },
     postcss: {
       plugins: [
-        purgeCSSPlugin({
+        purgecss({
           content: ["views/**/*.twig", "assets/js/**/*.jsx"],
           safelist: {
             standard: [/show/, /active/],
-            deep: [/^alert/, /^navbar/, /file/, /tooltip/, /^d-/, /^dropdown/],
+            deep: [
+              /^alert/,
+              /^navbar/,
+              /file/,
+              /tooltip/,
+              /^d-/,
+              /^dropdown/,
+              /^rdp/,
+            ],
             greedy: [/collaps/],
           },
         }),
@@ -57,4 +62,4 @@ export default defineConfig({
       targets: ["defaults"],
     }),
   ],
-});
+}));

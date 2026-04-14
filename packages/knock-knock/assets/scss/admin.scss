@@ -1,4 +1,20 @@
-/*! purgecss start ignore */
-@import "flatpickr/dist/themes/airbnb.css";
+@use "variables";
 
-/*! purgecss end ignore */
+.rdp-root {
+  --rdp-accent-color: #{variables.$primary};
+  --rdp-accent-background-color: #{variables.$primary-bg-subtle};
+  --rdp-selected-border: 3px solid #{variables.$primary};
+  --rdp-today-color: #{variables.$primary};
+  --rdp-weekday-text-align: center;
+}
+
+.daypicker-wrapper {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.daypicker {
+  position: fixed;
+  z-index: 1080;
+}
