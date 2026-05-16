@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { DayPicker } from "react-day-picker";
-import { nl } from "react-day-picker/locale";
+import { DayPicker } from "@daypicker/react";
+import { nl } from "@daypicker/react/locale";
 
 const DATE_TIME_PATTERN = /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/;
 
