@@ -1,64 +1,57 @@
 {
-    "name": "kapoko/intranet-klopvaart",
-    "authors": [
-        {
-            "name": "kapoko",
-            "email": "17455539+kapoko@users.noreply.github.com"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://wpackagist.org",
-            "only": [
-                "wpackagist-plugin/*",
-                "wpackagist-theme/*"
-            ]
-        },
-        {
-            "type": "composer",
-            "url": "https://connect.advancedcustomfields.com"
-        },
-        {
-            "type": "path",
-            "url": "./packages/knock-knock",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
-    "config": {
-        "platform": {
-            "php": "8.3"
-        },
-        "allow-plugins": {
-            "composer/installers": true,
-            "johnpbloch/wordpress-core-installer": true,
-            "symfony/flex": true,
-            "roots/wordpress-core-installer": true
-        }
-    },
-    "extra": {
-        "wordpress-install-dir": "web/wp",
-        "installer-paths": {
-            "web/wp-content/themes/{$name}/": [
-                "type:wordpress-theme"
-            ],
-            "web/wp-content/plugins/{$name}/": [
-                "type:wordpress-plugin"
-            ]
-        }
-    },
-    "require": {
-        "symfony/dotenv": "^7",
-        "symfony/flex": "^2",
-        "klopvaart/knock-knock": "@dev",
-        "roots/wordpress": "^6.3",
-        "wpengine/advanced-custom-fields-pro": "^6.2",
-        "wpackagist-plugin/wp-mail-smtp": "^4.0",
-        "wpackagist-theme/twentytwentyfour": "^1.2"
-    },
-    "scripts": {
-        "auto-scripts": {}
+  "name": "kapoko/intranet-klopvaart",
+  "authors": [
+    {
+      "name": "kapoko",
+      "email": "17455539+kapoko@users.noreply.github.com"
     }
+  ],
+  "repositories": [
+    {
+      "name": "wp-packages",
+      "type": "composer",
+      "url": "https://repo.wp-packages.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://connect.advancedcustomfields.com"
+    },
+    {
+      "type": "path",
+      "url": "./packages/knock-knock",
+      "options": {
+        "symlink": true
+      }
+    }
+  ],
+  "config": {
+    "platform": {
+      "php": "8.3"
+    },
+    "allow-plugins": {
+      "composer/installers": true,
+      "johnpbloch/wordpress-core-installer": true,
+      "symfony/flex": true,
+      "roots/wordpress-core-installer": true
+    }
+  },
+  "extra": {
+    "wordpress-install-dir": "web/wp",
+    "installer-paths": {
+      "web/wp-content/themes/{$name}/": ["type:wordpress-theme"],
+      "web/wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+    }
+  },
+  "require": {
+    "symfony/dotenv": "^7",
+    "symfony/flex": "^2",
+    "klopvaart/knock-knock": "@dev",
+    "roots/wordpress": "^7",
+    "wpengine/advanced-custom-fields-pro": "^6.2",
+    "wp-plugin/wp-mail-smtp": "^4.0",
+    "wp-theme/twentytwentyfive": "^1.2"
+  },
+  "scripts": {
+    "auto-scripts": {}
+  }
 }
