@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.25.0",
-    "prettier": "^3.8.3"
+    "prettier": "^3.9.9"
   },
   "prettier": {
     "phpVersion": "8.0"
