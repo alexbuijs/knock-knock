@@ -172,7 +172,7 @@ const AdminDateTimePicker = ({ inputEl }) => {
       ref={panelRef}
       style={{ left: `${panelPosition.left}px`, top: `${panelPosition.top}px` }}
     >
-      <div className="bg-white border rounded shadow p-3 d-inline-block">
+      <div className="daypicker-panel">
         <DayPicker
           mode="single"
           selected={selectedDate}
@@ -184,15 +184,15 @@ const AdminDateTimePicker = ({ inputEl }) => {
           locale={nl}
           showOutsideDays
         />
-        <div className="d-flex align-items-end justify-content-between gap-2 mt-2">
-          <label className="d-flex align-items-center gap-2 small mb-0">
+        <div className="daypicker-footer">
+          <label className="daypicker-time-label">
             Tijd
             <input
               type="time"
               lang="nl-NL"
               step="60"
               inputMode="numeric"
-              className="form-control form-control-sm"
+              className="daypicker-time-input"
               value={timeValue}
               onChange={(event) => {
                 const nextTimeValue = event.target.value;
@@ -204,7 +204,7 @@ const AdminDateTimePicker = ({ inputEl }) => {
           </label>
           <button
             type="button"
-            className="btn btn-primary btn-sm text-white"
+            className="daypicker-confirm"
             onClick={() => {
               setIsOpen(false);
             }}
