@@ -2,7 +2,7 @@ import domReady from "@wordpress/dom-ready";
 import React from "react";
 import { createRoot } from "react-dom/client";
 
-import "react-day-picker/style.css";
+import "@daypicker/react/style.css";
 
 import "../scss/admin.scss";
 

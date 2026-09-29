@@ -6,6 +6,10 @@ import { defineConfig } from "vite";
 
 export default defineConfig(() => ({
   base: "./",
+  resolve: {
+    // Dependencies are hoisted outside this workspace, so force a single React runtime.
+    dedupe: ["react", "react-dom"],
+  },
   build: {
     manifest: true,
     rollupOptions: {
